@@ -1,1 +1,1 @@
-class alien {}
+class alien{}

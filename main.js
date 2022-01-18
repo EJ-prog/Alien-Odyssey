@@ -1,1 +1,1 @@
-class example{}
+class main{}
