@@ -9,7 +9,7 @@ class Alien{
         // this.animator = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2); //run
         // this.animator = new Animator(this.spritesheet, 850, 810, 151, 225, 2, 0.4); //stand and shoot
         // this.animator = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6); //death
-        this.x = 0;
+        this.x = 300;
         this.y = 0;
         this.speed = 120;
     };
