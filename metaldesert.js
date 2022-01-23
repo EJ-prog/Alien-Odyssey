@@ -9,6 +9,6 @@ class MetalDesert {
     };
 
     draw(ctx) {
-        ctx.draw(this.spritesheet);
+        ctx.drawImage(this.spritesheet);
     };
 }
