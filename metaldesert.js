@@ -1,7 +1,7 @@
 class MetalDesert {
     constructor(game) {
         this.game = game;
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/Metal");
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertBackground.png");
     };
 
     update() {
@@ -9,6 +9,6 @@ class MetalDesert {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertBackground.png"));
     };
 }
