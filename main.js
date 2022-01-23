@@ -2,7 +2,7 @@ const gameEngine = new GameEngine();
 
 const ASSET_MANAGER = new AssetManager();
 
-ASSET_MANAGER.queueDownload("./sonic.png");
+//ASSET_MANAGER.queueDownload("./sonic.png");
 //ASSET_MANAGER.queueDownload("./MetalDesertBackground.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsBackground.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsEnvironment.png");
