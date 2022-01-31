@@ -1,4 +1,4 @@
-class Alien{
+class alien{
     constructor(game) {
         this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/character-sprites-player-alien-R.png");
@@ -23,54 +23,54 @@ class Alien{
 
         //Alien's animations
         this.animator = [];
-        this.loadAniamtions();
+        this.loadAnimators();
 
         this.velocity = {x:0, y:0}
         this.fallAcc = 562.5;
 
-        this.updateBB();
+        
 
     };
 
-    loadAniamtions(){
+    loadAnimators(){
         for( var i =0; i < 5; i++){ // five state(idle, running, ducking, jumping, shooting)
-            this.animations.push([]);
-            for(var j = 0; j< 1; j++){ // could be update the condition when we update the size of Alien.
-                this.animations[i].push([]);
-                for(var k = 0; k< 2; k++){ //two direction Left and Right.
-                    this.animations[i][j].push([]);
-                }
+            this.animator.push([]);
+            for(var j = 0; j< 2; j++){ // could be update the condition when we update the size of Alien.
+                this.animator[i].push([]);
+                // for(var k = 0; k< 2; k++){ //two direction Left and Right.
+                //     this.animations[i][j].push([]);
+                // }
             }
         }
         
         //State idle [0]
         //facing right=0
-        this.animator[0][0][0]= new Animator(this.spritesheet, 425, 176, 167,210,1,0.5,14, false, true);
+        this.animator[0][0]= new Animator(this.spritesheet, 425, 176, 167,210,1,0.5,14, false, true);
         //facing left =1
-        this.animator[0][0][1]= new Animator(this.spritesheet, 425, 176, 167,210,1,0.5,14, true, true);
+        this.animator[0][1]= new Animator(this.spritesheet, 425, 176, 167,210,1,0.5,14, true, true);
         //state running [1]
         //facing right=0
-        this.animator[1][0][0] = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2, 14, false, true);
+        this.animator[1][0] = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2, 14, false, true);
         //facing left =1
-        this.animator[1][0][0] = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2, 14, true, true);
+        this.animator[1][1] = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2, 14, true, true);
 
         //state jumping [2]
         //facing right=0
-        this.animator[2][0][0] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, false, true);
+        this.animator[2][0] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, false, true);
         //facing left =1
-        this.animator[2][0][1] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, true, true);
+        this.animator[2][1] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, true, true);
 
         //state ducking [3]
         //facing right=0
-        this.animator[3][0][0] = new Animator(this.spritesheet, 640, 175, 98, 210, 2, 0.5, 14, false, true);
+        this.animator[3][0] = new Animator(this.spritesheet, 640, 175, 98, 210, 2, 0.5, 14, false, true);
         //facing left =1
-        this.animator[3][0][1] = new Animator(this.spritesheet, 640, 175, 98, 210, 2, 0.5, 14, true, true);
+        this.animator[3][1] = new Animator(this.spritesheet, 640, 175, 98, 210, 2, 0.5, 14, true, true);
 
         //state standing and shooting [4]
         //facing right = 0
-        this.animator[4][0][0] = new Animator(this.spritesheet, 850, 810, 151, 225, 2, 0.4, 14, false, true);
+        this.animator[4][0] = new Animator(this.spritesheet, 850, 810, 151, 225, 2, 0.4, 14, false, true);
         //facing left = 1
-        this.animator[4][0][1] = new Animator(this.spritesheet, 850, 810, 151, 225, 2, 0.4, 14, true, true);
+        this.animator[4][1] = new Animator(this.spritesheet, 850, 810, 151, 225, 2, 0.4, 14, true, true);
 
         this.deadAnim = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, false, true); 
     }
@@ -113,7 +113,7 @@ class Alien{
                         this.velocity.x -=  MIN_RUN;
                     }
                     if (this.game.right){
-                        this.velocity.x += RUN_WALK;
+                        this.velocity.x += MIN_RUN;
                     }
 
                 }
@@ -123,16 +123,16 @@ class Alien{
 
         // update position
         this.x += this.velocity.x * TICK ;
-        this.y += this.velocity.y * TICH ;
+        this.y += this.velocity.y * TICK ;
     };
 
     draw(ctx) {
 
-        this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
+        this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
         if (this.dead){
-            this.deadAnim.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y)
+            this.deadAnim.drawFrame(this.game.clockTick, ctx, this.x , this.y)
         } else {
-            this.animator[this.state][this.size][this.facing].drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
+            this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x , this.y);
         }
     };
 }

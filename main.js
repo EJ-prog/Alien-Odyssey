@@ -26,8 +26,8 @@ ASSET_MANAGER.downloadAll(() => {
 	const ctx = canvas.getContext("2d");
 	ctx.imageSmoothingEnabled = false;
 
-	gameEngine.addEntity(new Scorpion(gameEngine));
-	//gameEngine.addEntity(new alien(gameEngine));
+	//gameEngine.addEntity(new Scorpion(gameEngine));
+	gameEngine.addEntity(new alien(gameEngine));
 	gameEngine.addEntity(new MetalDesert(gameEngine));
     
 	gameEngine.init(ctx);
