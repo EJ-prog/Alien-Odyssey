@@ -21,8 +21,8 @@ class MetalDesert {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.background, 0, 0); //background
-        this.planets.drawFrame(this.game.clockTick, ctx, this.x1, this.y1); //moving planets
+        // ctx.drawImage(this.background, 0, 0); //background
+        // this.planets.drawFrame(this.game.clockTick, ctx, this.x1, this.y1); //moving planets
         ctx.drawImage(this.mountains, 0, 0);
         ctx.drawImage(this.environment, 15, 160, 150, 200, 220, 245, 150, 200); //background cacti 1
         ctx.drawImage(this.environment, 184, 160, 150, 200, 650, 245, 150, 200); //background cacti 2
