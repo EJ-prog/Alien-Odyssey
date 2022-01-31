@@ -21,13 +21,15 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestHills.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Scorpion.png");
 
 ASSET_MANAGER.downloadAll(() => {
+	// PARAMS.BLOCKWIDTH = PARAMS.BITWIDTH * PARAMS.SCALE;
 	const canvas = document.getElementById("gameWorld");
 	const ctx = canvas.getContext("2d");
 	ctx.imageSmoothingEnabled = false;
 
-    gameEngine.addEntity(new Scorpion(gameEngine));
-    gameEngine.addEntity(new MetalDesert(gameEngine));
-
+	//gameEngine.addEntity(new Scorpion(gameEngine));
+	gameEngine.addEntity(new alien(gameEngine));
+	gameEngine.addEntity(new MetalDesert(gameEngine));
+    
 	gameEngine.init(ctx);
 
 	gameEngine.start();
