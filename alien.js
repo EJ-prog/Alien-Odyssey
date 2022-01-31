@@ -45,9 +45,9 @@ class alien{
         
         //State idle [0]
         //facing right=0
-        this.animator[0][0]= new Animator(this.spritesheet, 425, 176, 167,210,1,0.5,14, false, true);
+        this.animator[0][0]= new Animator(this.spritesheet, 640, 176, 98,210,1,0.5,14, false, true);
         //facing left =1
-        this.animator[0][1]= new Animator(this.spritesheet, 425, 176, 167,210,1,0.5,14, true, true);
+        this.animator[0][1]= new Animator(this.spritesheet, 640, 176, 98,210,1,0.5,14, true, true);
         //state running [1]
         //facing right=0
         this.animator[1][0] = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2, 14, false, true);
