@@ -13,7 +13,7 @@ class alien{
         // this.animator = new Animator(this.spritesheet, 5, 607, 167, 210, 7, 0.2); //holster: after 30 secs of idle, & before jumping
         
         this.x = 300;
-        this.y = 0;
+        this.y = 263;
         this.speed = 120;
         //Alien state variablles.
         this.size = 0; //currently Alien has only one size so size is 0. It can be update later in progress.
@@ -45,9 +45,9 @@ class alien{
         
         //State idle [0]
         //facing right=0
-        this.animator[0][0]= new Animator(this.spritesheet, 425, 176, 167,210,1,0.5,14, false, true);
+        this.animator[0][0]= new Animator(this.spritesheet, 565, 176, 167,210,1,0.5,14, false, true);
         //facing left =1
-        this.animator[0][1]= new Animator(this.spritesheet, 425, 176, 167,210,1,0.5,14, true, true);
+        this.animator[0][1]= new Animator(this.spritesheet, 565, 176, 167,210,1,0.5,14, true, true);
         //state running [1]
         //facing right=0
         this.animator[1][0] = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2, 14, false, true);
@@ -86,7 +86,7 @@ class alien{
         // }
         const TICK = this.game.clockTick;
         //heavily get inspired by SUper Mario by Chris. We will need modify it later when we test the character.
-        const MIN_RUN = 5;
+        const MIN_RUN = 10;
         const MAX_RUN = 130;
         const ACC_RUN = 200;
         const DEC_REL = 182;
