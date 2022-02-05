@@ -35,9 +35,9 @@ class alien{
     loadAnimators(){
         for( var i =0; i < 5; i++){ // five state(idle, running, ducking, jumping, shooting)
             this.animator.push([]);
-            for(var j = 0; j< 2; j++){ // could be update the condition when we update the size of Alien.
+            for(var j = 0; j< 2; j++){ //two direction Left and Right.
                 this.animator[i].push([]);
-                // for(var k = 0; k< 2; k++){ //two direction Left and Right.
+                // for(var k = 0; k< 2; k++){ // could be update the condition when we update the size of Alien.
                 //     this.animations[i][j].push([]);
                 // }
             }
@@ -45,9 +45,10 @@ class alien{
         
         //State idle [0]
         //facing right=0
-        this.animator[0][0]= new Animator(this.spritesheet, 565, 176, 167,210,1,0.5,14, false, true);
+        this.animator[0][0]= new Animator(this.spritesheet, 565, 176, 167, 210, 1, 0.5, 14, false, true);
         //facing left =1
-        this.animator[0][1]= new Animator(this.spritesheet, 565, 176, 167,210,1,0.5,14, true, true);
+        this.animator[0][1]= new Animator(this.spritesheet, 565, 176, 167, 210, 1, 0.5, 14, true, true);
+       
         //state running [1]
         //facing right=0
         this.animator[1][0] = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2, 14, false, true);
@@ -72,6 +73,7 @@ class alien{
         //facing left = 1
         this.animator[4][1] = new Animator(this.spritesheet, 850, 810, 151, 225, 2, 0.4, 14, true, true);
 
+        //state dead
         this.deadAnim = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, false, true); 
     }
 
@@ -86,7 +88,7 @@ class alien{
         // }
         const TICK = this.game.clockTick;
         //heavily get inspired by SUper Mario by Chris. We will need modify it later when we test the character.
-        const MIN_RUN = 10;
+        const MIN_RUN = 100;
         const MAX_RUN = 130;
         const ACC_RUN = 200;
         const DEC_REL = 182;
@@ -105,7 +107,7 @@ class alien{
             this.y += this.velocity.y * TICK;
         } else {
 
-            if (this.state < 4){ //five state(idle, running, ducking, jumping, shooting)
+            if (this.state < 3){ //five state(idle, running, ducking, jumping, shooting)
                 if (Math.abs(this.velocity.x) < MIN_RUN){ //slower than run swicth the state to idle.
                     this.velocity.x =0;
                     this.state = 0;
@@ -128,7 +130,7 @@ class alien{
 
     draw(ctx) {
 
-        this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
+        // this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
         if (this.dead){
             this.deadAnim.drawFrame(this.game.clockTick, ctx, this.x , this.y)
         } else {
