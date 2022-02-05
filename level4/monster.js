@@ -5,8 +5,8 @@ class Monster {
         // this.animator = new Animator(this.spritesheet, 0, 0, 366, 340, 4, 0.6);
         // this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MonsterJump.png");
         // this.animator = new Animator(this.spritesheet, 0, 0, 385, 576, 8, 0.6);
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MonsterDeath.png");
-        this.animator = new Animator(this.spritesheet, 0, 0, 390, 460, 10, 0.6);
+        // this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MonsterDeath.png");
+        // this.animator = new Animator(this.spritesheet, 0, 0, 390, 460, 10, 0.6);
         this.x = 0;
         this.y = 0;
         this.speed = 10;

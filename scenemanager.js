@@ -54,6 +54,10 @@ class SceneManager {
             // this.clearEntities();
 
             this.game.addEntity(new TitleScreen(this.game));
+        } else {
+            // if (this.game.entities) {
+
+            // }
         }
 
     };

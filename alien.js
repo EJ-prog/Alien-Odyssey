@@ -12,8 +12,8 @@ class Alien{
         // this.animator = new Animator(this.spritesheet, 21, 397, 155, 207, 7, 0.2); //run and shoot arrow left & right combine space
         // this.animator = new Animator(this.spritesheet, 5, 607, 167, 210, 7, 0.2); //holster: after 30 secs of idle, & before jumping
         
-        this.x = 300;
-        this.y = 0;
+        this.x = 200;
+        this.y = 300;
         this.speed = 120;
         //Alien state variablles.
         this.size = 0; //currently Alien has only one size so size is 0. It can be update later in progress.
@@ -72,7 +72,7 @@ class Alien{
         //facing left = 1
         this.animator[4][1] = new Animator(this.spritesheet, 850, 810, 151, 225, 2, 0.4, 14, true, true);
 
-        this.deadAnim = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, false, true); 
+        this.deadAnim = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, false, true);
     }
 
     update() {
@@ -86,7 +86,7 @@ class Alien{
         // }
         const TICK = this.game.clockTick;
         //heavily get inspired by SUper Mario by Chris. We will need modify it later when we test the character.
-        const MIN_RUN = 5;
+        const MIN_RUN = 10;
         const MAX_RUN = 130;
         const ACC_RUN = 200;
         const DEC_REL = 182;
@@ -101,8 +101,8 @@ class Alien{
         const MAX_FALL = 270;
 
         if (this.dead) {
-            this.velocity.y += RUN_FALL * TICK;
-            this.y += this.velocity.y * TICK;
+            // this.velocity.y += RUN_FALL * TICK;
+            // this.y += this.velocity.y * TICK;
         } else {
 
             if (this.state < 4){ //five state(idle, running, ducking, jumping, shooting)
@@ -111,26 +111,42 @@ class Alien{
                     this.state = 0;
                     if (this.game.left){
                         this.velocity.x -=  MIN_RUN;
+                        this.facing = 0;
+                        this.state = 1;
                     }
                     if (this.game.right){
                         this.velocity.x += MIN_RUN;
+                        this.facing = 1;
+                        this.state = 1;
                     }
 
                 }
             }
+
+            // update position
+            this.x += this.velocity.x * TICK ;
+            this.y += this.velocity.y * TICK ;
+            this.BB = new BoundingBox(this.x, this.y, 98, 210);
             
         }
 
-        // update position
-        this.x += this.velocity.x * TICK ;
-        this.y += this.velocity.y * TICK ;
+        var that = this;
+        this.game.entities.forEach(function (entity) {
+            if (entity.BB && that.BB.collide(entity.BB)) {
+                if (entity instanceof Coin) {
+                    entity.removeFromWorld = true;
+                } else if (entity instanceof Scorpion) {
+                    that.dead = true;
+                }
+            }
+        });
     };
 
     draw(ctx) {
 
-        this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
+        // this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
         if (this.dead){
-            this.deadAnim.drawFrame(this.game.clockTick, ctx, this.x , this.y)
+            this.deadAnim.drawFrame(this.game.clockTick, ctx, this.x , this.y);
         } else {
             this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x , this.y);
         }
