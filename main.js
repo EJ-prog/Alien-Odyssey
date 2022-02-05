@@ -14,7 +14,7 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertBackground.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertBackgroundMountains.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertEnvironment.png");
-ASSET_MANAGER.queueDownload("./SPrites_and_Assets/MetalDesertRock.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertRock.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment2.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestHills.png");

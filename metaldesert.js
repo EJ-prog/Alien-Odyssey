@@ -4,7 +4,7 @@ class MetalDesert {
         this.background = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertBackground.png");
         this.mountains = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertBackgroundMountains.png");
         this.environment = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertEnvironment.png");
-        this.rock = ASSET_MANAGER.getAsset("./SPrites_and_Assets/MetalDesertRock.png");
+        this.rock = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertRock.png");
         this.planets = new Animator(this.environment, 450, 29, 400, 120, 1, 0.2);
         this.rolling = new Animator(this.rock, 0, 0, 60, 61, 12, 0.3);
         this.x1 = 560;

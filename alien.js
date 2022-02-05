@@ -113,9 +113,13 @@ class alien{
                     this.state = 0;
                     if (this.game.left){
                         this.velocity.x -=  MIN_RUN;
+                        this.facing = 0;
+                        this.state = 1;
                     }
                     if (this.game.right){
                         this.velocity.x += MIN_RUN;
+                        this.facing = 1;
+                        this.state = 1;
                     }
 
                 }
