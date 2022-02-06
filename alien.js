@@ -51,9 +51,9 @@ class alien{
        
         //state running [1]
         //facing right=0
-        this.animator[1][0] = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2, 14, false, true);
+        this.animator[1][0] = new Animator(this.spritesheet, 4, 810, 120, 230, 6, 0.1, 14, true, true);
         //facing left =1
-        this.animator[1][1] = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2, 14, true, true);
+        this.animator[1][1] = new Animator(this.spritesheet, 4, 810, 120, 230, 6, 0.1, 14, false, true);
 
         //state jumping [2]
         //facing right=0
@@ -78,23 +78,13 @@ class alien{
     }
 
     update() {
-        // if(this.y < 500) {
-        //     this.y += this.speed*this.game.clockTick;
-        // } else if (this.x < 1024) {
-        //     this.x += this.speed*this.game.clockTick;
-        // } else {
-        //     this.x = 0;
-        //     this.y = 0;
-        // }
+        
         const TICK = this.game.clockTick;
         //heavily get inspired by SUper Mario by Chris. We will need modify it later when we test the character.
-        const MIN_RUN = 100;
+        const MIN_RUN = 10;
         const MAX_RUN = 130;
-        const ACC_RUN = 200;
-        const DEC_REL = 182;
-        const DEC_SKID = 365;
-        const MIN_SKID = 33;
-
+        const ACC_RUN = 70;
+        
         const STOP_FALL = 1575;
         const RUN_FALL = 2025;
         const STOP_FALL_A = 450;
@@ -108,22 +98,20 @@ class alien{
         } else {
 
             if (this.state < 3){ //five state(idle, running, ducking, jumping, shooting)
-                if (Math.abs(this.velocity.x) < MIN_RUN){ //slower than run swicth the state to idle.
-                    this.velocity.x =0;
-                    this.state = 0;
-                    if (this.game.left){
-                        this.velocity.x -=  MIN_RUN;
-                        this.facing = 0;
-                        this.state = 1;
-                    }
-                    if (this.game.right){
-                        this.velocity.x += MIN_RUN;
-                        this.facing = 1;
-                        this.state = 1;
-                    }
-
+                
+                if ((this.game.right && !this.game.left)) {
+                    this.state = 1
+                    this.velocity.x += ACC_RUN * TICK;
+                
+                }else if (this.game.left && !this.game.right) {
+                    this.state = 1;
+                    this.velocity.x -= ACC_RUN * TICK;
+                } else {
+                    this.velocity.x = 0;
+                    this.state = 0; 
                 }
-            }
+            }       
+         
             
         }
 
@@ -137,7 +125,7 @@ class alien{
         // this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
         if (this.dead){
             this.deadAnim.drawFrame(this.game.clockTick, ctx, this.x , this.y)
-        } else {
+        }  else {
             this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x , this.y);
         }
     };
