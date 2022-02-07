@@ -45,27 +45,27 @@ class alien{
         
         //State idle [0]
         //facing right=0
-        this.animator[0][0]= new Animator(this.spritesheet, 565, 176, 167, 210, 1, 0.5, 14, false, true);
+        this.animator[0][0]= new Animator(this.spritesheet, 640, 175, 98, 210, 1, 0.5, 14, false, true);
         //facing left =1
-        this.animator[0][1]= new Animator(this.spritesheet, 565, 176, 167, 210, 1, 0.5, 14, true, true);
+        this.animator[0][1]= new Animator(this.spritesheet, 640, 175, 98, 210, 1, 0.5, 14, true, true);
        
         //state running [1]
         //facing right=0
-        this.animator[1][0] = new Animator(this.spritesheet, 4, 810, 120, 230, 6, 0.1, 14, true, true);
+        this.animator[1][0] = new Animator(this.spritesheet, 4, 810, 120, 230, 6, 0.085, 14, true, true);
         //facing left =1
-        this.animator[1][1] = new Animator(this.spritesheet, 4, 810, 120, 230, 6, 0.1, 14, false, true);
+        this.animator[1][1] = new Animator(this.spritesheet, 4, 810, 120, 230, 6, 0.085, 14, false, true);
 
-        //state jumping [2]
+        //state ducking [2]
         //facing right=0
-        this.animator[2][0] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, false, true);
+        this.animator[2][0] = new Animator(this.spritesheet, 735, 175, 98, 210, 1, 0.5, 14, false, true);
         //facing left =1
-        this.animator[2][1] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, true, true);
+        this.animator[2][1] = new Animator(this.spritesheet, 735, 175, 98, 210, 1, 0.5, 14, true, true);
 
-        //state ducking [3]
+        //state jumping [3]
         //facing right=0
-        this.animator[3][0] = new Animator(this.spritesheet, 640, 175, 98, 210, 2, 0.5, 14, false, true);
+        this.animator[3][0] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, false, true);
         //facing left =1
-        this.animator[3][1] = new Animator(this.spritesheet, 640, 175, 98, 210, 2, 0.5, 14, true, true);
+        this.animator[3][1] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, true, true);
 
         //state standing and shooting [4]
         //facing right = 0
@@ -97,6 +97,8 @@ class alien{
             this.y += this.velocity.y * TICK;
         } else {
 
+            this.sate 
+
             if (this.state < 3){ //five state(idle, running, ducking, jumping, shooting)
                 
                 if ((this.game.right && !this.game.left)) {
@@ -106,7 +108,10 @@ class alien{
                 }else if (this.game.left && !this.game.right) {
                     this.state = 1;
                     this.velocity.x -= ACC_RUN * TICK;
-                } else {
+                } else if ( this.game. down && !this.game.up){
+                    this.state = 2;
+                    this.velocity.x = 0;
+                }else {
                     this.velocity.x = 0;
                     this.state = 0; 
                 }
