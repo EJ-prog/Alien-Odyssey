@@ -51,9 +51,9 @@ class alien{
        
         //state running [1]
         //facing right=0
-        this.animator[1][0] = new Animator(this.spritesheet, 4, 810, 120, 230, 6, 0.085, 14, true, true);
+        this.animator[1][0] = new Animator(this.spritesheet, 4, 830, 120, 230, 6, 0.08, 6, true, true);
         //facing left =1
-        this.animator[1][1] = new Animator(this.spritesheet, 4, 810, 120, 230, 6, 0.085, 14, false, true);
+        this.animator[1][1] = new Animator(this.spritesheet, 4, 830, 120, 230, 6, 0.08, 14, false, true);
 
         //state ducking [2]
         //facing right=0
@@ -69,9 +69,9 @@ class alien{
 
         //state standing and shooting [4]
         //facing right = 0
-        this.animator[4][0] = new Animator(this.spritesheet, 850, 810, 151, 225, 2, 0.4, 14, false, true);
+        this.animator[4][0] = new Animator(this.spritesheet, 850, 810, 160, 225, 2, 0.4, 14, false, true);
         //facing left = 1
-        this.animator[4][1] = new Animator(this.spritesheet, 850, 810, 151, 225, 2, 0.4, 14, true, true);
+        this.animator[4][1] = new Animator(this.spritesheet, 850, 810, 160, 225, 2, 0.4, 14, true, true);
 
         //state dead
         this.deadAnim = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, false, true); 
@@ -81,9 +81,9 @@ class alien{
         
         const TICK = this.game.clockTick;
         //heavily get inspired by SUper Mario by Chris. We will need modify it later when we test the character.
-        const MIN_RUN = 10;
-        const MAX_RUN = 130;
-        const ACC_RUN = 70;
+        // const MIN_RUN = 10;
+        // const MAX_RUN = 130;
+        const ACC_RUN = 65;
         
         const STOP_FALL = 1575;
         const RUN_FALL = 2025;
@@ -97,21 +97,22 @@ class alien{
             this.y += this.velocity.y * TICK;
         } else {
 
-            this.sate 
-
-            if (this.state < 3){ //five state(idle, running, ducking, jumping, shooting)
+            if (this.state < 5){ //five state(idle, running, ducking, jumping, shooting)
                 
-                if ((this.game.right && !this.game.left)) {
+                if ((this.game.right && !this.game.left && !this.game.down && !this.game.down)) {
                     this.state = 1
                     this.velocity.x += ACC_RUN * TICK;
                 
-                }else if (this.game.left && !this.game.right) {
+                }else if (this.game.left && !this.game.right && !this.game.down && !this.game.down) {
                     this.state = 1;
                     this.velocity.x -= ACC_RUN * TICK;
-                } else if ( this.game. down && !this.game.up){
+                } else if ( this.game.down && !this.game.up && !this.game.right && !this.game.left){
                     this.state = 2;
                     this.velocity.x = 0;
-                }else {
+                }else if ( this.game.up && !this.game.down && !this.game.right && !this.game.left){
+                    this.state = 4;
+                    this.velocity.x = 0;
+                } else {
                     this.velocity.x = 0;
                     this.state = 0; 
                 }
@@ -119,6 +120,8 @@ class alien{
          
             
         }
+
+
 
         // update position
         this.x += this.velocity.x * TICK ;
