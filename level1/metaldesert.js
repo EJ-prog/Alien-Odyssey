@@ -9,7 +9,7 @@ class MetalDesert {
         this.rolling = new Animator(this.rock, 0, 0, 60, 61, 12, 0.3);
         this.x1 = 560;
         this.y1 = 32;
-        this.speed = 40;
+        // this.speed = 40;
         this.x2 = 750;
     };
 

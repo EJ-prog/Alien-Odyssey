@@ -1,5 +1,5 @@
 //level 1 environment assets
-class MetalMountains{
+class MetalMountains {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -15,7 +15,7 @@ class MetalMountains{
     };
 };
 
-class BackgroundCactus1{
+class BackgroundCactus1 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -31,7 +31,7 @@ class BackgroundCactus1{
     };
 };
 
-class BackgroundCactus2{
+class BackgroundCactus2 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -47,7 +47,7 @@ class BackgroundCactus2{
     };
 };
 
-class ForegroundCactus1{
+class ForegroundCactus1 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -63,7 +63,7 @@ class ForegroundCactus1{
     };
 };
 
-class ForegroundCactus2{
+class ForegroundCactus2 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -79,7 +79,7 @@ class ForegroundCactus2{
     };
 };
 
-class MetalDesertGround{
+class MetalDesertGround {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -95,11 +95,12 @@ class MetalDesertGround{
     };
 };
 
-class MetalDesertPlanets{
+class MetalDesertPlanets {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/");
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertEnvironment.png");
+        this.planets = new Animator(this.spritesheet, 450, 29, this.x, this.y, 1, 0.2);
     }
 
     update() {
@@ -107,9 +108,25 @@ class MetalDesertPlanets{
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        this.planets.drawFrame(this.game.clockTick, ctx, this.x, this.y);
     };
 };
+
+class Rock {
+    constructor(game, x, y) {
+        Object.assign(this, {game, x, y});
+
+        this.rolling = new Animator(this.rock, 0, 0, this.x, this.y, 12, 0.3);
+    };
+
+    update() {
+
+    };
+
+    draw(ctx) {
+        this.rolling.drawFrame(this.game.clockTick, ctx, this.x, this.y);
+    };
+}
 
 //level 2 environment assets
 class AcidMeadowsBackground {
@@ -133,11 +150,10 @@ class RainClouds1 {
         Object.assign(this, {game, x, y, speed});
         this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/clouds1.png");
+        this.animator = new Animator(this.spritesheet, 50, 0, 310, 150, 9, 0.2);
         //this.x = 100;
         //this.y = 35;
         //this.speed = 200;
-
-        //nine frames, 0.2 for frame duration
     };
 
     update(){
@@ -151,21 +167,20 @@ class RainClouds1 {
     };
 
     draw(ctx){
-        ctx.drawImage(this.spritesheet, 50, 0, 310, 150, this.x, this.y, 310, 150);
+        this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
     };
 };
 
-class RainClouds2{
-    constructor(game, x, y, speed){
-        Object.assign(this, {game, x, y, speed});
+class RainClouds2 {
+    constructor(game, x, y){
+        Object.assign(this, {game, x, y});
 
         this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/clouds2.png");
+        this.animator = new Animator(this.spritesheet, 40, 0, 312.5, 150, 9, 0.2);
         // this.x = -100;
         // this.y = 35;
         // this.speed = 100;
-
-        //nine frames, 0.2 for frame duration
     };
 
     update(){
@@ -179,11 +194,11 @@ class RainClouds2{
     };
 
     draw(ctx){
-        ctx.drawImage(this.spritesheet, 40, 0, 312.5, 150, this.x, this.y, 312.5, 150);
+        this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
     };
 };
 
-class Mushroom1{
+class Mushroom1 {
     constructor(game, x, y){
         Object.assign(this, {game, x, y});
 
@@ -200,7 +215,7 @@ class Mushroom1{
     };
 };
 
-class Mushroom2{
+class Mushroom2 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -216,7 +231,7 @@ class Mushroom2{
     };
 };
 
-class AcidMeadowPath{
+class AcidMeadowPath {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -232,7 +247,7 @@ class AcidMeadowPath{
     };
 };
 
-class AcidMeadowPlanets{
+class AcidMeadowPlanets {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -248,7 +263,7 @@ class AcidMeadowPlanets{
     };
 };
 
-class Puddles1{
+class Puddles1 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -264,7 +279,7 @@ class Puddles1{
     };
 };
 
-class Puddles2{
+class Puddles2 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -280,7 +295,7 @@ class Puddles2{
     };
 };
 
-class Puddles3{
+class Puddles3 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -296,7 +311,7 @@ class Puddles3{
     };
 };
 
-class Puddles4{
+class Puddles4 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -312,7 +327,7 @@ class Puddles4{
     };
 };
 
-class Puddles5{
+class Puddles5 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -328,7 +343,7 @@ class Puddles5{
     };
 };
 
-class Rain1{
+class Rain1 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -541,6 +556,8 @@ class LavaLand {
 class Bush1 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/bush1.png");
     };
 
     update() {
@@ -555,6 +572,8 @@ class Bush1 {
 class Bush2 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/bush2.png");
     };
 
     update() {
@@ -569,6 +588,8 @@ class Bush2 {
 class Bush3 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/bush3.png");
     };
 
     update() {
@@ -583,6 +604,8 @@ class Bush3 {
 class Cloud1 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/cloud1.png");
     };
 
     update() {
@@ -597,6 +620,8 @@ class Cloud1 {
 class Cloud2 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/cloud2.png");
     };
 
     update() {
@@ -611,6 +636,8 @@ class Cloud2 {
 class Cloud3 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/cloud3.png");
     };
 
     update() {
@@ -625,6 +652,8 @@ class Cloud3 {
 class Cloud4 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/cloud4.png");
     };
 
     update() {
@@ -639,6 +668,8 @@ class Cloud4 {
 class Cloud5 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/cloud5.png");
     };
 
     update() {
@@ -653,6 +684,8 @@ class Cloud5 {
 class Cloud6 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/cloud6.png");
     };
 
     update() {
@@ -667,6 +700,8 @@ class Cloud6 {
 class Cloud7 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/cloud7.png");
     };
 
     update() {
@@ -681,6 +716,8 @@ class Cloud7 {
 class Cloud8 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/cloud8.png");
     };
 
     update() {
@@ -695,6 +732,58 @@ class Cloud8 {
 class Sun {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/sun.png");
+    };
+
+    update() {
+
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, 0, 0, 336, 300, this.x, this.y, 0, 0);
+    };
+}
+
+//general environment assets
+class Coin {
+    constructor(game){
+        this.game = game;
+        // this.animator = new Animator(ASSET_MANAGER.getAsset("./Sprites_and_Assets/coin.png"), 10, 0, 50, 65, 12, 0.062);
+        this.BB = new BoundingBox(400, 160, 50, 65);
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/coin.png");
+    };
+
+    update() {
+
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, 10, 0, 50, 65, this.x, this.y, 0, 0);
+    };
+}
+
+class HealthPack {
+    constructor(game, x, y) {
+        Object.assign(this, {game,x,y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/Health-and-Ammo-packs.png");
+    };
+
+    update() {
+
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, 0, 0, 336, 300, this.x, this.y, 0, 0);
+    };
+}
+
+class AmmoPack {
+    constructor(game, x, y) {
+        Object.assign(this, {game,x,y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/Health-and-Ammo-packs.png");
     };
 
     update() {
