@@ -80,10 +80,11 @@ class ForegroundCactus2 {
 };
 
 class MetalDesertGround {
-    constructor(game, x, y) {
-        Object.assign(this, {game, x, y});
+    constructor(game, x, y, w, h) {
+        Object.assign(this, {game, x, y, w, h});
 
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/");
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertPath.png");
+        this.BB = new BoundingBox(this.x, this.y, this.w, this.h);
     }
 
     update() {
@@ -231,7 +232,7 @@ class Mushroom2 {
     };
 };
 
-class AcidMeadowPath {
+class AcidMeadowsPath {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -247,7 +248,7 @@ class AcidMeadowPath {
     };
 };
 
-class AcidMeadowPlanets {
+class AcidMeadowsPlanets {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
@@ -536,11 +537,11 @@ class StepLarge {
     };
 }
 
-class LavaLand {
+class LavaLandLava {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LavaLand.png");
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LavaLandLava.png");
     };
 
     update() {
