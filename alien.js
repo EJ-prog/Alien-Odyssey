@@ -1,4 +1,4 @@
-class Alien{
+class alien{
     constructor(game) {
         this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/character-sprites-player-alien-R.png");
@@ -27,6 +27,7 @@ class Alien{
 
         this.velocity = {x:0, y:0}
         this.fallAcc = 562.5;
+
 
         this.laser = new Laser(gameEngine);
 
@@ -81,9 +82,17 @@ class Alien{
         this.animator[5][1] = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, true, false);
 
     }
+  
+        update() {
+        // if(this.y < 500) {
+        //     this.y += this.speed*this.game.clockTick;
+        // } else if (this.x < 1024) {
+        //     this.x += this.speed*this.game.clockTick;
+        // } else {
+        //     this.x = 0;
+        //     this.y = 0;
+        // }
 
-    update() {
-        
         const TICK = this.game.clockTick;
         //heavily get inspired by SUper Mario by Chris. We will need modify it later when we test the character.
         const MIN_RUN = 10;
@@ -172,6 +181,26 @@ class Alien{
                 }
             }
         });
+
+            if (this.state < 4){ //five state(idle, running, ducking, jumping, shooting)
+                if (Math.abs(this.velocity.x) < MIN_RUN){ //slower than run swicth the state to idle.
+                    this.velocity.x =0;
+                    this.state = 0;
+                    if (this.game.left){
+                        this.velocity.x -=  MIN_RUN;
+                    }
+                    if (this.game.right){
+                        this.velocity.x += MIN_RUN;
+                    }
+
+                }
+            }
+            
+        }
+
+        // update position
+        this.x += this.velocity.x * TICK ;
+        this.y += this.velocity.y * TICK ;
     };
 
     draw(ctx) {

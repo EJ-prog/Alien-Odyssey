@@ -51,12 +51,18 @@ class GameEngine {
 
     startInput() {
         var that = this;
+
         var getXandY = function (e) {
             var x = e.clientX - that.ctx.canvas.getBoundingClientRect().left;
             var y = e.clientY - that.ctx.canvas.getBoundingClientRect().top;
 
             return { x: x, y: y, radius: 0 };
         }
+        
+//         const getXandY = e => ({
+//             x: e.clientX - this.ctx.canvas.getBoundingClientRect().left,
+//             y: e.clientY - this.ctx.canvas.getBoundingClientRect().top
+//         });
         
         this.ctx.canvas.addEventListener("keydown", function(e){
             switch (e.code) {
@@ -78,10 +84,11 @@ class GameEngine {
             }
         }, false);
 
-        this.ctx.canvas.addEventListener("keyup", function(e) {
+        this.ctx.canvas.addEventListener("keyup", function(e){
             switch (e.code) {
                 case "ArrowLeft":
-                    that.left = false;
+                    that.left= false;
+                    break;
                 case "ArrowRight":
                     that.right = false;
                     break;
@@ -174,4 +181,3 @@ class GameEngine {
      };
 };
 
-// KV Le was here :)
