@@ -6,12 +6,21 @@ class Scorpion {
         this.x = 300;
         this.y = 365;
         this.speed = 50;
+
+        this.updateBB();
+    };
+
+    updateBB() {
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x, this.y, 170, 100);
     };
 
     update() {
         if(this.x < 450) {
             this.x += this.speed*this.game.clockTick;
         }
+
+        this.updateBB();
         // if (this.x >= 450) {
         //     this.x -= this.speed*this.game*clockTick;
         // }
