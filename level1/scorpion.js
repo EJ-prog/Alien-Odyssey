@@ -51,18 +51,26 @@ class Scorpion {
     }*/
 
     draw(ctx) {
+            // ctx.strokestyle = "Red";
+            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+            // this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
+
         if(this.reverse){
-            ctx.scale(-1,1)
             ctx.strokestyle = "Red";
             ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-            this.animator.drawFrame(this.game.clockTick, ctx, -this.x, this.y);
+            ctx.save();
+            ctx.scale(-1,1)
+            this.animator.drawFrame(this.game.clockTick, ctx, -this.x - (this.width) + 10, this.y);
+            ctx.restore();
         }
         else{
-            ctx.scale(1,1);
+            
             ctx.strokestyle = "Red";
             ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+            ctx.save();
+            ctx.scale(1,1)
             this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
-          //  this.reverse = false;
+            ctx.restore();
         }
     };
 }
