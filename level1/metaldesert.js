@@ -38,7 +38,7 @@ class metaldesert {
     };
 }
 
-class rock {
+class Rock {
     constructor(game, x, y) {
         this.game = game;
         this.rock = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertRock.png");
@@ -80,10 +80,38 @@ class rock {
     draw(ctx) {
         this.rolling.drawFrame(this.game.clockTick, ctx, this.x, this.y);  // (750 , 295)
         ctx.strokestyle = "Red";
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+       // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
     };
 
 };
+
+
+class LunarRockPiece1 {
+    constructor(game, x, y) {
+        this.game = game;
+        this.x = x;
+        this.y = y;
+        this.environment = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece1.png");
+        this.BB = new BoundingBox(this.x, this.y, 27, 20);
+        // this.x1 = 220;
+        // this.y1 = 245;
+        //this.updateBB();
+    };
+
+    update() {
+    };
+
+
+    draw(ctx) {
+        ctx.strokestyle = "Red";
+        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+       // ctx.drawImage(this.environment, TOP LEFT CORNER, 160, 100, 210, this.x, this.y, 100, 210);
+        ctx.drawImage(this.environment, 1, 1, 27, 20, this.x, this.y, 27, 20);
+//        ctx.drawImage(this.spritesheet, 0, 0);
+
+    };
+            
+}
 
 
 class cactus1 {
@@ -104,7 +132,7 @@ class cactus1 {
 
     draw(ctx) {
         ctx.strokestyle = "Red";
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+      //  ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.environment, 336, 160, 100, 210, this.x, this.y, 100, 210); //foreground cacti 1
     };
             
@@ -131,7 +159,7 @@ class cactus2 {
 
     draw(ctx) {
         ctx.strokestyle = "Red";
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+       // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.environment, 430, 160, 100, 210, this.x, this.y, 100, 210); //foreground cacti 2
       //  ctx.drawImage(this.environment, 430, 160, 100, 210, 800, 245, 100, 210); //foreground cacti 2
       //  ctx.drawImage()

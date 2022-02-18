@@ -1,4 +1,4 @@
-class coin {
+class Coin {
     constructor(game){
         this.game = game;
         this.animator = new Animator(ASSET_MANAGER.getAsset("./Sprites_and_Assets/coin.png"), 10, 0, 50, 65, 12, 0.062);

@@ -6,8 +6,9 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertBackground.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertBackgroundMountains.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertEnvironment.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertRock.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRockPiece1.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Scorpion.png");
-
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LaserFire.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/coin.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/health.png");
 
@@ -56,22 +57,26 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment2.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestHills.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/title.png");
 
 
 ASSET_MANAGER.downloadAll(() => {
 	const canvas = document.getElementById("gameWorld");
 	const ctx = canvas.getContext("2d");
-	ctx.imaageSmoothingEnabled = false;
+	ctx.imageSmoothingEnabled = false;
 
 
 	gameEngine.addEntity(new health(gameEngine));
 	gameEngine.addEntity(new cactus2(gameEngine, 600, 245));
 	gameEngine.addEntity(new cactus1(gameEngine, 100, 245));
+	//gameEngine.addEntity(new LunarRockPiece1(gameEngine, 900, 245));
+	gameEngine.addEntity(new LunarRockPiece1(gameEngine, 500, 300));
 	gameEngine.addEntity(new cactus2(gameEngine, 800, 245));
-	gameEngine.addEntity(new rock(gameEngine, 700 , 395));
+	gameEngine.addEntity(new Rock(gameEngine, 700 , 395));
 	gameEngine.addEntity(new Scorpion(gameEngine));
-	gameEngine.addEntity(new Alien(gameEngine));
-	gameEngine.addEntity(new coin(gameEngine));
+	gameEngine.addEntity(new Laser(gameEngine));
+	gameEngine.addEntity(new alien(gameEngine));
+	gameEngine.addEntity(new Coin(gameEngine));
 	gameEngine.addEntity(new metaldesert(gameEngine));
 
 	PARAMS.BLOCKWIDTH = PARAMS.BITWIDTH * PARAMS.SCALE;

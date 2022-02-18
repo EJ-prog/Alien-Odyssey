@@ -14,7 +14,7 @@ class SceneManager {
 
         // this.coinAnimation = new Animator(ASSET_MANAGER.getAsset("./sprites/coins.png"), 0, 160, 8, 8, 4, 0.2, 0, false, true);
 
-         this.minimap = new Minimap(this.game, 1.5 * PARAMS.BLOCKWIDTH, 3.5 * PARAMS.BLOCKWIDTH, 224 * PARAMS.SCALE);
+       //  this.minimap = new Minimap(this.game, 1.5 * PARAMS.BLOCKWIDTH, 3.5 * PARAMS.BLOCKWIDTH, 224 * PARAMS.SCALE);
 
         // this.mario = new Mario(this.game, 2.5 * PARAMS.BLOCKWIDTH, 0 * PARAMS.BLOCKWIDTH);
 
@@ -24,11 +24,11 @@ class SceneManager {
         // this.loadLevel(levelTwo, 2.5 * PARAMS.BLOCKWIDTH, 13 * PARAMS.BLOCKWIDTH, false, true);
     };
 
-    clearEntities() {
-        this.game.entities.forEach(function (entity) {
-            entity.removeFromWorld = true;
-        });
-    };
+    // clearEntities() {
+    //     this.game.entities.forEach(function (entity) {
+    //         entity.removeFromWorld = true;
+    //     });
+    // };
 
     loadLevel(level, x, y, transition, title) {
         // this.title = title;
@@ -140,14 +140,14 @@ class SceneManager {
 
     };
 
-    updateAudio() {
-        var mute = document.getElementById("mute").checked;
-        var volume = document.getElementById("volume").value;
+    // updateAudio() {
+    //     var mute = document.getElementById("mute").checked;
+    //     var volume = document.getElementById("volume").value;
 
-        ASSET_MANAGER.muteAudio(mute);
-        ASSET_MANAGER.adjustVolume(volume);
+    //     ASSET_MANAGER.muteAudio(mute);
+    //     ASSET_MANAGER.adjustVolume(volume);
 
-    };
+    // };
 
     update() {
         PARAMS.DEBUG = document.getElementById("debug").checked;
