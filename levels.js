@@ -4,7 +4,7 @@ var metalDesert = {
     metalDesertGround: [{ x: 0, y: 0, dx: 0, dy: 450, w: 960, h: 135}/*, { x: 71, y: 300, size: 15 }, { x: 89, y: 300, size: 63 }, { x: 154, y: 300, size: 69 }*/],
     backgroundCactus1: [{x: 200, y: 250}],
     backgroundCactus2: [{x: 0, y: 250}],
-    foregroundCactus1: [{x: 100, y: 255}],
+    foregroundCactus1: [{x: 100, y: 255}, {x: 650, y: 255}],
     foregroundCactus2: [{x: 300, y: 255}, {x: 585, y: 255}],
     metalDesertPlanets: [{x: 400, y: 0}],
     rock: [{x: 250, y: 410}],
