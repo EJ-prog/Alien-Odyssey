@@ -57,10 +57,10 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Scorpion.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRock.png");
 
 // //OTHER ENTITIES
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AdditionalAssets.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AdditionalAssets.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/character-sprites-player-alien-R.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/character-sprites-player-alien-L.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Health_Ammo_Creatures.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/character-sprites-player-alien-L.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Health_Ammo_Creatures.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LaserFire.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/coin.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AdditionalAssets_StartMenu_Selected.png");

@@ -1,4 +1,4 @@
-class alien{
+class Alien{
     constructor(game) {
         this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/character-sprites-player-alien-R.png");
