@@ -50,9 +50,9 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Scorpion.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment2.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestHills.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterJump.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterDeath.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterWalk.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterJump.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterDeath.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterWalk.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterHealthBar.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRock.png");
 
