@@ -136,16 +136,14 @@ class GameEngine {
      };
  
      draw() {
-         // Clear the whole canvas with transparent color (rgba(0, 0, 0, 0))
-         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
- 
-         // Draw latest things first
-         for (let i = this.entities.length - 1; i >= 0; i--) {
-             this.entities[i].draw(this.ctx, this);
-         }
-         
-         //this.camera.draw(this.ctx);
-     };
+        // Clear the whole canvas with transparent color (rgba(0, 0, 0, 0))
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        for (var i = 0; i < this.entities.length; i++) {
+            this.entities[i].draw(this.ctx);
+        }
+        this.camera.draw(this.ctx);
+    };
+
  
      update() {
          let entitiesCount = this.entities.length;
@@ -158,7 +156,7 @@ class GameEngine {
              }
          }
  
-         //this.camera.update();
+         this.camera.update();
  
          for (let i = this.entities.length - 1; i >= 0; --i) {
              if (this.entities[i].removeFromWorld) {
