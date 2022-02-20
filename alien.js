@@ -176,9 +176,9 @@ class Alien{
             if (entity.BB && that.BB.collide(entity.BB)) {
                 if (entity instanceof Coin) {
                     entity.removeFromWorld = true;
-                } else if (entity instanceof Scorpion){// || entity instanceof Rock) {
-                    that.dead = true;
-                }
+                }// } else if (entity instanceof Scorpion){// || entity instanceof Rock) {
+                //     that.dead = true;
+                // }
             }
         });
 
@@ -201,15 +201,14 @@ class Alien{
         };
          
     
-    
 
         
-     
 
     draw(ctx) {
 
         // this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
         if (this.facing == 0) {
+            ctx.save();
             ctx.scale(1, 1);
             if (this.dead){
                 this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
@@ -221,8 +220,10 @@ class Alien{
                     this.laser.draw(ctx, false);
                 }
             }
+            ctx.restore();
         }
         if (this.facing == 1) {
+            ctx.save();
             ctx.scale(-1, 1);
             if (this.dead){
                 this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x , this.y);
@@ -235,5 +236,6 @@ class Alien{
                 }
             }
         }
+        ctx.restore();
     };
 }

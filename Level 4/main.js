@@ -3,6 +3,7 @@ const gameEngine = new GameEngine();
 const ASSET_MANAGER = new AssetManager();
 
 // //LEVEL 1 ENTITIES
+
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertRock.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertPath.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertBackgroundMountains.png");
@@ -11,6 +12,7 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertEnvironment.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment2.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Scorpion.png");
+
 
 // //LEVEL 2 ENTITIES
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsEnvironment.png");
@@ -77,10 +79,18 @@ ASSET_MANAGER.downloadAll(() => {
 	// gameEngine.addEntity(new Coin(gameEngine));
 	// gameEngine.addEntity(new TitleScreen(gameEngine));
 	// gameEngine.addEntity(new Scorpion(gameEngine));
-	gameEngine.addEntity(new Alien(gameEngine));
+	// gameEngine.addEntity(new Alien(gameEngine));
+	
 	gameEngine.addEntity(new Coin(gameEngine));
 	gameEngine.addEntity(new Ground(gameEngine));
-	gameEngine.addEntity(new MetalDesert(gameEngine));
+	gameEngine.addEntity(new Scorpion(gameEngine));
+	// gameEngine.addEntity(new metaldesert(gameEngine));
+	gameEngine.addEntity(new cactus2(gameEngine, 600, 245));
+    gameEngine.addEntity(new cactus1(gameEngine, 100, 245));
+    //gameEngine.addEntity(new LunarRockPiece1(gameEngine, 900, 245));
+    gameEngine.addEntity(new LunarRockPiece1(gameEngine, 500, 300));
+    gameEngine.addEntity(new cactus2(gameEngine, 800, 245));
+    gameEngine.addEntity(new Rock(gameEngine, 700 , 395));
 	gameEngine.init(ctx);
 
 	// gameEngine.addEntity(new Alien(gameEngine));

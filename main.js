@@ -3,6 +3,7 @@ const gameEngine = new GameEngine();
 const ASSET_MANAGER = new AssetManager();
 
 // //LEVEL 1 ENTITIES
+
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertRock.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertPath.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MetalDesertBackgroundMountains.png");
@@ -50,17 +51,17 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Scorpion.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment2.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestHills.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterJump.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterDeath.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterWalk.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterJump.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterDeath.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterWalk.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterHealthBar.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRock.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRockPiece1.png");
 
 // //OTHER ENTITIES
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AdditionalAssets.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AdditionalAssets.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/character-sprites-player-alien-R.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/character-sprites-player-alien-L.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Health_Ammo_Creatures.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/character-sprites-player-alien-L.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Health_Ammo_Creatures.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LaserFire.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/coin.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AdditionalAssets_StartMenu_Selected.png");
@@ -76,11 +77,20 @@ ASSET_MANAGER.downloadAll(() => {
 	// gameEngine.addEntity(new Monster(gameEngine));
 	// gameEngine.addEntity(new Coin(gameEngine));
 	// gameEngine.addEntity(new TitleScreen(gameEngine));
-	// gameEngine.addEntity(new Scorpion(gameEngine));
+	gameEngine.addEntity(new cactus2(gameEngine, 600, 245));
+    gameEngine.addEntity(new cactus1(gameEngine, 100, 245));
+    //gameEngine.addEntity(new LunarRockPiece1(gameEngine, 900, 245));
+    gameEngine.addEntity(new LunarRockPiece1(gameEngine, 500, 300));
+    gameEngine.addEntity(new cactus2(gameEngine, 800, 245));
+    gameEngine.addEntity(new Rock(gameEngine, 700 , 395));
+	gameEngine.addEntity(new Scorpion(gameEngine));
+	// gameEngine.addEntity(new Laser(gameEngine));
 	gameEngine.addEntity(new Alien(gameEngine));
 	gameEngine.addEntity(new Coin(gameEngine));
 	gameEngine.addEntity(new Ground(gameEngine));
-	gameEngine.addEntity(new MetalDesert(gameEngine));
+	gameEngine.addEntity(new metaldesert(gameEngine));
+	
+    gameEngine.addEntity(new Rock(gameEngine, 700 , 395));
 	gameEngine.init(ctx);
 
 	// gameEngine.addEntity(new Alien(gameEngine));
