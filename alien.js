@@ -232,6 +232,8 @@ class alien{
                 ctx.font = "20px Verdana";
                 ctx.fillText("Refresh to play again", 60, 550);
                 this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
+                const context = canvas.getContext('2d');
+                context.clearRect(0, 0, canvas.width, canvas.height);
             } else if (this.state === 3) {
                 this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y - 70);
             } else {
@@ -251,6 +253,8 @@ class alien{
                 ctx.font = "20px Verdana";
                 ctx.fillText("Refresh to play again", 60, 550);
                 this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x , this.y);
+                const context = canvas.getContext('2d');
+                context.clearRect(0, 0, canvas.width, canvas.height);
             } else if (this.state === 3) {
                 this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, -this.x, this.y - 70);
             } else {
@@ -279,6 +283,8 @@ class alien{
             ctx.fillText("More levels Coming Soon!", 50, 550);
             ctx.font = "20px Verdana";
             ctx.fillText("Refresh to play again", 53, 570);
+            const context = canvas.getContext('2d');
+            context.clearRect(0, 0, canvas.width, canvas.height);
         }
     };
 }

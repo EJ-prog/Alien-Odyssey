@@ -104,7 +104,7 @@ class LunarRockPiece1 {
 
     draw(ctx) {
         ctx.strokestyle = "Red";
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+       // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
        // ctx.drawImage(this.environment, TOP LEFT CORNER, 160, 100, 210, this.x, this.y, 100, 210);
         ctx.drawImage(this.environment, 1, 1, 27, 20, this.x, this.y, 27, 20);
 //        ctx.drawImage(this.spritesheet, 0, 0);

@@ -19,6 +19,10 @@ class Animator {
 			x, y,
 			this.width, this.height);
 
+		// if (this.loop) {
+
+		// }
+
 	};
 
 	currentFrame() {

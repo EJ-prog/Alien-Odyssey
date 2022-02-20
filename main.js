@@ -70,7 +70,7 @@ ASSET_MANAGER.downloadAll(() => {
 	gameEngine.addEntity(new cactus2(gameEngine, 600, 245));
 	gameEngine.addEntity(new cactus1(gameEngine, 100, 245));
 	//gameEngine.addEntity(new LunarRockPiece1(gameEngine, 900, 245));
-	gameEngine.addEntity(new LunarRockPiece1(gameEngine, 500, 300));
+	gameEngine.addEntity(new LunarRockPiece1(gameEngine, 100, 300));
 	gameEngine.addEntity(new cactus2(gameEngine, 800, 245));
 	gameEngine.addEntity(new Rock(gameEngine, 700 , 395));
 	gameEngine.addEntity(new Scorpion(gameEngine));
