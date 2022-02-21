@@ -75,7 +75,7 @@ class Alien{
         this.animator[5][1] = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, true, false);
 
     }
-    
+
     updateBB() {
         this.lastBB = this.BB;
         this.BB = new BoundingBox(this.x, this.y, 85, 200);
@@ -224,8 +224,8 @@ class Alien{
             ctx.restore();
         }
         
-        ctx.strokestyle = "Red";
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        // ctx.strokestyle = "Red";
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         // if (this.dead) {
         //     this.removeFromWorld = true;
         // }

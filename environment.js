@@ -76,8 +76,8 @@ class ForegroundCactus1 {
 
 
     draw(ctx) {
-        ctx.strokestyle = "Red";
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        // ctx.strokestyle = "Red";
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, 336, 160, 100, 210, this.x, this.y, 100, 210);
     };
 
@@ -96,8 +96,8 @@ class ForegroundCactus2 {
     };
 
     draw(ctx) {
-        ctx.strokestyle = "Red";
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        // ctx.strokestyle = "Red";
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, 430, 160, 100, 210, this.x, this.y, 100, 210);
     };
 };
@@ -115,8 +115,8 @@ class MetalDesertPath {
     };
 
     draw(ctx) {
-        ctx.strokestyle = "Red";
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        // ctx.strokeStyle = "Red";
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx, this.dy, this.w, this.h);
     };
 };
@@ -134,8 +134,8 @@ class MetalDesertGround {
     };
 
     draw(ctx) {
-        ctx.strokestyle = "Red";
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        // ctx.strokestyle = "Red";
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx, this.dy, this.w, this.h);
     };
 };
@@ -200,8 +200,8 @@ class Rock {
 
     draw(ctx) {
         this.rolling.drawFrame(this.game.clockTick, ctx, this.x, this.y);  // (750 , 295)
-        ctx.strokestyle = "Red";
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        // ctx.strokestyle = "Red";
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
     };
 
 };
@@ -910,16 +910,16 @@ class LunarRockPieces {
     draw(ctx) {
         if (this.level === 1) {
             ctx.drawImage(this.piece1, this.x, this.y);
-            ctx.strokestyle = "Red";
-            ctx.strokeRect(this.BB1.x, this.BB1.y, this.BB1.width, this.BB1.height);
+            // ctx.strokestyle = "Red";
+            // ctx.strokeRect(this.BB1.x, this.BB1.y, this.BB1.width, this.BB1.height);
         } else if (this.level === 2) {
             ctx.drawImage(this.piece2, this.x, this.y);
-            ctx.strokestyle = "Red";
-            ctx.strokeRect(this.BB2.x, this.BB2.y, this.BB2.width, this.BB2.height);
+            // ctx.strokestyle = "Red";
+            // ctx.strokeRect(this.BB2.x, this.BB2.y, this.BB2.width, this.BB2.height);
         } else if (this.level === 3) {
             ctx.drawImage(this.piece3, this.x, this.y);
-            ctx.strokestyle = "Red";
-            ctx.strokeRect(this.BB3.x, this.BB3.y, this.BB3.width, this.BB3.height);
+            // ctx.strokestyle = "Red";
+            // ctx.strokeRect(this.BB3.x, this.BB3.y, this.BB3.width, this.BB3.height);
         } else if (this.level === 4) {
             ctx.drawImage(this.piece4, this.x, this.y);
         }
