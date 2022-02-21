@@ -40,6 +40,8 @@ class Laser {
                 if (entity instanceof Rock || entity instanceof Scorpion) {
                     entity.removeFromWorld = true;
                     that.removeFromWorld = true;
+                } else if (entity instanceof MetalDesertGround) {
+                    that.removeFromWorld = true;
                 }
             };
         });

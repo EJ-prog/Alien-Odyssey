@@ -15,6 +15,7 @@ class Alien{
         this.facing = 0; //0= right, 1=left.
         this.state = 0; //0= idle, 1= running, 2= jumping/falling, 3= ducking, 4=shooting.
         this.dead = false;
+        this.win = false;
 
         //Alien's animations
         this.animator = [];
@@ -147,7 +148,12 @@ class Alien{
         var that = this;
         this.game.entities.forEach(function (entity) {
             if (entity.BB && that.BB.collide(entity.BB)) {
-                if (entity instanceof Coin || entity instanceof LunarRockPieces) {
+                if (entity instanceof LunarRockPieces) {
+                    entity.removeFromWorld = true;
+                    //YOU WIN!!!
+                    that.win = true;
+                } 
+                if (entity instanceof Coin) {
                     entity.removeFromWorld = true;
                 } else if (entity instanceof Scorpion || entity instanceof Rock) {
                     that.dead = true;
@@ -196,7 +202,13 @@ class Alien{
             ctx.save();
             ctx.scale(1, 1);
             if (this.dead){
+                ctx.font = "bold 50px Verdana";
+                ctx.fillText("YOU LOSE!", 50, 500);
+                ctx.font = "20px Verdana";
+                ctx.fillText("Refresh to play again", 60, 550);
                 this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
+                const context = canvas.getContext('2d');
+                context.clearRect(0, 0, canvas.width, canvas.height);
             } else if (this.state === 3) {
                 this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y - 20);
                 // var frame = this.animator[3][this.facing].currentFrame();
@@ -212,7 +224,13 @@ class Alien{
             ctx.save();
             ctx.scale(-1, 1);
             if (this.dead){
-                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85, this.y);
+                ctx.font = "bold 50px Verdana";
+                ctx.fillText("YOU LOSE!", 50, 500);
+                ctx.font = "20px Verdana";
+                ctx.fillText("Refresh to play again", 60, 550);
+                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x, this.y);
+                const context = canvas.getContext('2d');
+                context.clearRect(0, 0, canvas.width, canvas.height);
             } else if (this.state === 3) {
                 this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85, this.y - 20);
             } else {
@@ -224,6 +242,26 @@ class Alien{
             ctx.restore();
         }
         
+        if (this.win) {
+            var width = 176;
+            var height = 88;
+            ctx.font = "bold 50px Verdana";
+            ctx.fillText("You Win!", 50, 500);
+            // ctx.font = "50px Georgia";
+            // ctx.fillText("Hello World!", 10, 50); 
+            // Create gradient
+            var gradient = ctx.createLinearGradient(0, 0, 1000, 0);
+            gradient.addColorStop("0", "yellow");
+            gradient.addColorStop("0.5", "pink");
+            gradient.addColorStop("1.0", "white");
+            // Fill with gradient
+            ctx.fillStyle = gradient;
+            ctx.fillText("More levels Coming Soon!", 50, 550);
+            ctx.font = "20px Verdana";
+            ctx.fillText("Refresh to play again", 53, 570);
+            const context = canvas.getContext('2d');
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
         // ctx.strokestyle = "Red";
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         // if (this.dead) {

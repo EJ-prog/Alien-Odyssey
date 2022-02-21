@@ -890,16 +890,16 @@ class LunarRockPieces {
 
         if (this.level === 1) {
             this.piece1 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece1.png");
-            this.BB1 = new BoundingBox(this.x, this.y, 30, 25);    
+            this.BB = new BoundingBox(this.x, this.y, 30, 25);
         } else if (this.level === 2) {
             this.piece2 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece2.png");
-            this.BB2 = new BoundingBox(this.x, this.y, 33, 29);
+            this.BB = new BoundingBox(this.x, this.y, 33, 29);
         } else if (this.level === 3) {
             this.piece3 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece3.png");
-            this.BB3 = new BoundingBox(this.x, this.y, 17, 18);
+            this.BB = new BoundingBox(this.x, this.y, 17, 18);
         } else if (this.level === 4) {
             this.piece4 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece4.png");
-            this.BB4 = new BoundingBox(this.x, this.y, 30, 41);
+            this.BB = new BoundingBox(this.x, this.y, 30, 41);
         }
     };
 
@@ -911,15 +911,15 @@ class LunarRockPieces {
         if (this.level === 1) {
             ctx.drawImage(this.piece1, this.x, this.y);
             // ctx.strokestyle = "Red";
-            // ctx.strokeRect(this.BB1.x, this.BB1.y, this.BB1.width, this.BB1.height);
+            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         } else if (this.level === 2) {
             ctx.drawImage(this.piece2, this.x, this.y);
             // ctx.strokestyle = "Red";
-            // ctx.strokeRect(this.BB2.x, this.BB2.y, this.BB2.width, this.BB2.height);
+            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         } else if (this.level === 3) {
             ctx.drawImage(this.piece3, this.x, this.y);
             // ctx.strokestyle = "Red";
-            // ctx.strokeRect(this.BB3.x, this.BB3.y, this.BB3.width, this.BB3.height);
+            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         } else if (this.level === 4) {
             ctx.drawImage(this.piece4, this.x, this.y);
         }
