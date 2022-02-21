@@ -2,7 +2,7 @@ class Scorpion {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/Scorpion.png");
-        this.animator = new Animator(this.spritesheet, 0, 0, 170, 100, 4, 0.6);
+        this.animator = new Animator(this.spritesheet, 0, 0, 170, 100, 4, 0.6, 0, false, true);
         // this.x = 300;
         // this.y = 365;
         this.width = 170;
