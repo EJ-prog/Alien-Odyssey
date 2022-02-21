@@ -46,6 +46,12 @@ class SceneManager {
                     this.game.addEntity(new MetalMountains(this.game, metalMountains.x, metalMountains.y, metalMountains.width));
                 }
             }
+            if (level.metalDesertPath) {
+                for (var i = 0; i < level.metalDesertPath.length; i++) {
+                    let metalDesertPath = level.metalDesertPath[i];
+                    this.game.addEntity(new MetalDesertPath(this.game, metalDesertPath.x, metalDesertPath.y, metalDesertPath.dx, metalDesertPath.dy, metalDesertPath.w, metalDesertPath.h));
+                }
+            }
             if (level.metalDesertGround) {
                 for (var i = 0; i < level.metalDesertGround.length; i++) {
                     let metalDesertGround = level.metalDesertGround[i];
