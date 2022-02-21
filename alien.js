@@ -118,11 +118,9 @@ class Alien{
                     this.state = 2;
                     this.velocity.x = 0;
                 } else if ( this.game.space && !this.game.up && !this.game.down) { //jump while facing left or right
-                    if (this.game.left && !this.game.right) { //jump to the left
+                    if (this.game.left && !this.game.right) { //jump and move to the left
                         this.velocity.x -= ACC_RUN * TICK;
-                    }
-                
-                    if (this.game.right && !this.game.left) { //jump to the right
+                    } else if (this.game.right && !this.game.left) { //jump and move to the right
                         this.velocity.x += ACC_RUN * TICK;
                     }
                     this.state = 3;
@@ -137,12 +135,6 @@ class Alien{
                     this.state = 0;
                 }
             }
-
-            // if (this.y > 150) {
-            //     this.velocity.y -= ACC_RUN * TICK;
-            // } else {
-            //     this.velocity.y += ACC_RUN * TICK;
-            // }
 
             // update position
             this.x += this.velocity.x * TICK ;
@@ -164,7 +156,12 @@ class Alien{
                         if (that.lastBB.bottom >= entity.BB.top) {
                             that.velocity.y = 0;
                         }
-                    } else {
+                        if ((that.game.left || that.game.right) 
+                            && that.lastBB.right > entity.BB.right 
+                            && that.lastBB.bottom < entity.BB.bottom) {
+                            that.velocity.y = 100;
+                        }
+                    } else{
                         that.velocity.y = -100;
                     }
                 } else if (entity instanceof MetalDesertPath) {
@@ -185,9 +182,9 @@ class Alien{
 
         if (this.game.up) {
             if (this.facing === 0) {
-                this.game.addEntity(new Laser(this.game, this.x + 125, this.y + 70));
+                this.game.addEntity(new Laser(this.game, this.x + 125, this.y + 70, this.facing));
             } else if (this.facing === 1) {
-                this.game.addEntity(new Laser(this.game, - this.x + 125, this.y + 70));
+                this.game.addEntity(new Laser(this.game, this.x - 75, this.y + 70, this.facing));
             }
         }
     };

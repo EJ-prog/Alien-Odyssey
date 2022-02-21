@@ -8,7 +8,7 @@ var metalDesert = {
     foregroundCactus1: [{x: 100, y: 255}, {x: 650, y: 255}],
     foregroundCactus2: [{x: 300, y: 255}, {x: 585, y: 255}],
     metalDesertPlanets: [{x: 400, y: 0}],
-    // rock: [{x: 250, y: 410}],
+    rock: [{x: 250, y: 410}],
     coins: [{x: 200, y: 300}, {x: 300, y: 300}],
     ammopack: [{x: 0, y: 0}],
     scorpion: [{x: 370, y: 375}],
