@@ -15,20 +15,20 @@ class Animator {
 
 		let frame = this.currentFrame();
 		// if(this.reverse)  frame = this.frameCount - frame -1;
-
-		ctx.drawImage(this.spritesheet, 
-			this.xStart + this.width*frame, this.yStart,
-			this.width, this.height,
-			x, y,
-			this.width, this.height);
-
+		// if (this.loop) {
+			ctx.drawImage(this.spritesheet, 
+				this.xStart + this.width*frame, this.yStart,
+				this.width, this.height,
+				x, y,
+				this.width, this.height);
+		// }
 	};
 
 	currentFrame() {
 		return Math.floor(this.elapsedTime / this.frameDuration);
-	}
+	};
 
 	isDone() {
 		return (this.elapsedTime >= this.totalTime);
-	}
+	};
 }

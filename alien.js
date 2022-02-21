@@ -23,7 +23,7 @@ class Alien{
         this.velocity = {x:0, y:0}
         this.fallAcc = 562.5;
 
-        // this.laser = new Laser(this.game, this.x*1.40, this.y*1.5);
+        this.laser = new Laser(this.game, this.x*1.40, this.y*1.2);
         // this.prevx = this.x*1.40;
         this.updateBB();
 
@@ -57,9 +57,9 @@ class Alien{
 
         //state jumping [3]
         //facing right=0
-        this.animator[3][0] = new Animator(this.spritesheet, 21, 107, 148, 215, 4, 0.5, 14, false, true);
+        this.animator[3][0] = new Animator(this.spritesheet, 21, 107, 148, 215, 4, 0.2, 14, false, true);
         //facing left =1
-        this.animator[3][1] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, true, true);
+        this.animator[3][1] = new Animator(this.spritesheet, 21, 107, 148, 215, 4, 0.2, 14, true, true);
 
         //state standing and shooting [4]
         //facing right = 0
@@ -78,7 +78,7 @@ class Alien{
 
     updateBB() {
         this.lastBB = this.BB;
-        this.BB = new BoundingBox(this.x, this.y, 98, 200);
+        this.BB = new BoundingBox(this.x, this.y, 85, 200);
     };
 
     update() {
@@ -106,7 +106,7 @@ class Alien{
 
             if (this.state < 5){ //five state(idle, running, ducking, jumping, shooting)
                 
-                if ((this.game.right && !this.game.left && !this.game.down && !this.game.down)) { //running to the right
+                if ((this.game.right && !this.game.left && !this.game.down && !this.game.down && !this.game.space)) { //running to the right
                     this.state = 1;
                     this.facing = 0;
                     this.velocity.x += ACC_RUN * TICK;
@@ -118,37 +118,25 @@ class Alien{
                     this.state = 2;
                     this.velocity.x = 0;
                 } else if ( this.game.space && !this.game.up && !this.game.down) { //jump while facing left or right
-                    this.state = 3;
                     if (this.game.left && !this.game.right) { //jump to the left
                         this.velocity.x -= ACC_RUN * TICK;
                     }
+                
                     if (this.game.right && !this.game.left) { //jump to the right
                         this.velocity.x += ACC_RUN * TICK;
                     }
+                    this.state = 3;
+                    // }
                     // this.velocity.y -= 5;
                     // this.updateBB();
-                } else if ( this.game.up && !this.game.down && !this.game.right && !this.game.left) { //shoot while facing left or right
+                } else if ( this.game.up && !this.game.down && !this.game.right && !this.game.left && !this.game.space) { //shoot while facing left or right
                     this.state = 4;
                     this.velocity.x = 0;
-                    // this.game.addEntity(new Laser(this.game, this.x*1.40, this.y*1.27));
-                    // this.laser = new Laser(this.game, this.x*1.40, this.y*1.27);
                 } else { //idle while facing left or right
                     this.velocity.x = 0;
-                    this.state = 0; 
+                    this.state = 0;
                 }
             }
-
-            // if (this.game.right && !this.game.left) {
-            //     if (Math.abs(this.velocity.x) > MAX_WALK) {
-            //         this.velocity.x += ACC_RUN * TICK;
-            //     } else this.velocity.x += ACC_WALK * TICK;
-            // } else if (this.game.left && !this.game.right) {
-            //     if (Math.abs(this.velocity.x) > MAX_WALK) {
-            //         this.velocity.x -= ACC_RUN * TICK;
-            //     } else this.velocity.x -= ACC_WALK * TICK;
-            // } else {
-            //     // do nothing
-            // }
 
             // if (this.y > 150) {
             //     this.velocity.y -= ACC_RUN * TICK;
@@ -159,7 +147,7 @@ class Alien{
             // update position
             this.x += this.velocity.x * TICK ;
             this.y += this.velocity.y * TICK ;
-            // this.laser.update(this.y);
+            this.laser.update();
             this.updateBB();
             
         }
@@ -172,10 +160,36 @@ class Alien{
                 } else if (entity instanceof Scorpion || entity instanceof Rock) {
                     that.dead = true;
                 } else if (entity instanceof ForegroundCactus1 || entity instanceof ForegroundCactus2) {
-                    that.velocity.x = 0;
+                    if (!that.game.space) {
+                        if (that.lastBB.bottom >= entity.BB.top) {
+                            that.velocity.y = 0;
+                        }
+                    } else {
+                        that.velocity.y = -100;
+                    }
+                } else if (entity instanceof MetalDesertPath) {
+                    if (that.game.space) {
+                        that.velocity.y = -100;
+                    }
+                } else if (entity instanceof MetalDesertGround) {
+                    if (!that.game.space) {
+                        that.velocity.y = 0;
+                    }
+                } else {
+                    if (!that.game.space & that.velocity.y < 0) {
+                        that.velocity.y = 100;
+                    }
                 }
             }
         });
+
+        if (this.game.up) {
+            if (this.facing === 0) {
+                this.game.addEntity(new Laser(this.game, this.x + 125, this.y + 70));
+            } else if (this.facing === 1) {
+                this.game.addEntity(new Laser(this.game, - this.x + 125, this.y + 70));
+            }
+        }
     };
 
     draw(ctx) {
@@ -188,6 +202,7 @@ class Alien{
                 this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
             } else if (this.state === 3) {
                 this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y - 20);
+                // var frame = this.animator[3][this.facing].currentFrame();
             } else {
                 this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
                 // if (this.state === 4) {
@@ -200,11 +215,11 @@ class Alien{
             ctx.save();
             ctx.scale(-1, 1);
             if (this.dead){
-                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x, this.y);
+                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85, this.y);
             } else if (this.state === 3) {
-                this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, -this.x, this.y - 20);
+                this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85, this.y - 20);
             } else {
-                this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, -this.x , this.y);
+                this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85, this.y);
                 // if (this.state === 4) {
                 //     this.laser.draw(ctx, true);
                 // }
@@ -214,5 +229,8 @@ class Alien{
         
         ctx.strokestyle = "Red";
         ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        // if (this.dead) {
+        //     this.removeFromWorld = true;
+        // }
     };
 }

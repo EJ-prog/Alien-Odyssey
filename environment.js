@@ -77,7 +77,7 @@ class ForegroundCactus1 {
 
     draw(ctx) {
         ctx.strokestyle = "Red";
-      //  ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, 336, 160, 100, 210, this.x, this.y, 100, 210);
     };
 
@@ -97,8 +97,27 @@ class ForegroundCactus2 {
 
     draw(ctx) {
         ctx.strokestyle = "Red";
-      //  ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, 430, 160, 100, 210, this.x, this.y, 100, 210);
+    };
+};
+
+class MetalDesertPath {
+    constructor(game, x, y, dx, dy, w, h) {
+        Object.assign(this, {game, x, y, dx, dy, w, h});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertPath.png");
+        this.BB = new BoundingBox(this.dx, this.dy, this.w, this.h);
+    }
+
+    update() {
+
+    };
+
+    draw(ctx) {
+        ctx.strokestyle = "Red";
+        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx, this.dy, this.w, this.h);
     };
 };
 
@@ -147,7 +166,7 @@ class Rock {
 
         this.rock = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertRock.png");
         this.rolling = new Animator(this.rock, 0, 0, 60, 61, 12, 0.3);
-       // this.BB = new BoundingBox(this.x, this.y - 50, 60, 50);
+        // this.BB = new BoundingBox(this.x, this.y - 50, 60, 50);
         this.speed = 40;
         this.width = 50;
         this.height = 50;
@@ -181,8 +200,8 @@ class Rock {
 
     draw(ctx) {
         this.rolling.drawFrame(this.game.clockTick, ctx, this.x, this.y);  // (750 , 295)
-        // ctx.strokestyle = "Red";
-        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        ctx.strokestyle = "Red";
+        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
     };
 
 };
@@ -813,6 +832,7 @@ class Coin {
         // this.BB = new BoundingBox(400, 160, 50, 65);
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/coin.png");
         this.animator = new Animator(this.spritesheet, 10, 0, 50, 65, 12, 0.062, 0, false, true);
+        this.updateBB();
     };
 
     update() {
@@ -820,7 +840,7 @@ class Coin {
     };
 
     updateBB() {
-        this.BB = new BoundingBox(this.x, this.y, PARAMS.BLOCKWIDTH, (1 + 7/16) * PARAMS.BLOCKWIDTH);
+        this.BB = new BoundingBox(this.x, this.y, 44, 44);
     };
 
     draw(ctx) {
@@ -868,10 +888,19 @@ class LunarRockPieces {
     constructor(game, x, y, level) {
         Object.assign(this, {game, x, y, level});
 
-        this.piece1 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece1.png");
-        this.piece2 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece2.png");
-        this.piece3 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece3.png");
-        this.piece4 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece4.png");
+        if (this.level === 1) {
+            this.piece1 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece1.png");
+            this.BB1 = new BoundingBox(this.x, this.y, 30, 25);    
+        } else if (this.level === 2) {
+            this.piece2 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece2.png");
+            this.BB2 = new BoundingBox(this.x, this.y, 33, 29);
+        } else if (this.level === 3) {
+            this.piece3 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece3.png");
+            this.BB3 = new BoundingBox(this.x, this.y, 17, 18);
+        } else if (this.level === 4) {
+            this.piece4 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece4.png");
+            this.BB4 = new BoundingBox(this.x, this.y, 30, 41);
+        }
     };
 
     update() {
