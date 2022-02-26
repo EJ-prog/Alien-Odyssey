@@ -2,7 +2,7 @@ var metalDesert = {
     metalDesertBackground: [{x : 0, y : 0, width: 960}],
     metalMountains: [{ x: 0, y: 0, width: 960}],
     metalDesertPath: [{x: 0, y: 0, dx: 0, dy: 450, w: 960, h: 135}],
-    metalDesertGround: [{ x: 0, y: 24, dx: 0, dy: 474, w: 960, h: 130}/*, { x: 71, y: 300, size: 15 }, { x: 89, y: 300, size: 63 }, { x: 154, y: 300, size: 69 }*/],
+    metalDesertGround: [{ x: 0, y: 24, dx: 0, dy: 474, w: 960, h: 130}, { x: 0, y: 24, dx: 0, dy: 474, w: 960, h: 130} /*, { x: 89, y: 300, size: 63 }, { x: 154, y: 300, size: 69 }*/],
     backgroundCactus1: [{x: 200, y: 250}],
     backgroundCactus2: [{x: 0, y: 250}],
     foregroundCactus1: [{x: 100, y: 255}, {x: 650, y: 255}],
@@ -17,7 +17,7 @@ var metalDesert = {
 };
 
 var acidMeadows = {
-    acidMeadowsBackground: [{x: 0, y: 0}],
+    acidMeadowsBackground: [{x: 0, y: 0, width:960}],
     acidMeadowsPath: [{x: 0, y: 0}],
     acidMeadowsPlanets: [{x: 0, y: 0}],
     rainClouds1: [{x: 0, y: 0}],

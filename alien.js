@@ -4,6 +4,7 @@ class Alien{
         // this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/character-sprites-player-alien-R.png");
         
+        this.game.alien = this;
         // this.animator = new Animator(this.spritesheet, 21, 397, 155, 207, 7, 0.2); //run and shoot arrow left & right combine space
         // this.animator = new Animator(this.spritesheet, 5, 607, 167, 210, 7, 0.2); //holster: after 30 secs of idle, & before jumping
         
@@ -16,6 +17,7 @@ class Alien{
         this.state = 0; //0= idle, 1= running, 2= jumping/falling, 3= ducking, 4=shooting.
         this.dead = false;
         this.win = false;
+        this.hitpoints = 12;
 
         //Alien's animations
         this.animator = [];
@@ -25,6 +27,8 @@ class Alien{
         this.fallAcc = 562.5;
 
         this.laser = new Laser(this.game, this.x*1.40, this.y*1.2);
+        this.healthbar = new Health(this.game);
+        this.ammobar = new Ammo(this.game);
         // this.prevx = this.x*1.40;
         this.updateBB();
 
@@ -151,20 +155,31 @@ class Alien{
                 if (entity instanceof LunarRockPieces) {
                     entity.removeFromWorld = true;
                     //YOU WIN!!!
-                    that.win = true;
+                    if (entity.level === 1) {
+                        that.game.camera.loadLevel(acidMeadows, 960, 576, true, false);
+                    } else if (entity.level === 2) {
+
+                    }
                 } 
                 if (entity instanceof Coin) {
                     entity.removeFromWorld = true;
                 } else if (entity instanceof Scorpion || entity instanceof Rock) {
                     that.dead = true;
+
                 } else if (entity instanceof ForegroundCactus1 || entity instanceof ForegroundCactus2) {
                     if (!that.game.space) {
                         if (that.lastBB.bottom >= entity.BB.top) {
                             that.velocity.y = 0;
                         }
+                        if ((that.lastBB.left >= entity.BB.right || that.lastBB.right >= entity.BB.left)) {
+                            that.velocity.x = 0;
+                        }
+                        // if (that.lastBB.left >= entity.BB.right) {
+                        //     that.velocity.x = 0;
+                        // }
                         if ((that.game.left || that.game.right) 
-                            && that.lastBB.right > entity.BB.right 
-                            && that.lastBB.bottom < entity.BB.bottom) {
+                            && that.lastBB.right >= entity.BB.right 
+                            && that.lastBB.bottom <= entity.BB.bottom) {
                             that.velocity.y = 100;
                         }
                     } else{
@@ -206,14 +221,14 @@ class Alien{
                 ctx.fillText("YOU LOSE!", 50, 500);
                 ctx.font = "20px Verdana";
                 ctx.fillText("Refresh to play again", 60, 550);
-                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
+                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
                 const context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
             } else if (this.state === 3) {
-                this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y - 20);
+                this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y - 20);
                 // var frame = this.animator[3][this.facing].currentFrame();
             } else {
-                this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
+                this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
                 // if (this.state === 4) {
                 //     this.laser.draw(ctx, false);
                 // }
@@ -241,27 +256,30 @@ class Alien{
             }
             ctx.restore();
         }
-        
-        if (this.win) {
-            var width = 176;
-            var height = 88;
-            ctx.font = "bold 50px Verdana";
-            ctx.fillText("You Win!", 50, 500);
-            // ctx.font = "50px Georgia";
-            // ctx.fillText("Hello World!", 10, 50); 
-            // Create gradient
-            var gradient = ctx.createLinearGradient(0, 0, 1000, 0);
-            gradient.addColorStop("0", "yellow");
-            gradient.addColorStop("0.5", "pink");
-            gradient.addColorStop("1.0", "white");
-            // Fill with gradient
-            ctx.fillStyle = gradient;
-            ctx.fillText("More levels Coming Soon!", 50, 550);
-            ctx.font = "20px Verdana";
-            ctx.fillText("Refresh to play again", 53, 570);
-            const context = canvas.getContext('2d');
-            context.clearRect(0, 0, canvas.width, canvas.height);
-        }
+
+        this.healthbar.draw(ctx, 14);
+        this.ammobar.draw(ctx, 14);
+                
+        // if (this.win) {
+        //     var width = 176;
+        //     var height = 88;
+        //     ctx.font = "bold 50px Verdana";
+        //     ctx.fillText("You Win!", 50, 500);
+        //     // ctx.font = "50px Georgia";
+        //     // ctx.fillText("Hello World!", 10, 50); 
+        //     // Create gradient
+        //     var gradient = ctx.createLinearGradient(0, 0, 1000, 0);
+        //     gradient.addColorStop("0", "yellow");
+        //     gradient.addColorStop("0.5", "pink");
+        //     gradient.addColorStop("1.0", "white");
+        //     // Fill with gradient
+        //     ctx.fillStyle = gradient;
+        //     ctx.fillText("More levels Coming Soon!", 50, 550);
+        //     ctx.font = "20px Verdana";
+        //     ctx.fillText("Refresh to play again", 53, 570);
+        //     const context = canvas.getContext('2d');
+        //     context.clearRect(0, 0, canvas.width, canvas.height);
+        // }
         // ctx.strokestyle = "Red";
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         // if (this.dead) {

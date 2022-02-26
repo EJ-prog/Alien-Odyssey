@@ -9,6 +9,7 @@ class SceneManager {
         this.title = true;
         this.gameOver = false;
         this.level = null;
+        this.activeElem = true;
 
         this.alien = new Alien(this.game, 0, 263);
 
@@ -330,12 +331,12 @@ class SceneManager {
     };
 
     update() {
-        if (this.title && this.game.click) {
-            if(this.game.click && this.game.click.y > 146 && this.game.click.y < 280) {
+        if (this.title && this.game.click && this.activeElem) {
+            if(this.game.click.y > 146 && this.game.click.y < 280 && this.game.click.x > 338 && this.game.click.x < 623) {
                 this.loadlevel(metalDesert, 0, 273, false, false);
                 this.alien = new Alien(this.game, 0, 0);
             }
-            if (this.game.click && this.game.click.y > 281 && this.game.click.y < 415) {
+            if (this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {
                 console.log("clicked to find out about the game");
             }
         }
@@ -371,11 +372,28 @@ class SceneManager {
             ctx.drawImage(this.buttons, 0, 135, 285, 135, this.button_x, this.button_y + 135, 285, 135);
 
             if(this.game.click) {
-                if(this.game.click.y > 146 && this.game.click.y < 280 && this.game.click.x > 338 && this.game.click.x < 623) {
-                    ctx.drawImage(this.selected, 0, 0, 285, 135, this.button_x, this.button_y, 285, 135);
-                }
                 if(this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {
-                    ctx.drawImage(this.selected, 0, 135, 285, 135, this.button_x, this.button_y + 135, 285, 135);
+                    this.activeElem = false;
+                    // ctx.lineWidth = 90;
+                    ctx.fillStyle = "#660066";
+                    ctx.fillRect(297.5, 25, 367, 500);
+                    ctx.strokeStyle = "gray";
+                    ctx.lineWidth = 5;
+                    ctx.strokeRect(297.5, 25, 367, 500);
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = "#660000";
+                    ctx.strokeRect(297.5, 25, 367, 500);
+                    ctx.fillStyle = "black";
+                    ctx.fillRect(642.5, 30.5, 15, 15);
+                    ctx.fillStyle = "#666600";
+                    ctx.fillRect(644.75, 32.5, 10, 10);
+                    ctx.fillStyle = "black";
+                    ctx.font = "15px Arial";
+                    ctx.fillText("X", 644.75, 42.5);
+                    if (this.game.click.y > 22.5 && this.game.click.y < 42.5 
+                        && this.game.click.x > 634.75 && this.game.click.x < 654.75) {
+                        this.activeElem = true;
+                    }
                 }
             }            
         }

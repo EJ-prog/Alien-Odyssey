@@ -208,8 +208,8 @@ class Rock {
 
 //level 2 environment assets
 class AcidMeadowsBackground {
-    constructor(game, x, y){
-        Object.assign(this, {game, x, y});
+    constructor(game, x, y, width){
+        Object.assign(this, {game, x, y, width});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AcidMeadowsBackground.png");
     };
@@ -219,7 +219,7 @@ class AcidMeadowsBackground {
     };
 
     draw(ctx){
-        ctx.drawImage(this.spritesheet, 0, 0, 960, 576, this.x, this.y, 0, 100000);
+        ctx.drawImage(this.spritesheet, this.x, this.y, this.width, 576, this.x, this.y, 0, 100000);
     };
 };
 
@@ -282,6 +282,7 @@ class Mushroom1 {
 
         // this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/mushroom1.png");
+        this.BB = new BoundingBox(5, 9, 116, 63);
     };
 
     update(){
@@ -289,6 +290,7 @@ class Mushroom1 {
     };
 
     draw(ctx){
+        ctx.drawRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, 0, 0, this.x, this.y, 400, 165);
     };
 };
@@ -298,6 +300,7 @@ class Mushroom2 {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/mushroom2.png");
+        this.BB = new BoundingBox(0, 0, 159, 102);
     }
 
     update() {
@@ -305,6 +308,7 @@ class Mushroom2 {
     };
 
     draw(ctx) {
+        ctx.drawRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
 };
@@ -864,6 +868,55 @@ class HealthPack {
     };
 }
 
+class Health {
+    constructor(game) {
+        Object.assign(this, {game});
+        this.health = ASSET_MANAGER.getAsset("./Sprites_and_Assets/Health-and-Ammo.png");
+        // this.BB = new BoundingBox(400, 160, 50, 65);
+        //this.x = 600;
+        //this.y = 365;
+        //this.speed = 70;
+
+        //("./Sprites_and_Assets/Health-and-Ammo-packs.png")
+    };
+
+    update() {
+        
+    };
+
+    draw(ctx, hitpoints) {
+        if (hitpoints === 14) {
+            ctx.drawImage(this.health, 6+(131*0), 0, 110, 26, 5,0, 200, 30);
+        }  else if (hitpoints === 13) {
+            ctx.drawImage(this.health, 6+(131*1), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 12) {
+            ctx.drawImage(this.health, 6+(131*2), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 11) {
+            ctx.drawImage(this.health, 6+(131*3), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 10) {
+            ctx.drawImage(this.health, 6+(131*4), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 9) {
+            ctx.drawImage(this.health, 6+(131*5), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 8) {
+            ctx.drawImage(this.health, 6+(131*6), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 7) {
+            ctx.drawImage(this.health, 6+(131*7), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 6) {
+            ctx.drawImage(this.health, 6+(131*8), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 5) {
+            ctx.drawImage(this.health, 6+(131*9), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 4) {
+            ctx.drawImage(this.health, 6+(131*10), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 3) {
+            ctx.drawImage(this.health, 6+(131*11), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 2) {
+            ctx.drawImage(this.health, 6+(131*12), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 1) {
+            ctx.drawImage(this.health, 6+(131*13), 0, 110, 26, 5,0, 200, 30);
+        }
+    };
+}
+
 class AmmoPack {
     constructor(game, x, y) {
         Object.assign(this, {game,x,y});
@@ -881,6 +934,56 @@ class AmmoPack {
 
     draw(ctx) {
         ctx.drawImage(this.spritesheet, 200, 0, 336, 300, this.x, this.y, 0, 0);
+    };
+}
+
+class Ammo {
+    constructor(game) {
+        Object.assign(this, {game});
+        this.ammo = ASSET_MANAGER.getAsset("./Sprites_and_Assets/Health-and-Ammo.png");
+        // this.animator = new Animator(ASSET_MANAGER.getAsset("./Sprites_and_Assets/Health-and-Ammo.png"), 65, 0, 50, 65, 12, 0.062);
+        // this.BB = new BoundingBox(400, 160, 50, 65);
+        //this.x = 600;
+        //this.y = 365;
+        //this.speed = 70;
+
+        //("./Sprites_and_Assets/Health-and-Ammo-packs.png")
+    };
+
+    update() {
+        
+    };
+
+    draw(ctx, charge){
+        if (charge === 14) {
+            ctx.drawImage(this.ammo, 6+(131*0), 26, 125, 26, 5, 27, 228, 30);
+        }  else if (charge === 13) {
+            ctx.drawImage(this.ammo, 6+(131*1), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 12) {
+            ctx.drawImage(this.ammo, 6+(131*2), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 11) {
+            ctx.drawImage(this.ammo, 6+(131*3), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 10) {
+            ctx.drawImage(this.ammo, 6+(131*4), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 9) {
+            ctx.drawImage(this.ammo, 6+(131*5), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 8) {
+            ctx.drawImage(this.ammo, 6+(131*6), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 7) {
+            ctx.drawImage(this.ammo, 6+(131*7), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 6) {
+            ctx.drawImage(this.ammo, 6+(131*8), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 5) {
+            ctx.drawImage(this.ammo, 6+(131*9), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 4) {
+            ctx.drawImage(this.ammo, 6+(131*10), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 3) {
+            ctx.drawImage(this.ammo, 6+(131*11), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 2) {
+            ctx.drawImage(this.ammo, 6+(131*12), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 1) {
+            ctx.drawImage(this.ammo, 6+(131*13), 26, 125, 26, 5, 27, 228, 30);
+        }
     };
 }
 
@@ -910,15 +1013,12 @@ class LunarRockPieces {
     draw(ctx) {
         if (this.level === 1) {
             ctx.drawImage(this.piece1, this.x, this.y);
-            // ctx.strokestyle = "Red";
             // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         } else if (this.level === 2) {
             ctx.drawImage(this.piece2, this.x, this.y);
-            // ctx.strokestyle = "Red";
             // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         } else if (this.level === 3) {
             ctx.drawImage(this.piece3, this.x, this.y);
-            // ctx.strokestyle = "Red";
             // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         } else if (this.level === 4) {
             ctx.drawImage(this.piece4, this.x, this.y);

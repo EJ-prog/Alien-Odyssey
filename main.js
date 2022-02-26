@@ -67,6 +67,7 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRockPiece3.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRockPiece4.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LaserFire.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/coin.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Health-and-Ammo.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Health-and-Ammo-packs.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AdditionalAssets_StartMenu_Selected.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AdditionalAssets_StartMenu.png");
@@ -77,15 +78,6 @@ ASSET_MANAGER.downloadAll(() => {
 	const canvas = document.getElementById("gameWorld");
 	const ctx = canvas.getContext("2d");
 	ctx.imageSmoothingEnabled = false;
-
-	// gameEngine.addEntity(new Monster(gameEngine));
-	// gameEngine.addEntity(new Coin(gameEngine));
-	// gameEngine.addEntity(new TitleScreen(gameEngine));
-	// gameEngine.addEntity(new Scorpion(gameEngine));
-	// gameEngine.addEntity(new Alien(gameEngine));
-	// gameEngine.addEntity(new Coin(gameEngine));
-	// gameEngine.addEntity(new Ground(gameEngine));
-	// gameEngine.addEntity(new MetalDesert(gameEngine));
 
 	gameEngine.init(ctx);
 
