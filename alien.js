@@ -79,7 +79,8 @@ class Alien{
         //facing left = 1
         this.animator[5][1] = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, true, false);
 
-    }
+
+    };
 
     updateBB() {
         this.lastBB = this.BB;
