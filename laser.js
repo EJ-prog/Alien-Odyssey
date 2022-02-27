@@ -52,7 +52,7 @@ class Laser {
     draw(ctx, reverse) {
         if (reverse) {
             ctx.scale(-1,1);
-            this.laserAnim.drawFrame(this.game.clockTick, ctx, -this.x, this.y);
+            this.laserAnim.drawFrame(this.game.clockTick, ctx, -this.x + this.game.camera.x, this.y);
             // if (this.elapsedTime < this.animationTime) {
             //     ctx.drawImage(this.laser, 0, 0, 45, 12, this.x, this.y, 45, 12);
             // } else if (this.elapsedTime < 2 * this.animationTime) {
@@ -64,7 +64,7 @@ class Laser {
             // }
         } else {
             ctx.scale(1,1);
-            this.laserAnim.drawFrame(this.game.clockTick, ctx, this.x, this.y);
+            this.laserAnim.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
             // if (this.elapsedTime < this.animationTime) {
             //     ctx.drawImage(this.laser, 0, 0, 45, 12, this.x, this.y, 45, 12);
             //     ctx.strokestyle = "Red";

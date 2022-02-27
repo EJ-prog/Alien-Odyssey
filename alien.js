@@ -142,8 +142,8 @@ class Alien{
             }
 
             // update position
-            this.x += this.velocity.x * TICK ;
-            this.y += this.velocity.y * TICK ;
+            this.x += this.velocity.x * TICK;
+            this.y += this.velocity.y * TICK;
             this.laser.update();
             this.updateBB();
             
@@ -156,9 +156,11 @@ class Alien{
                     entity.removeFromWorld = true;
                     //YOU WIN!!!
                     if (entity.level === 1) {
-                        that.game.camera.loadLevel(acidMeadows, 960, 576, true, false);
+                        that.game.camera.loadLevel2(acidMeadows);
                     } else if (entity.level === 2) {
-
+                        that.game.camera.loadLevel2(lavaLand);
+                    } else if (entity.level === 3) {
+                        that.game.camera.loadLevel2(monsterForest);
                     }
                 } 
                 if (entity instanceof Coin) {
@@ -208,6 +210,7 @@ class Alien{
                 this.game.addEntity(new Laser(this.game, this.x - 75, this.y + 70, this.facing));
             }
         }
+        
     };
 
     draw(ctx) {
@@ -217,6 +220,7 @@ class Alien{
             ctx.save();
             ctx.scale(1, 1);
             if (this.dead){
+                // this.healthbar.draw(ctx, 1);
                 ctx.font = "bold 50px Verdana";
                 ctx.fillText("YOU LOSE!", 50, 500);
                 ctx.font = "20px Verdana";
@@ -243,13 +247,13 @@ class Alien{
                 ctx.fillText("YOU LOSE!", 50, 500);
                 ctx.font = "20px Verdana";
                 ctx.fillText("Refresh to play again", 60, 550);
-                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x, this.y);
+                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x + this.game.camera.x, this.y);
                 const context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
             } else if (this.state === 3) {
-                this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85, this.y - 20);
+                this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85 + this.game.camera.x, this.y - 20);
             } else {
-                this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85, this.y);
+                this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85 + this.game.camera.x, this.y);
                 // if (this.state === 4) {
                 //     this.laser.draw(ctx, true);
                 // }

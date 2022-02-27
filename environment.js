@@ -27,7 +27,7 @@ class MetalMountains {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, this.width, 580, this.x, this.y, this.width, 580);
+        ctx.drawImage(this.spritesheet, 0, 0, this.width, 580, this.x - this.game.camera.x, this.y, this.width, 580);
     };
 };
 
@@ -43,7 +43,7 @@ class BackgroundCactus1 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 15, 160, 150, 200, this.x, this.y, 150, 200);
+        ctx.drawImage(this.spritesheet, 15, 160, 150, 200, this.x - this.game.camera.x, this.y, 150, 200);
     };
 };
 
@@ -59,7 +59,7 @@ class BackgroundCactus2 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 184, 160, 150, 200, this.x, this.y, 150, 200);
+        ctx.drawImage(this.spritesheet, 184, 160, 150, 200, this.x - this.game.camera.x, this.y, 150, 200);
     };
 };
 
@@ -78,7 +78,7 @@ class ForegroundCactus1 {
     draw(ctx) {
         // ctx.strokestyle = "Red";
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-        ctx.drawImage(this.spritesheet, 336, 160, 100, 210, this.x, this.y, 100, 210);
+        ctx.drawImage(this.spritesheet, 336, 160, 100, 210, this.x - this.game.camera.x, this.y, 100, 210);
     };
 
 };
@@ -98,7 +98,7 @@ class ForegroundCactus2 {
     draw(ctx) {
         // ctx.strokestyle = "Red";
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-        ctx.drawImage(this.spritesheet, 430, 160, 100, 210, this.x, this.y, 100, 210);
+        ctx.drawImage(this.spritesheet, 430, 160, 100, 210, this.x - this.game.camera.x, this.y, 100, 210);
     };
 };
 
@@ -117,7 +117,7 @@ class MetalDesertPath {
     draw(ctx) {
         // ctx.strokeStyle = "Red";
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-        ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx, this.dy, this.w, this.h);
+        ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.w, this.h);
     };
 };
 
@@ -136,7 +136,7 @@ class MetalDesertGround {
     draw(ctx) {
         // ctx.strokestyle = "Red";
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-        ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx, this.dy, this.w, this.h);
+        ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.w, this.h);
     };
 };
 
@@ -156,7 +156,7 @@ class MetalDesertPlanets {
     };
 
     draw(ctx) {
-        this.planets.drawFrame(this.game.clockTick, ctx, this.x, this.y);
+        this.planets.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
     };
 };
 
@@ -182,7 +182,7 @@ class Rock {
         const TICK = this.game.clockTick;
         //this.x -= this.speed*this.game.clockTick;
         if(this.x < 500) {
-            this.x += this.speed*this.game.clockTick;
+            this.x += this.speed*TICK;
         }
         this.updateBB();
 
@@ -199,7 +199,7 @@ class Rock {
     };
 
     draw(ctx) {
-        this.rolling.drawFrame(this.game.clockTick, ctx, this.x, this.y);  // (750 , 295)
+        this.rolling.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);  // (750 , 295)
         // ctx.strokestyle = "Red";
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
     };
@@ -219,7 +219,7 @@ class AcidMeadowsBackground {
     };
 
     draw(ctx){
-        ctx.drawImage(this.spritesheet, this.x, this.y, this.width, 576, this.x, this.y, 0, 100000);
+        ctx.drawImage(this.spritesheet, this.x, this.y, this.width, 576, this.x, this.y, this.width, 576);
     };
 };
 
@@ -309,7 +309,7 @@ class Mushroom2 {
 
     draw(ctx) {
         ctx.drawRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-        ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
 };
 
@@ -325,7 +325,7 @@ class AcidMeadowsPath {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
 };
 
@@ -341,7 +341,7 @@ class AcidMeadowsPlanets {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
 };
 
@@ -357,7 +357,7 @@ class Puddles1 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 182, 58, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, 0, 0, 182, 58, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
 };
 
@@ -373,7 +373,7 @@ class Puddles2 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, -10, 0, 230, 58, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, -10, 0, 230, 58, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
 };
 
@@ -389,7 +389,7 @@ class Puddles3 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 200, 56, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, 0, 0, 200, 56, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
 };
 
@@ -405,7 +405,7 @@ class Puddles4 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 10, 0, 170, 58, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, 10, 0, 170, 58, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
 };
 
@@ -421,7 +421,7 @@ class Puddles5 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, -10, 0, 230, 58, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, -10, 0, 230, 58, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
 };
 
@@ -437,7 +437,7 @@ class Rain1 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 40, 0, 314.5, 170, this.x - this.game.camera.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, 40, 0, 314.5, 170, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
 };
 
@@ -848,7 +848,7 @@ class Coin {
     };
 
     draw(ctx) {
-        this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.x);
+        this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.x);
     };
 }
 
@@ -1012,16 +1012,16 @@ class LunarRockPieces {
 
     draw(ctx) {
         if (this.level === 1) {
-            ctx.drawImage(this.piece1, this.x, this.y);
+            ctx.drawImage(this.piece1, this.x - this.game.camera.x, this.y);
             // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         } else if (this.level === 2) {
-            ctx.drawImage(this.piece2, this.x, this.y);
+            ctx.drawImage(this.piece2, this.x - this.game.camera.x, this.y);
             // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         } else if (this.level === 3) {
-            ctx.drawImage(this.piece3, this.x, this.y);
+            ctx.drawImage(this.piece3, this.x - this.game.camera.x, this.y);
             // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         } else if (this.level === 4) {
-            ctx.drawImage(this.piece4, this.x, this.y);
+            ctx.drawImage(this.piece4, this.x - this.game.camera.x, this.y);
         }
     };
 }

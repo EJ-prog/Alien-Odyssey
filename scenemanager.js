@@ -6,6 +6,7 @@ class SceneManager {
         this.coins = 0;
         this.lives = 1;
 
+        this.x = 0;
         this.title = true;
         this.gameOver = false;
         this.level = null;
@@ -19,6 +20,10 @@ class SceneManager {
         this.game.entities.forEach(function (entity) {
             entity.removeFromWorld = true;
         });
+    };
+
+    loadLevel2(level) {
+        this.loadlevel(level, 0, 273, false, false);
     };
 
     loadlevel(level, x, y, transition, title) {
@@ -328,13 +333,16 @@ class SceneManager {
             // });
             if(!alien) this.game.addEntity(this.alien);
         }
+
+        this.alien.x = x;
+        this.alien.y = y;
     };
 
     update() {
         if (this.title && this.game.click && this.activeElem) {
             if(this.game.click.y > 146 && this.game.click.y < 280 && this.game.click.x > 338 && this.game.click.x < 623) {
                 this.loadlevel(metalDesert, 0, 273, false, false);
-                this.alien = new Alien(this.game, 0, 0);
+                // this.alien = new Alien(this.game, 0, 263);
             }
             if (this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {
                 console.log("clicked to find out about the game");
@@ -351,11 +359,11 @@ class SceneManager {
             // this.clearEntities();
 
             this.game.addEntity(new TitleScreen(this.game));
-        } else {
-            // if (this.game.entities) {
+        } 
 
-            // }
-        }
+        let midpoint = (960 / 2) - (98 / 2);
+
+        this.x = this.alien.x - midpoint;
 
     };
 

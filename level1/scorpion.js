@@ -60,7 +60,7 @@ class Scorpion {
            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
             ctx.save();
             ctx.scale(-1,1)
-            this.animator.drawFrame(this.game.clockTick, ctx, -this.x - (this.width) + 10, this.y);
+            this.animator.drawFrame(this.game.clockTick, ctx, -this.x - (this.width) + 10 + this.game.camera.x, this.y);
             ctx.restore();
         }
         
@@ -69,7 +69,7 @@ class Scorpion {
           //  ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
             ctx.save();
             ctx.scale(1,1)
-            this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
+            this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
             ctx.restore();
         }
     };

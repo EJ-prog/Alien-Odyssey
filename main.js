@@ -14,20 +14,20 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Scorpion.png");
 
 // //LEVEL 2 ENTITIES
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsEnvironment.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsBackground.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/ant.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/path.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds1.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds2.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/rain.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles1.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles2.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles3.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles4.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles5.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom1.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom2.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/planets.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsBackground.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/ant.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/path.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds1.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/rain.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles1.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles3.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles4.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles5.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom1.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/planets.png");
 
 // //LEVEL 3 ENTITIES
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandBackground.png");
@@ -81,7 +81,7 @@ ASSET_MANAGER.downloadAll(() => {
 
 	gameEngine.init(ctx);
 
-	gameEngine.addEntity(new Alien(gameEngine));
+	// gameEngine.addEntity(new Alien(gameEngine));
 	gameEngine.addEntity(new SceneManager(gameEngine));
 
 	gameEngine.start();
