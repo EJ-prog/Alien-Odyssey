@@ -26,13 +26,17 @@ class SceneManager {
         this.loadlevel(level, 0, 273, false, false);
     };
 
+    loadTitle() {
+        this.loadlevel(metalDesert, 0, 0, true, true);
+    };
+
     loadlevel(level, x, y, transition, title) {
         this.title = title;
         this.level = level;
         this.clearEntities();
 
         if (transition) {
-            this.game.addEntity(new TitleScreen(this.game, level, x, y, title));
+            this.game.addEntity(new TitleScreen(this.game));
         } else {
             if (level.metalDesertBackground) {
                 for (var i = 0; i < level.metalDesertBackground.length; i++) {

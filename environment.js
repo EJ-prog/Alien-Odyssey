@@ -913,6 +913,8 @@ class Health {
             ctx.drawImage(this.health, 10+(134*12), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 1) {
             ctx.drawImage(this.health, 10+(134*13), 0, 110, 26, 5,0, 200, 30);
+        } else if (hitpoints === 0) {
+            ctx.drawImage(this.health, 10+(134*14), 0, 110, 26, 5,0, 200, 30);
         }
     };
 }
@@ -956,17 +958,17 @@ class Ammo {
 
     draw(ctx, charge){
         if (charge === 14) {
-            ctx.drawImage(this.ammo, 6+(131*0), 26, 125, 26, 5, 27, 228, 30);
+            ctx.drawImage(this.ammo, 6+(134*0), 26, 125, 26, 5, 27, 228, 30);
         }  else if (charge === 13) {
-            ctx.drawImage(this.ammo, 6+(131*1), 26, 125, 26, 5, 27, 228, 30);
+            ctx.drawImage(this.ammo, 10+(134*1), 26, 125, 26, 5, 27, 228, 30);
         } else if (charge === 12) {
-            ctx.drawImage(this.ammo, 6+(131*2), 26, 125, 26, 5, 27, 228, 30);
+            ctx.drawImage(this.ammo, 10+(134*2), 26, 125, 26, 5, 27, 228, 30);
         } else if (charge === 11) {
-            ctx.drawImage(this.ammo, 6+(131*3), 26, 125, 26, 5, 27, 228, 30);
+            ctx.drawImage(this.ammo, 10+(134*3), 26, 125, 26, 5, 27, 228, 30);
         } else if (charge === 10) {
-            ctx.drawImage(this.ammo, 6+(131*4), 26, 125, 26, 5, 27, 228, 30);
+            ctx.drawImage(this.ammo, 10+(134*4), 26, 125, 26, 5, 27, 228, 30);
         } else if (charge === 9) {
-            ctx.drawImage(this.ammo, 6+(131*5), 26, 125, 26, 5, 27, 228, 30);
+            ctx.drawImage(this.ammo, 10+(134*5), 26, 125, 26, 5, 27, 228, 30);
         } else if (charge === 8) {
             ctx.drawImage(this.ammo, 6+(131*6), 26, 125, 26, 5, 27, 228, 30);
         } else if (charge === 7) {
@@ -983,6 +985,8 @@ class Ammo {
             ctx.drawImage(this.ammo, 6+(131*12), 26, 125, 26, 5, 27, 228, 30);
         } else if (charge === 1) {
             ctx.drawImage(this.ammo, 6+(131*13), 26, 125, 26, 5, 27, 228, 30);
+        } else if (charge === 0) {
+            ctx.drawImage(this.ammo, 10+(134*14), 0, 110, 26, 5,0, 200, 30);
         }
     };
 }

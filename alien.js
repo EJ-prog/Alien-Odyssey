@@ -155,13 +155,14 @@ class Alien{
                 if (entity instanceof LunarRockPieces) {
                     entity.removeFromWorld = true;
                     //YOU WIN!!!
-                    if (entity.level === 1) {
-                        that.game.camera.loadLevel2(acidMeadows);
-                    } else if (entity.level === 2) {
-                        that.game.camera.loadLevel2(lavaLand);
-                    } else if (entity.level === 3) {
-                        that.game.camera.loadLevel2(monsterForest);
-                    }
+                    that.win = true;
+                    // if (entity.level === 1) {
+                    //     that.game.camera.loadLevel2(acidMeadows);
+                    // } else if (entity.level === 2) {
+                    //     that.game.camera.loadLevel2(lavaLand);
+                    // } else if (entity.level === 3) {
+                    //     that.game.camera.loadLevel2(monsterForest);
+                    // }
                 } 
                 if (entity instanceof Coin) {
                     entity.removeFromWorld = true;
@@ -220,7 +221,8 @@ class Alien{
             ctx.save();
             ctx.scale(1, 1);
             if (this.dead) {
-                this.healthbar.draw(ctx, 1);
+                this.healthbar.draw(ctx, 0);
+                this.ammobar.draw(ctx, 0);
                 ctx.font = "bold 50px Verdana";
                 ctx.fillText("YOU LOSE!", 50, 500);
                 ctx.font = "20px Verdana";
@@ -264,30 +266,30 @@ class Alien{
         this.healthbar.draw(ctx, 14);
         this.ammobar.draw(ctx, 14);
                 
-        // if (this.win) {
-        //     var width = 176;
-        //     var height = 88;
-        //     ctx.font = "bold 50px Verdana";
-        //     ctx.fillText("You Win!", 50, 500);
-        //     // ctx.font = "50px Georgia";
-        //     // ctx.fillText("Hello World!", 10, 50); 
-        //     // Create gradient
-        //     var gradient = ctx.createLinearGradient(0, 0, 1000, 0);
-        //     gradient.addColorStop("0", "yellow");
-        //     gradient.addColorStop("0.5", "pink");
-        //     gradient.addColorStop("1.0", "white");
-        //     // Fill with gradient
-        //     ctx.fillStyle = gradient;
-        //     ctx.fillText("More levels Coming Soon!", 50, 550);
-        //     ctx.font = "20px Verdana";
-        //     ctx.fillText("Refresh to play again", 53, 570);
-        //     const context = canvas.getContext('2d');
-        //     context.clearRect(0, 0, canvas.width, canvas.height);
-        // }
+        if (this.win) {
+            var width = 176;
+            var height = 88;
+            ctx.font = "bold 50px Verdana";
+            ctx.fillText("You Win!", 50, 500);
+            // ctx.font = "50px Georgia";
+            // ctx.fillText("Hello World!", 10, 50); 
+            // Create gradient
+            var gradient = ctx.createLinearGradient(0, 0, 1000, 0);
+            gradient.addColorStop("0", "yellow");
+            gradient.addColorStop("0.5", "pink");
+            gradient.addColorStop("1.0", "white");
+            // Fill with gradient
+            ctx.fillStyle = gradient;
+            ctx.fillText("More levels Coming Soon!", 50, 550);
+            ctx.font = "20px Verdana";
+            ctx.fillText("Refresh to play again", 53, 570);
+            const context = canvas.getContext('2d');
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
         // ctx.strokestyle = "Red";
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-        // if (this.dead) {
-        //     this.removeFromWorld = true;
-        // }
+        if (this.dead) {
+            this.removeFromWorld = true;
+        }
     };
 }
