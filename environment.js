@@ -886,33 +886,33 @@ class Health {
 
     draw(ctx, hitpoints) {
         if (hitpoints === 14) {
-            ctx.drawImage(this.health, 6+(131*0), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*0), 0, 110, 26, 5,0, 200, 30);
         }  else if (hitpoints === 13) {
-            ctx.drawImage(this.health, 6+(131*1), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*1), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 12) {
-            ctx.drawImage(this.health, 6+(131*2), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*2), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 11) {
-            ctx.drawImage(this.health, 6+(131*3), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*3), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 10) {
-            ctx.drawImage(this.health, 6+(131*4), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*4), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 9) {
-            ctx.drawImage(this.health, 6+(131*5), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*5), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 8) {
-            ctx.drawImage(this.health, 6+(131*6), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*6), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 7) {
-            ctx.drawImage(this.health, 6+(131*7), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*7), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 6) {
-            ctx.drawImage(this.health, 6+(131*8), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*8), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 5) {
-            ctx.drawImage(this.health, 6+(131*9), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*9), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 4) {
-            ctx.drawImage(this.health, 6+(131*10), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*10), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 3) {
-            ctx.drawImage(this.health, 6+(131*11), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*11), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 2) {
-            ctx.drawImage(this.health, 6+(131*12), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*12), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 1) {
-            ctx.drawImage(this.health, 6+(131*13), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*13), 0, 110, 26, 5,0, 200, 30);
         }
     };
 }

@@ -53,34 +53,11 @@ class Laser {
         if (reverse) {
             ctx.scale(-1,1);
             this.laserAnim.drawFrame(this.game.clockTick, ctx, -this.x + this.game.camera.x, this.y);
-            // if (this.elapsedTime < this.animationTime) {
-            //     ctx.drawImage(this.laser, 0, 0, 45, 12, this.x, this.y, 45, 12);
-            // } else if (this.elapsedTime < 2 * this.animationTime) {
-            //     ctx.drawImage(this.laser, 45, 0, 45, 12, this.x, this.y, 45, 12);
-            // } else if (this.elapsedTime < 3 * this.animationTime) {
-            //     ctx.drawImage(this.laser, 90, 0, 45, 12, this.x, this.y, 45, 12);
-            // } else {
-                
-            // }
+            
         } else {
             ctx.scale(1,1);
             this.laserAnim.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
-            // if (this.elapsedTime < this.animationTime) {
-            //     ctx.drawImage(this.laser, 0, 0, 45, 12, this.x, this.y, 45, 12);
-            //     ctx.strokestyle = "Red";
-            //     ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-            //     // this.updateBB();
-            // } else if (this.elapsedTime < 2 * this.animationTime) {
-            //     ctx.drawImage(this.laser, 45, 0, 45, 12, this.x, this.y, 45, 12);
-            //     ctx.strokestyle = "Red";
-            //     ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-            //     // this.updateBB();
-            // } else if (this.elapsedTime < 3 * this.animationTime) {
-            //     ctx.drawImage(this.laser, 90, 0, 45, 12, this.x, this.y, 45, 12);
-            //     ctx.strokestyle = "Red";
-            //     ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-            //     // this.updateBB();
-            // }
+            
         }
     };
 }
