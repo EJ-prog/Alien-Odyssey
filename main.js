@@ -13,20 +13,22 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/coin.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/health.png");
 
 //LEVEL 2 ENTITIES
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsBackground.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/ant.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/path.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds1.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/rain.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles1.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles2.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles3.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles4.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles5.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds2.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom1.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/planets.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsBackground.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/ant.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/path.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds1.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/rain.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles1.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles3.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles4.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles5.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom1.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/planets.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRockPiece2.png");
+
 
 //LEVEL 4 ENTITIES
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/sun.png");
@@ -67,38 +69,49 @@ ASSET_MANAGER.downloadAll(() => {
 
 
 	gameEngine.addEntity(new health(gameEngine));
-	gameEngine.addEntity(new cactus2(gameEngine, 600, 245));
-	gameEngine.addEntity(new cactus1(gameEngine, 100, 245));
-	//gameEngine.addEntity(new LunarRockPiece1(gameEngine, 900, 245));
-	gameEngine.addEntity(new LunarRockPiece1(gameEngine, 100, 300));
-	gameEngine.addEntity(new cactus2(gameEngine, 800, 245));
-	gameEngine.addEntity(new Rock(gameEngine, 700 , 395));
-	gameEngine.addEntity(new Scorpion(gameEngine));
+	// gameEngine.addEntity(new cactus2(gameEngine, 600, 245));
+	// gameEngine.addEntity(new cactus1(gameEngine, 100, 245));
+	// //gameEngine.addEntity(new LunarRockPiece1(gameEngine, 900, 245));
+	// gameEngine.addEntity(new LunarRockPiece1(gameEngine, 100, 300));
+	// gameEngine.addEntity(new cactus2(gameEngine, 800, 245));
+	// gameEngine.addEntity(new Rock(gameEngine, 700 , 395));
+	// gameEngine.addEntity(new Scorpion(gameEngine));
 	gameEngine.addEntity(new Laser(gameEngine));
 	gameEngine.addEntity(new alien(gameEngine));
 	gameEngine.addEntity(new Coin(gameEngine));
-	gameEngine.addEntity(new metaldesert(gameEngine));
 
 	PARAMS.BLOCKWIDTH = PARAMS.BITWIDTH * PARAMS.SCALE;
 	PARAMS.CANVAS_WIDTH = canvas.width;
 	PARAMS.CANVAS_HEIGHT = canvas.height;
 
 	//LEVEL 1
+	// gameEngine.addEntity(new cactus2(gameEngine, 600, 245));
+	// gameEngine.addEntity(new cactus1(gameEngine, 100, 245));
+	// //gameEngine.addEntity(new LunarRockPiece1(gameEngine, 900, 245));
+	// gameEngine.addEntity(new LunarRockPiece1(gameEngine, 100, 300));
+	// gameEngine.addEntity(new cactus2(gameEngine, 800, 245));
+	// gameEngine.addEntity(new Rock(gameEngine, 700 , 395));
+	// gameEngine.addEntity(new Scorpion(gameEngine));
+	// gameEngine.addEntity(new metaldesert(gameEngine));
+
 
 	//LEVEL 2
-	// gameEngine.addEntity(new path(gameEngine));
-	// gameEngine.addEntity(new ant(gameEngine));
-	// gameEngine.addEntity(new rain1(gameEngine));
-	// gameEngine.addEntity(new mushroom1(gameEngine));
-	// gameEngine.addEntity(new mushroom2(gameEngine));
-	// gameEngine.addEntity(new puddles1(gameEngine));
-	// gameEngine.addEntity(new puddles2(gameEngine));
-	// gameEngine.addEntity(new puddles3(gameEngine));
-	// gameEngine.addEntity(new puddles4(gameEngine));
-	// gameEngine.addEntity(new puddles5(gameEngine));
-	// gameEngine.addEntity(new clouds1(gameEngine));
-	// gameEngine.addEntity(new clouds2(gameEngine));
-	// gameEngine.addEntity(new planets(gameEngine));
+	gameEngine.addEntity(new path(gameEngine));
+	gameEngine.addEntity(new ant(gameEngine));
+	gameEngine.addEntity(new rain1(gameEngine));
+	gameEngine.addEntity(new LunarRockPiece2(gameEngine, 800, 245));
+	gameEngine.addEntity(new mushroom1(gameEngine));
+	gameEngine.addEntity(new mushroom2(gameEngine));
+	gameEngine.addEntity(new puddles1(gameEngine));
+	gameEngine.addEntity(new puddles2(gameEngine));
+	gameEngine.addEntity(new puddles3(gameEngine));
+	gameEngine.addEntity(new puddles4(gameEngine));
+	gameEngine.addEntity(new puddles5(gameEngine));
+	gameEngine.addEntity(new clouds1(gameEngine));
+	gameEngine.addEntity(new clouds2(gameEngine));
+	gameEngine.addEntity(new planets(gameEngine));
+	gameEngine.addEntity(new AcidMeadowsBackground(gameEngine));
+
 
 	//LEVEL 4 entities
 	// gameEngine.addEntity(new sun(gameEngine));
@@ -117,7 +130,6 @@ ASSET_MANAGER.downloadAll(() => {
 	
 	
 
-	//gameEngine.addEntity(new AcidMeadowsBackground(gameEngine));
 
 
 	

@@ -175,13 +175,20 @@ class alien{
             if (entity.BB && that.BB.collide(entity.BB)) {
                 if (entity instanceof Coin) {
                     entity.removeFromWorld = true;
-                } else if (/*(entity instanceof Scorpion) || */ entity instanceof Rock) {
-                    that.dead = true;
                 }
-                if (entity instanceof LunarRockPiece1) {
+                // } else if (/*(entity instanceof Scorpion) || */ entity instanceof Rock) {
+                //     that.dead = true;
+                // }
+                //  else if (/*(entity instanceof Scorpion) || */ entity instanceof ant) {
+                //     that.dead = true;
+                //  }
+                // if (entity instanceof LunarRockPiece1) {
+                //     //YOU WIN!!!
+                //     that.win = true;
+                // }
+                if (entity instanceof LunarRockPiece2) {
                     //YOU WIN!!!
                     that.win = true;
-                    
                 }
             }
         });
