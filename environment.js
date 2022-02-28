@@ -886,7 +886,7 @@ class Health {
 
     draw(ctx, hitpoints) {
         if (hitpoints === 14) {
-            ctx.drawImage(this.health, 10+(134*0), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 6+(134*0), 0, 110, 26, 5,0, 200, 30);
         }  else if (hitpoints === 13) {
             ctx.drawImage(this.health, 10+(134*1), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 12) {
