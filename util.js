@@ -48,11 +48,7 @@ window.requestAnimFrame = (() => {
             window.setTimeout(callback, 1000 / 60);
         });
 })();
-//add global parameter
-const PARAMS = {
-    SCALE: 3,
-    BITWIDTH: 16
-};
+
 /**
  * Returns distance from two points
  * @param {Number} p1, p2 Two objects with x and y coordinates
@@ -60,4 +56,10 @@ const PARAMS = {
  */
 const getDistance = (p1, p2) => {
     return sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+};
+
+const PARAMS = {
+    DEBUG: true,
+    SCALE: 3,
+    BITWIDTH: 16
 };

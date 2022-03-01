@@ -4,29 +4,16 @@ class GameEngine {
     constructor(options) {
         // What you will use to draw
         // Documentation: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
-        // Everything that will be updated and drawn each frame
-        this.entities = [];
         this.ctx = null;
 
-        this.surfaceWidth = null;
-        this.surfaceHeight = null;
+        // Everything that will be updated and drawn each frame
+        this.entities = [];
 
         // Information on the input
-        // Information on the input
-        // this.click = null;
-        // this.mouse = null;
-        // this.wheel = null;
-        // this.keys = {};
-
-        this.left = false;
-        this.right = false;
-        this.up = false;
-        this.down = false;
-        this.space = false;
-
-        // this.dead = null;
-
-        this.running = false;
+        this.click = null;
+        this.mouse = null;
+        this.wheel = null;
+        this.keys = {};
 
         // Options and the Details
         this.options = options || {
@@ -51,19 +38,13 @@ class GameEngine {
 
     startInput() {
         var that = this;
-
         var getXandY = function (e) {
             var x = e.clientX - that.ctx.canvas.getBoundingClientRect().left;
             var y = e.clientY - that.ctx.canvas.getBoundingClientRect().top;
 
             return { x: x, y: y, radius: 0 };
         }
-        
-//         const getXandY = e => ({
-//             x: e.clientX - this.ctx.canvas.getBoundingClientRect().left,
-//             y: e.clientY - this.ctx.canvas.getBoundingClientRect().top
-//         });
-        
+
         this.ctx.canvas.addEventListener("keydown", function(e){
             switch (e.code) {
                 case "ArrowLeft":
@@ -84,11 +65,10 @@ class GameEngine {
             }
         }, false);
 
-        this.ctx.canvas.addEventListener("keyup", function(e){
+        this.ctx.canvas.addEventListener("keyup", function(e) {
             switch (e.code) {
                 case "ArrowLeft":
-                    that.left= false;
-                    break;
+                    that.left = false;
                 case "ArrowRight":
                     that.right = false;
                     break;
@@ -103,7 +83,7 @@ class GameEngine {
                     break
             }
         }, false);
-
+        
         // this.ctx.canvas.addEventListener("mousemove", e => {
         //     if (this.options.debugging) {
         //         console.log("MOUSE_MOVE", getXandY(e));
@@ -117,8 +97,6 @@ class GameEngine {
             }
             this.click = getXandY(e);
         });
-
-        // mouse down and mouse up?
 
         // this.ctx.canvas.addEventListener("wheel", e => {
         //     if (this.options.debugging) {
@@ -135,47 +113,49 @@ class GameEngine {
         //     e.preventDefault(); // Prevent Context Menu
         //     this.rightclick = getXandY(e);
         // });
-        
-     };
 
-     addEntity(entity) {
-         this.entities.push(entity);
-     };
- 
-     draw() {
-        // Clear the whole canvas with transparent color (rgba(0, 0, 0, 0))
-        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-        for (var i = 0; i < this.entities.length; i++) {
-            this.entities[i].draw(this.ctx);
-        }
-        this.camera.draw(this.ctx);
+        this.ctx.canvas.addEventListener("keydown", event => this.keys[event.key] = true);
+        this.ctx.canvas.addEventListener("keyup", event => this.keys[event.key] = false);
     };
 
- 
-     update() {
-         let entitiesCount = this.entities.length;
- 
-         for (let i = 0; i < entitiesCount; i++) {
-             let entity = this.entities[i];
- 
-             if (!entity.removeFromWorld) {
-                 entity.update();
-             }
-         }
- 
-         this.camera.update();
- 
-         for (let i = this.entities.length - 1; i >= 0; --i) {
-             if (this.entities[i].removeFromWorld) {
-                 this.entities.splice(i, 1);
-             }
-         }
-     };
- 
-     loop() {
-         this.clockTick = this.timer.tick();
-         this.update();
-         this.draw();
-     };
+    addEntity(entity) {
+        this.entities.push(entity);
+    };
+
+    draw() {
+        // Clear the whole canvas with transparent color (rgba(0, 0, 0, 0))
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+
+        // Draw latest things first
+        for (let i = this.entities.length - 1; i >= 0; i--) {
+            this.entities[i].draw(this.ctx, this);
+        }
+    };
+
+    update() {
+        let entitiesCount = this.entities.length;
+
+        for (let i = 0; i < entitiesCount; i++) {
+            let entity = this.entities[i];
+
+            if (!entity.removeFromWorld) {
+                entity.update();
+            }
+        }
+
+        for (let i = this.entities.length - 1; i >= 0; --i) {
+            if (this.entities[i].removeFromWorld) {
+                this.entities.splice(i, 1);
+            }
+        }
+    };
+
+    loop() {
+        this.clockTick = this.timer.tick();
+        this.update();
+        this.draw();
+    };
+
 };
 
+// KV Le was here :)

@@ -1,414 +1,294 @@
 class SceneManager {
     constructor(game) {
-        this.game = game;
-        this.game.camera = this;
-        this.score = 0;
-        this.coins = 0;
-        this.lives = 1;
+        // this.game = game;
+        // this.game.camera = this;
+        // this.x = 0;
+        // this.score = 0;
+        // this.coins = 0;
+        // this.lives = 3;
 
-        this.x = 0;
-        this.title = true;
-        this.gameOver = false;
-        this.level = null;
-        this.activeElem = true;
+        // this.gameOver = false;
 
-        this.alien = new Alien(this.game, 0, 263);
+        // this.title = true;
+        // this.level = null;
+
+        // this.coinAnimation = new Animator(ASSET_MANAGER.getAsset("./sprites/coins.png"), 0, 160, 8, 8, 4, 0.2, 0, false, true);
+
+       //  this.minimap = new Minimap(this.game, 1.5 * PARAMS.BLOCKWIDTH, 3.5 * PARAMS.BLOCKWIDTH, 224 * PARAMS.SCALE);
+
+        // this.mario = new Mario(this.game, 2.5 * PARAMS.BLOCKWIDTH, 0 * PARAMS.BLOCKWIDTH);
+
+        // this.loadLevel(levelOne, 2.5 * PARAMS.BLOCKWIDTH, 13 * PARAMS.BLOCKWIDTH, false, true);
+
+        // NOTE: PLEASE USE THE FOLLOWING LINE TO TEST.
+        // this.loadLevel(levelTwo, 2.5 * PARAMS.BLOCKWIDTH, 13 * PARAMS.BLOCKWIDTH, false, true);
+    };
+
+    // clearEntities() {
+    //     this.game.entities.forEach(function (entity) {
+    //         entity.removeFromWorld = true;
+    //     });
+    // };
+
+    loadLevel(level, x, y, transition, title) {
+        // this.title = title;
+        // this.level = level;
+        // this.clearEntities();
+        // this.x = 0;
+        // this.underground = level.underground;
+        
+        // if (transition) {
+        //     this.game.addEntity(new TransitionScreen(this.game, level, x, y, title));
+        // } else {
+        //     if (level.bighills) {
+        //         for (var i = 0; i < level.bighills.length; i++) {
+        //             let hill = level.bighills[i];
+        //             this.game.addEntity(new BigHill(this.game, hill.x * PARAMS.BLOCKWIDTH, hill.y * PARAMS.BLOCKWIDTH));
+        //         }
+        //     }
+        //     if (level.hills) {
+        //         for (var i = 0; i < level.hills.length; i++) {
+        //             let hill = level.hills[i];
+        //             this.game.addEntity(new Hill(this.game, hill.x * PARAMS.BLOCKWIDTH, hill.y * PARAMS.BLOCKWIDTH));
+        //         }
+        //     }
+        //     if (level.bushes) {
+        //         for (var i = 0; i < level.bushes.length; i++) {
+        //             let bush = level.bushes[i];
+        //             this.game.addEntity(new Bush(this.game, bush.x * PARAMS.BLOCKWIDTH, bush.y * PARAMS.BLOCKWIDTH, bush.size));
+        //         }
+        //     }
+        //     if (level.clouds) {
+        //         for (var i = 0; i < level.clouds.length; i++) {
+        //             let cloud = level.clouds[i];
+        //             this.game.addEntity(new Cloud(this.game, cloud.x * PARAMS.BLOCKWIDTH, cloud.y * PARAMS.BLOCKWIDTH, cloud.size));
+        //         }
+        //     }
+        //     if (level.ground) {
+        //         for (var i = 0; i < level.ground.length; i++) {
+        //             let ground = level.ground[i];
+        //             this.game.addEntity(new Ground(this.game, ground.x * PARAMS.BLOCKWIDTH, ground.y * PARAMS.BLOCKWIDTH, ground.size * PARAMS.BLOCKWIDTH, level.underground));
+        //         }
+        //     }
+        //     if (level.bricks) {
+        //         for (var i = 0; i < level.bricks.length; i++) {
+        //             let brick = level.bricks[i];
+        //             this.game.addEntity(new Brick(this.game, brick.x * PARAMS.BLOCKWIDTH, brick.y * PARAMS.BLOCKWIDTH, brick.type, brick.prize, level.underground));
+        //         }
+        //     }
+        //     if (level.blocks) {
+        //         for (var i = 0; i < level.blocks.length; i++) {
+        //             let block = level.blocks[i];
+        //             this.game.addEntity(new Block(this.game, block.x * PARAMS.BLOCKWIDTH, block.y * PARAMS.BLOCKWIDTH, block.size * PARAMS.BLOCKWIDTH, level.underground));
+        //         }
+        //     }
+        //     if (level.tubes) {
+        //         for (var i = 0; i < level.tubes.length; i++) {
+        //             let tube = level.tubes[i];
+        //             if (!tube.side) {
+        //                 this.game.addEntity(new Tube(this.game, tube.x * PARAMS.BLOCKWIDTH, tube.y * PARAMS.BLOCKWIDTH, tube.size, tube.destination, tube.enemyType));
+        //             } else {
+        //                 this.game.addEntity(new SideTube(this.game, tube.x * PARAMS.BLOCKWIDTH, tube.y * PARAMS.BLOCKWIDTH));
+        //             }
+        //         }
+        //     }
+        //     if (level.goombas) {
+        //         for (var i = 0; i < level.goombas.length; i++) {
+        //             let goomba = level.goombas[i];
+        //             this.game.addEntity(new Goomba(this.game, goomba.x * PARAMS.BLOCKWIDTH, goomba.y * PARAMS.BLOCKWIDTH));
+        //         }
+        //     }
+        //     if (level.koopas) {
+        //         for (var i = 0; i < level.koopas.length; i++) {
+        //             let koopa = level.koopas[i];
+        //             this.game.addEntity(new Koopa(this.game, koopa.x * PARAMS.BLOCKWIDTH, koopa.y * PARAMS.BLOCKWIDTH, koopa.facing));
+        //         }
+        //     }
+        //     if (level.coins) {
+        //         for (var i = 0; i < level.coins.length; i++) {
+        //             let coin = level.coins[i];
+        //             this.game.addEntity(new Coin(this.game, coin.x * PARAMS.BLOCKWIDTH, coin.y * PARAMS.BLOCKWIDTH));
+        //         }
+        //     }
+        //     this.mario.x = x;
+        //     this.mario.y = y;
+        //     this.mario.removeFromWorld = false;
+        //     this.mario.velocity = { x: 0, y: 0 };
+
+        //     if (level.music && !this.title) {
+        //         ASSET_MANAGER.pauseBackgroundMusic();
+        //         ASSET_MANAGER.playAsset(level.music);
+        //     }
+
+        //     var that = this;
+        //     var mario = false;
+        //     this.game.entities.forEach(function(entity) {
+        //         if(that.mario === entity) mario = true;
+        //     });
+        //     if(!mario) this.game.addEntity(this.mario);
+        // }
+
+        // if (level.lifts) {
+        //     for (var i = 0; i < level.lifts.length; i++) {
+        //         let lift = level.lifts[i];
+        //         this.game.addEntity(new Lift(this.game, lift.x * PARAMS.BLOCKWIDTH, lift.y * PARAMS.BLOCKWIDTH, lift.goingDown));
+        //     }
+        // }
+        // this.mario.x = x;
+        // this.mario.y = y;
+        // //this.game.addEntity(this.mario);
 
     };
 
-    clearEntities() {
-        this.game.entities.forEach(function (entity) {
-            entity.removeFromWorld = true;
-        });
-    };
+    // updateAudio() {
+    //     var mute = document.getElementById("mute").checked;
+    //     var volume = document.getElementById("volume").value;
 
-    loadLevel2(level) {
-        this.loadlevel(level, 0, 273, false, false);
-    };
+    //     ASSET_MANAGER.muteAudio(mute);
+    //     ASSET_MANAGER.adjustVolume(volume);
 
-    loadTitle() {
-        this.loadlevel(metalDesert, 0, 0, true, true);
-    };
-
-    loadlevel(level, x, y, transition, title) {
-        this.title = title;
-        this.level = level;
-        this.clearEntities();
-
-        if (transition) {
-            this.game.addEntity(new TitleScreen(this.game));
-        } else {
-            if (level.metalDesertBackground) {
-                for (var i = 0; i < level.metalDesertBackground.length; i++) {
-                    let metalDesertBackground = level.metalDesertBackground[i];
-                    this.game.addEntity(new MetalDesertBackground(this.game, metalDesertBackground.x, metalDesertBackground.y, metalDesertBackground.width));
-                }
-            }
-            if (level.metalDesertPlanets) {
-                for (var i = 0; i < level.metalDesertPlanets.length; i++) {
-                    let metalDesertPlanets = level.metalDesertPlanets[i];
-                    this.game.addEntity(new MetalDesertPlanets(this.game, metalDesertPlanets.x, metalDesertPlanets.y));
-                }
-            }
-            if (level.metalMountains) {
-                for (var i = 0; i < level.metalMountains.length; i++) {
-                    let metalMountains = level.metalMountains[i];
-                    this.game.addEntity(new MetalMountains(this.game, metalMountains.x, metalMountains.y, metalMountains.width));
-                }
-            }
-            if (level.metalDesertPath) {
-                for (var i = 0; i < level.metalDesertPath.length; i++) {
-                    let metalDesertPath = level.metalDesertPath[i];
-                    this.game.addEntity(new MetalDesertPath(this.game, metalDesertPath.x, metalDesertPath.y, metalDesertPath.dx, metalDesertPath.dy, metalDesertPath.w, metalDesertPath.h));
-                }
-            }
-            if (level.metalDesertGround) {
-                for (var i = 0; i < level.metalDesertGround.length; i++) {
-                    let metalDesertGround = level.metalDesertGround[i];
-                    this.game.addEntity(new MetalDesertGround(this.game, metalDesertGround.x, metalDesertGround.y, metalDesertGround.dx, metalDesertGround.dy, metalDesertGround.w, metalDesertGround.h));
-                }
-            }
-            if (level.backgroundCactus1) {
-                for (var i = 0; i < level.backgroundCactus1.length; i++) {
-                    let backgroundCactus1 = level.backgroundCactus1[i];
-                    this.game.addEntity(new BackgroundCactus1(this.game, backgroundCactus1.x, backgroundCactus1.y));
-                }
-            }
-            if (level.backgroundCactus2) {
-                for (var i = 0; i < level.backgroundCactus2.length; i++) {
-                    let backgroundCactus2 = level.backgroundCactus2[i];
-                    this.game.addEntity(new BackgroundCactus2(this.game, backgroundCactus2.x, backgroundCactus2.y));
-                }
-            }
-            if (level.foregroundCactus1) {
-                for (var i = 0; i < level.foregroundCactus1.length; i++) {
-                    let foregroundCactus1 = level.foregroundCactus1[i];
-                    this.game.addEntity(new ForegroundCactus1(this.game, foregroundCactus1.x, foregroundCactus1.y));
-                }
-            }
-            if (level.foregroundCactus2) {
-                for (var i = 0; i < level.foregroundCactus2.length; i++) {
-                    let foregroundCactus2 = level.foregroundCactus2[i];
-                    this.game.addEntity(new ForegroundCactus2(this.game, foregroundCactus2.x, foregroundCactus2.y));
-                }
-            } 
-            if (level.rock) {
-                for (var i = 0; i < level.rock.length; i++) {
-                    let rock = level.rock[i];
-                    this.game.addEntity(new Rock(this.game, rock.x, rock.y));
-                }
-            }
-            if (level.scorpion) {
-                for (var i = 0; i < level.scorpion.length; i++) {
-                    let scorpion = level.scorpion[i];
-                    this.game.addEntity(new Scorpion(this.game, scorpion.x, scorpion.y));
-                }
-            }
-            if (level.acidMeadowsBackground) {
-                for (var i = 0; i < level.acidMeadowsBackground.length; i++) {
-                    let acidMeadowsBackground = level.acidMeadowsBackground[i];
-                    this.game.addEntity(new AcidMeadowsBackground(this.game, acidMeadowsBackground.x, acidMeadowsBackground.y));
-                }
-            }
-            if (level.acidMeadowsPath) {
-                for (var i = 0; i < level.acidMeadowsPath.length; i++) {
-                    let acidMeadowsPath = level.acidMeadowsPath[i];
-                    this.game.addEntity(new AcidMeadowsPath(this.game, acidMeadowsPath.x, acidMeadowsPath.y));
-                }
-            }
-            if (level.acidMeadowsPlanets) {
-                for (var i = 0; i < level.acidMeadowsPlanets.length; i++) {
-                    let acidMeadowsPlanets = level.acidMeadowsPlanets[i];
-                    this.game.addEntity(new AcidMeadowsPlanets(this.game, acidMeadowsPlanets.x, acidMeadowsPlanets.y));
-                }
-            }
-            if (level.rainClouds1) {
-                for (var i = 0; i < level.rainClouds1.length; i++) {
-                    let rainClouds1 = level.rainClouds1[i];
-                    this.game.addEntity(new RainClouds1(this.game, rainClouds1.x, rainClouds1.y));
-                }
-            }
-            if (level.rainClouds2) {
-                for (var i = 0; i < level.rainClouds2.length; i++) {
-                    let rainClouds2 = level.rainClouds2[i];
-                    this.game.addEntity(new RainClouds2(this.game, rainClouds2.x, rainClouds2.y));
-                }
-            }
-            if (level.mushroom1) {
-                for (var i = 0; i < level.mushroom1.length; i++) {
-                    let mushroom1 = level.mushroom1[i];
-                    this.game.addEntity(new Mushroom1(this.game, mushroom1.x, mushroom1.y));
-                }
-            }
-            if (level.mushroom2) {
-                for (var i = 0; i < level.mushroom2.length; i++) {
-                    let mushroom2 = level.mushroom2[i];
-                    this.game.addEntity(new Mushroom2(this.game, mushroom2.x, mushroom2.y));
-                }
-            }
-            if (level.ant) {
-                for (var i = 0; i < level.ant.length; i++) {
-                    let ant = level.ant[i];
-                    this.game.addEntity(new Ant(this.game, ant.x, ant.y));
-                }
-            }
-            if (level.lavaLandBackground) {
-                for (var i = 0; i < level.lavaLandBackground.length; i++) {
-                    let lavaLandBackground = level.lavaLandBackground[i];
-                    this.game.addEntity(new LavaLandBackground(this.game, lavaLandBackground.x, lavaLandBackground.y));
-                }
-            }
-            if (level.lavaLandHorizontal) {
-                for (var i = 0; i < level.lavaLandHorizontal.length; i++) {
-                    let lavaLandHorizontal = level.lavaLandHorizontal[i];
-                    this.game.addEntity(new LavaLandHorizontal(this.game, lavaLandHorizontal.x, lavaLandHorizontal.y));
-                }
-            }
-            if (level.lavaLandVertical) {
-                for (var i = 0; i < level.lavaLandVertical.length; i++) {
-                    let lavaLandVertical = level.lavaLandVertical[i];
-                    this.game.addEntity(new LavaLandVertical(this.game, lavaLandVertical.x, lavaLandVertical.y));
-                }
-            }
-            if (level.lavaLandSquare) {
-                for (var i = 0; i < level.lavaLandSquare.length; i++) {
-                    let lavaLandSquare = level.lavaLandSquare[i];
-                    this.game.addEntity(new LavaLandSquare(this.game, lavaLandSquare.x, lavaLandSquare.y));
-                }
-            }
-            if (level.diamond1) {
-                for (var i = 0; i < level.diamond1.length; i++) {
-                    let diamond1 = level.diamond1[i];
-                    this.game.addEntity(new Diamond1(this.game, diamond1.x, diamond1.y));
-                }
-            }
-            if (level.diamond2) {
-                for (var i = 0; i < level.diamond2.length; i++) {
-                    let diamond2 = level.diamond2[i];
-                    this.game.addEntity(new Diamond2(this.game, diamond2.x, diamond2.y));
-                }
-            }
-            if (level.diamond3) {
-                for (var i = 0; i < level.diamond3.length; i++) {
-                    let diamond3 = level.metalMountains[i];
-                    this.game.addEntity(new Diamond3(this.game, diamond3.x, diamond3.y));
-                }
-            }
-            if (level.diamond4) {
-                for (var i = 0; i < level.diamond4.length; i++) {
-                    let diamond4 = level.diamond4[i];
-                    this.game.addEntity(new Diamond4(this.game, diamond4.x, diamond4.y));
-                }
-            }
-            if (level.stepShort) {
-                for (var i = 0; i < level.stepShort.length; i++) {
-                    let stepShort = level.stepShort[i];
-                    this.game.addEntity(new StepShort(this.game, stepShort.x, stepShort.y));
-                }
-            }
-            if (level.stepMedium) {
-                for (var i = 0; i < level.stepMedium.length; i++) {
-                    let stepMedium = level.stepMedium[i];
-                    this.game.addEntity(new StepMedium(this.game, stepMedium.x, stepMedium.y));
-                }
-            }
-            if (level.stepLarge) {
-                for (var i = 0; i < level.stepLarge.length; i++) {
-                    let stepLarge = level.stepLarge[i];
-                    this.game.addEntity(new StepLarge(this.game, stepLarge.x, stepLarge.y));
-                }
-            }
-            if (level.bush1) {
-                for (var i = 0; i < level.bush1.length; i++) {
-                    let bush1 = level.bush1[i];
-                    this.game.addEntity(new Bush1(this.game, bush1.x, bush1.y));
-                }
-            }
-            if (level.bush2) {
-                for (var i = 0; i < level.bush2.length; i++) {
-                    let bush2 = level.bush2[i];
-                    this.game.addEntity(new Bush2(this.game, bush2.x, bush2.y));
-                }
-            }
-            if (level.cloud1) {
-                for (var i = 0; i < level.cloud1.length; i++) {
-                    let cloud1 = level.cloud1[i];
-                    this.game.addEntity(new Cloud1(this.game, cloud1.x, cloud1.y));
-                }
-            }
-            if (level.cloud2) {
-                for (var i = 0; i < level.cloud2.length; i++) {
-                    let cloud2 = level.cloud2[i];
-                    this.game.addEntity(new Cloud2(this.game, cloud2.x, cloud2.y));
-                }
-            }
-            if (level.cloud3) {
-                for (var i = 0; i < level.cloud3.length; i++) {
-                    let cloud3 = level.cloud3[i];
-                    this.game.addEntity(new Cloud3(this.game, cloud3.x, cloud3.y));
-                }
-            }
-            if (level.cloud4) {
-                for (var i = 0; i < level.cloud4.length; i++) {
-                    let cloud4 = level.cloud4[i];
-                    this.game.addEntity(new Cloud4(this.game, cloud4.x, cloud4.y));
-                }
-            }
-            if (level.cloud5) {
-                for (var i = 0; i < level.cloud5.length; i++) {
-                    let cloud5 = level.cloud5[i];
-                    this.game.addEntity(new Cloud5(this.game, cloud5.x, cloud5.y));
-                }
-            }
-            if (level.cloud6) {
-                for (var i = 0; i < level.cloud6.length; i++) {
-                    let cloud6 = level.cloud6[i];
-                    this.game.addEntity(new Cloud6(this.game, cloud6.x, cloud6.y));
-                }
-            }
-            if (level.cloud7) {
-                for (var i = 0; i < level.cloud7.length; i++) {
-                    let cloud7 = level.cloud7[i];
-                    this.game.addEntity(new Cloud7(this.game, cloud7.x, cloud7.y));
-                }
-            }
-            if (level.cloud8) {
-                for (var i = 0; i < level.cloud8.length; i++) {
-                    let cloud8 = level.cloud8[i];
-                    this.game.addEntity(new Cloud1(this.game, cloud8.x, cloud8.y));
-                }
-            }
-            if (level.sun) {
-                for (var i = 0; i < level.sun.length; i++) {
-                    let sun = level.sun[i];
-                    this.game.addEntity(new Sun(this.game, sun.x, sun.y));
-                }
-            }
-            if (level.monster) {
-                for (var i = 0; i < level.monster.length; i++) {
-                    let monster = level.monster[i];
-                    this.game.addEntity(new Monster(this.game, monster.x, monster.y));
-                }
-            }
-            if (level.coins) {
-                for (var i = 0; i < level.coins.length; i++) {
-                    let coins = level.coins[i];
-                    this.game.addEntity(new Coin(this.game, coins.x, coins.y));
-                }
-            }
-            if (level.ammopack) {
-                for (var i = 0; i < level.ammopack.length; i++) {
-                    let ammopack = level.ammopack[i];
-                    this.game.addEntity(new AmmoPack(this.game, ammopack.x, ammopack.y));
-                }
-            }
-            if (level.lunarRockPiece1) {
-                for (var i = 0; i < level.lunarRockPiece1.length; i++) {
-                    let lunarRockPiece1 = level.lunarRockPiece1[i];
-                    this.game.addEntity(new LunarRockPieces(this.game, lunarRockPiece1.x, lunarRockPiece1.y, lunarRockPiece1.level));
-                }
-            }
-            if (level.lunarRockPiece2) {
-                for (var i = 0; i < level.lunarRockPiece2.length; i++) {
-                    let lunarRockPiece2 = level.lunarRockPiece2[i];
-                    this.game.addEntity(new LunarRockPieces(this.game, lunarRockPiece2.x, lunarRockPiece2.y, lunarRockPiece2.level));
-                }
-            }
-            if (level.lunarRockPiece3) {
-                for (var i = 0; i < level.lunarRockPiece3.length; i++) {
-                    let lunarRockPiece3 = level.lunarRockPiece3[i];
-                    this.game.addEntity(new LunarRockPieces(this.game, lunarRockPiece3.x, lunarRockPiece3.y, lunarRockPiece3.level));
-                }
-            }
-            if (level.lunarRockPiece4) {
-                for (var i = 0; i < level.lunarRockPiece4.length; i++) {
-                    let lunarRockPiece4 = level.lunarRockPiece4[i];
-                    this.game.addEntity(new LunarRockPieces(this.game, lunarRockPiece4.x, lunarRockPiece4.y, lunarRockPiece4.level));
-                }
-            }
-            this.alien.x = x;
-            this.alien.y = y;
-            this.alien.removeFromWorld = false;
-
-            // var that = this;
-            var alien = false;
-            // this.game.entities.forEach(function(entity) {
-            //     if(that.mario === entity) mario = true;
-            // });
-            if(!alien) this.game.addEntity(this.alien);
-        }
-
-        this.alien.x = x;
-        this.alien.y = y;
-    };
+    // };
 
     update() {
-        if (this.title && this.game.click && this.activeElem) {
-            if(this.game.click.y > 146 && this.game.click.y < 280 && this.game.click.x > 338 && this.game.click.x < 623) {
-                this.loadlevel(metalDesert, 0, 273, false, false);
-                // this.alien = new Alien(this.game, 0, 263);
+        PARAMS.DEBUG = document.getElementById("debug").checked;
+
+        this.updateAudio();
+
+        if (this.title && this.game.click) {
+            if (this.game.click && this.game.click.y > 9 * PARAMS.BLOCKWIDTH && this.game.click.y < 9.5 * PARAMS.BLOCKWIDTH) {
+                this.title = false;
+                this.mario = new Mario(this.game, 2.5 * PARAMS.BLOCKWIDTH, 0 * PARAMS.BLOCKWIDTH);
+                this.loadLevel(levelOne, 2.5 * PARAMS.BLOCKWIDTH, 0 * PARAMS.BLOCKWIDTH, true);
             }
-            if (this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {
-                console.log("clicked to find out about the game");
+            if (this.game.click && this.game.click.y > 10 * PARAMS.BLOCKWIDTH && this.game.click.y < 10.5 * PARAMS.BLOCKWIDTH) {
+                this.title = false;
+                this.mario = new Mario(this.game, 2.5 * PARAMS.BLOCKWIDTH, 0 * PARAMS.BLOCKWIDTH, true);
+                this.loadLevel(levelOne, 2.5 * PARAMS.BLOCKWIDTH, 0 * PARAMS.BLOCKWIDTH, true);
             }
         }
-
 
         if (this.gameOver) {
             this.gameOver = false;
-            this.lives = 1;
+            this.lives = 3;
             this.score = 0;
             this.coins = 0;
+            var x = 2.5 * PARAMS.BLOCKWIDTH;
+            var y = 13 * PARAMS.BLOCKWIDTH;
+            this.mario = new Mario(this.game, x, y);
 
-            // this.clearEntities();
+            this.clearEntities();
 
-            this.game.addEntity(new TitleScreen(this.game));
-        } 
+            this.game.addEntity(new TransitionScreen(this.game, levelOne, x, y, true));
+        }
 
-        let midpoint = (960 / 2) - (98 / 2);
+        let midpoint = PARAMS.CANVAS_WIDTH/2 - PARAMS.BLOCKWIDTH / 2;
 
-        this.x = this.alien.x - midpoint;
+        if (this.x < this.mario.x - midpoint) this.x = this.mario.x - midpoint;
+
+        // NOTE: THIS FOLLOWING CODE HAS A BUG WHERE CANVAS COLOR WON'T CHANGE BACK TO BLUE.
+        var canvas = document.getElementById("gameWorld");
+        if (this.underground) {
+            canvas.style.backgroundColor = "black";
+        } else {
+            canvas.style.backgroundColor = "#049cd8";
+        }
+    };
+
+    addCoin() {
+        // if (this.coins++ === 100) {
+        //     this.coins = 0;
+        //     this.lives++;
+        // }
+    };
+
+    draw(ctx) {
+        ctx.font = PARAMS.BLOCKWIDTH / 2 + 'px "Press Start 2P"';
+        ctx.fillStyle = "White";
+
+        ctx.fillStyle = "White";
+        ctx.fillText("MARRIOTT", 1.5 * PARAMS.BLOCKWIDTH, 1 * PARAMS.BLOCKWIDTH);
+        ctx.fillText((this.score + "").padStart(8,"0"), 1.5 * PARAMS.BLOCKWIDTH, 1.5 * PARAMS.BLOCKWIDTH);
+        ctx.fillText("x" + (this.coins < 10 ? "0" : "") + this.coins, 6.5 * PARAMS.BLOCKWIDTH, 1.5 * PARAMS.BLOCKWIDTH);
+        ctx.fillText("WORLD", 9 * PARAMS.BLOCKWIDTH, 1 * PARAMS.BLOCKWIDTH);
+        ctx.fillText(this.level.label, 9.5 * PARAMS.BLOCKWIDTH, 1.5 * PARAMS.BLOCKWIDTH);
+        ctx.fillText("TIME", 12.5 * PARAMS.BLOCKWIDTH, 1 * PARAMS.BLOCKWIDTH);
+        ctx.fillText("400", 13 * PARAMS.BLOCKWIDTH, 1.5 * PARAMS.BLOCKWIDTH);
+
+        if (this.title) {
+            var width = 176;
+            var height = 88;
+            ctx.drawImage(ASSET_MANAGER.getAsset("./sprites/title.png"), 2.5 * PARAMS.BLOCKWIDTH, 2 * PARAMS.BLOCKWIDTH, width * PARAMS.SCALE, height * PARAMS.SCALE);
+            ctx.fillStyle = this.game.mouse && this.game.mouse.y > 9 * PARAMS.BLOCKWIDTH && this.game.mouse.y < 9.5 * PARAMS.BLOCKWIDTH ? "Grey" : "White";
+            ctx.fillText("MARIO", 6.75 * PARAMS.BLOCKWIDTH, 9.5 * PARAMS.BLOCKWIDTH);
+            ctx.fillStyle = this.game.mouse && this.game.mouse.y > 10 * PARAMS.BLOCKWIDTH && this.game.mouse.y < 10.5 * PARAMS.BLOCKWIDTH ? "Grey" : "White";
+            ctx.fillText("LUIGI", 6.75 * PARAMS.BLOCKWIDTH, 10.5 * PARAMS.BLOCKWIDTH);
+        }
+
+        this.coinAnimation.drawFrame(this.game.clockTick, ctx, 6 * PARAMS.BLOCKWIDTH, 1 * PARAMS.BLOCKWIDTH, 3);
+
+        if (PARAMS.DEBUG) {
+            let xV = "xV=" + Math.floor(this.game.mario.velocity.x);
+            let yV = "yV=" + Math.floor(this.game.mario.velocity.y);
+            ctx.fillText(xV, 1.5 * PARAMS.BLOCKWIDTH, 2.5 * PARAMS.BLOCKWIDTH);
+            ctx.fillText(yV, 1.5 * PARAMS.BLOCKWIDTH, 3 * PARAMS.BLOCKWIDTH);
+
+            ctx.translate(0, -10); // hack to move elements up by 10 pixels instead of adding -10 to all y coordinates below
+            ctx.strokeStyle = "White";
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = this.game.left ? "White" : "Grey";
+            ctx.fillStyle = ctx.strokeStyle;
+            ctx.strokeRect(6 * PARAMS.BLOCKWIDTH - 2, 2.5 * PARAMS.BLOCKWIDTH - 2, 0.5 * PARAMS.BLOCKWIDTH + 2, 0.5 * PARAMS.BLOCKWIDTH + 2);
+            ctx.fillText("L", 6 * PARAMS.BLOCKWIDTH, 3 * PARAMS.BLOCKWIDTH);
+            ctx.strokeStyle = this.game.down ? "White" : "Grey";
+            ctx.fillStyle = ctx.strokeStyle;
+            ctx.strokeRect(6.5 * PARAMS.BLOCKWIDTH, 3 * PARAMS.BLOCKWIDTH, 0.5 * PARAMS.BLOCKWIDTH + 2, 0.5 * PARAMS.BLOCKWIDTH + 2);
+            ctx.fillText("D", 6.5 * PARAMS.BLOCKWIDTH + 2, 3.5 * PARAMS.BLOCKWIDTH + 2);
+            ctx.strokeStyle = this.game.up ? "White" : "Grey";
+            ctx.fillStyle = ctx.strokeStyle;
+            ctx.strokeRect(6.5 * PARAMS.BLOCKWIDTH, 2 * PARAMS.BLOCKWIDTH - 4, 0.5 * PARAMS.BLOCKWIDTH + 2, 0.5 * PARAMS.BLOCKWIDTH + 2);
+            ctx.fillText("U", 6.5 * PARAMS.BLOCKWIDTH + 2, 2.5 * PARAMS.BLOCKWIDTH - 2);
+            ctx.strokeStyle = this.game.right ? "White" : "Grey";
+            ctx.fillStyle = ctx.strokeStyle;
+            ctx.strokeRect(7 * PARAMS.BLOCKWIDTH + 2, 2.5 * PARAMS.BLOCKWIDTH - 2, 0.5 * PARAMS.BLOCKWIDTH + 2, 0.5 * PARAMS.BLOCKWIDTH + 2);
+            ctx.fillText("R", 7 * PARAMS.BLOCKWIDTH + 4, 3 * PARAMS.BLOCKWIDTH);
+
+            ctx.strokeStyle = this.game.A ? "White" : "Grey";
+            ctx.fillStyle = ctx.strokeStyle;
+            ctx.beginPath();
+            ctx.arc(8.25 * PARAMS.BLOCKWIDTH + 2, 2.75 * PARAMS.BLOCKWIDTH, 0.25 * PARAMS.BLOCKWIDTH + 4, 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fillText("A", 8 * PARAMS.BLOCKWIDTH + 4, 3 * PARAMS.BLOCKWIDTH);
+            ctx.strokeStyle = this.game.B ? "White" : "Grey";
+            ctx.fillStyle = ctx.strokeStyle;
+            ctx.beginPath();
+            ctx.arc(9 * PARAMS.BLOCKWIDTH + 2, 2.75 * PARAMS.BLOCKWIDTH, 0.25 * PARAMS.BLOCKWIDTH + 4, 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fillText("B", 8.75 * PARAMS.BLOCKWIDTH + 4, 3 * PARAMS.BLOCKWIDTH);
+
+            ctx.translate(0, 10);
+            ctx.strokeStyle = "White";
+            ctx.fillStyle = ctx.strokeStyle;
+
+            this.minimap.draw(ctx);
+        }
+    };
+};
+
+
+class Minimap {
+    constructor(game, x, y, w) {
+        Object.assign(this, { game, x, y, w });
+    };
+
+    update() {
 
     };
 
     draw(ctx) {
-        if (this.title) {
-            this.x = 0;
-            this.button_x = 337.5;
-            this.button_y = 145.5;
-            this.buttons = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AdditionalAssets_StartMenu.png");
-            this.selected = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AdditionalAssets_StartMenu_Selected.png");
-
-            ctx.drawImage(ASSET_MANAGER.getAsset("./Sprites_and_Assets/titlescreen.png"), 0, 0);
-            ctx.drawImage(this.buttons, 0, 0, 285, 135, this.button_x, this.button_y, 285, 135);
-            ctx.drawImage(this.buttons, 0, 135, 285, 135, this.button_x, this.button_y + 135, 285, 135);
-
-            if(this.game.click) {
-                if(this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {
-                    this.activeElem = false;
-                    // ctx.lineWidth = 90;
-                    ctx.fillStyle = "#660066";
-                    ctx.fillRect(297.5, 25, 367, 500);
-                    ctx.strokeStyle = "gray";
-                    ctx.lineWidth = 5;
-                    ctx.strokeRect(297.5, 25, 367, 500);
-                    ctx.lineWidth = 2;
-                    ctx.strokeStyle = "#660000";
-                    ctx.strokeRect(297.5, 25, 367, 500);
-                    ctx.fillStyle = "black";
-                    ctx.fillRect(642.5, 30.5, 15, 15);
-                    ctx.fillStyle = "#666600";
-                    ctx.fillRect(644.75, 32.5, 10, 10);
-                    ctx.fillStyle = "black";
-                    ctx.font = "15px Arial";
-                    ctx.fillText("X", 644.75, 42.5);
-                    if (this.game.click.y > 22.5 && this.game.click.y < 42.5 
-                        && this.game.click.x > 634.75 && this.game.click.x < 654.75) {
-                        this.activeElem = true;
-                    }
-                }
-            }            
+        ctx.strokeStyle = "Black";
+        ctx.strokeRect(this.x, this.y, this.w, PARAMS.BLOCKWIDTH);
+        for (var i = 0; i < this.game.entities.length; i++) {
+            this.game.entities[i].drawMinimap(ctx, this.x, this.y);
         }
     };
-
-}
+};
