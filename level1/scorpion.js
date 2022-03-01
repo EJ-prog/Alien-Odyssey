@@ -1,14 +1,14 @@
 class Scorpion {
-    constructor(game) {
-        this.game = game;
+    constructor(game, x, y) {
+        Object.assign(this, {game, x, y});
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/Scorpion.png");
-        this.animator = new Animator(this.spritesheet, 0, 0, 170, 100, 4, 0.6);
-        this.x = 300;
-        this.y = 365;
+        this.animator = new Animator(this.spritesheet, 0, 0, 170, 100, 4, 0.6, 0, false, true);
+        // this.x = 300;
+        // this.y = 365;
         this.width = 170;
         this.height = 100;
         this.reverse = false;
-        //this.BB = new BoundingBox(300, 365, 170, 100);
+       // this.BB = new BoundingBox(300, 365, 170, 100);
         this.speed = 50;
         this.updateBB();
     };
@@ -29,7 +29,7 @@ class Scorpion {
         var that = this;
         this.game.entities.forEach(function (entity) {
             if (entity.BB && that.BB.collide(entity.BB)) {
-                if ((entity instanceof cactus2) || (entity instanceof cactus1)){ 
+                if ((entity instanceof ForegroundCactus2) || (entity instanceof ForegroundCactus1)){ 
                     that.speed = - that.speed;
                     if(that.reverse == true){
                         that.reverse = false;
@@ -57,19 +57,19 @@ class Scorpion {
 
         if(this.reverse){
             ctx.strokestyle = "Red";
-            ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+           // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
             ctx.save();
             ctx.scale(-1,1)
-            this.animator.drawFrame(this.game.clockTick, ctx, -this.x - (this.width) + 10, this.y);
+            this.animator.drawFrame(this.game.clockTick, ctx, -this.x - (this.width) + 10 + this.game.camera.x, this.y);
             ctx.restore();
         }
         
         else{
             ctx.strokestyle = "Red";
-            ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+          //  ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
             ctx.save();
             ctx.scale(1,1)
-            this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
+            this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
             ctx.restore();
         }
     };

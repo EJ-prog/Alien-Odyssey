@@ -1,9 +1,10 @@
-class ant {
-    constructor(game){
-        this.game = game;
+class Ant {
+    constructor(game, x, y){
+        Object.assign(this, {game, x, y});
+        // this.game = game;
         this.animator = new Animator(ASSET_MANAGER.getAsset("./Sprites_and_Assets/ant.png"), 0, 0, 170, 85, 4, 0.2);
-        this.x = 600;
-        this.y = 365;
+        // this.x = 600;
+        // this.y = 365;
         this.speed = 70;
     };
 
