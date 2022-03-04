@@ -1,25 +1,23 @@
-class alien{
-    constructor(game) {
-        this.game = game;
+class Alien{
+    constructor(game, x, y) {
+        Object.assign(this, {game, x, y});
+        // this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/character-sprites-player-alien-R.png");
         
-        // this.animator = new Animator(this.spritesheet, 640, 175, 98, 210, 2, 0.5); //duck
-        // this.animator = new Animator(this.spritesheet, 4, 810, 120, 225, 6, 0.2); //run arrow Left & right
-        // this.animator = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5); //jump arrow up
-        // this.animator = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6); //death
-        // this.animator = new Animator(this.spritesheet, 850, 810, 151, 225, 2, 0.4); //stand and shoot space
-
+        this.game.alien = this;
         // this.animator = new Animator(this.spritesheet, 21, 397, 155, 207, 7, 0.2); //run and shoot arrow left & right combine space
         // this.animator = new Animator(this.spritesheet, 5, 607, 167, 210, 7, 0.2); //holster: after 30 secs of idle, & before jumping
         
-        this.x = 300;
-        this.y = 263;
+        // this.x = 300; 
+        // this.y = 263;
         this.speed = 120;
         //Alien state variablles.
         this.size = 0; //currently Alien has only one size so size is 0. It can be update later in progress.
         this.facing = 0; //0= right, 1=left.
         this.state = 0; //0= idle, 1= running, 2= jumping/falling, 3= ducking, 4=shooting.
         this.dead = false;
+        this.win = false;
+        this.hitpoints = 12;
 
         //Alien's animations
         this.animator = [];
@@ -28,8 +26,11 @@ class alien{
         this.velocity = {x:0, y:0}
         this.fallAcc = 562.5;
 
-
-        this.laser = new Laser(gameEngine);
+        this.laser = new Laser(this.game, this.x*1.40, this.y*1.2);
+        this.healthbar = new Health(this.game);
+        this.ammobar = new Ammo(this.game);
+        // this.prevx = this.x*1.40;
+        this.updateBB();
 
     };
 
@@ -38,12 +39,9 @@ class alien{
             this.animator.push([]);
             for(var j = 0; j< 2; j++){ // could be update the condition when we update the size of Alien.
                 this.animator[i].push([]);
-                // for(var k = 0; k< 2; k++){ //two direction Left and Right.
-                //     this.animations[i][j].push([]);
-                // }
             }
         }
-        
+
         //State idle [0]
         //facing right=0
         this.animator[0][0]= new Animator(this.spritesheet, 640, 175, 98, 210, 1, 0.35, 14, false, true);
@@ -64,9 +62,9 @@ class alien{
 
         //state jumping [3]
         //facing right=0
-        this.animator[3][0] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, false, true);
+        this.animator[3][0] = new Animator(this.spritesheet, 21, 107, 148, 215, 4, 0.2, 14, false, true);
         //facing left =1
-        this.animator[3][1] = new Animator(this.spritesheet, 21, 107, 148, 266, 4, 0.5, 14, true, true);
+        this.animator[3][1] = new Animator(this.spritesheet, 21, 107, 148, 215, 4, 0.2, 14, true, true);
 
         //state standing and shooting [4]
         //facing right = 0
@@ -81,18 +79,15 @@ class alien{
         //facing left = 1
         this.animator[5][1] = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, true, false);
 
-    };
-  
-        update() {
-        // if(this.y < 500) {
-        //     this.y += this.speed*this.game.clockTick;
-        // } else if (this.x < 1024) {
-        //     this.x += this.speed*this.game.clockTick;
-        // } else {
-        //     this.x = 0;
-        //     this.y = 0;
-        // }
+    }
 
+    updateBB() {
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x, this.y, 85, 200);
+    };
+
+    update() {
+        
         const TICK = this.game.clockTick;
         //heavily get inspired by SUper Mario by Chris. We will need modify it later when we test the character.
         const MIN_RUN = 10;
@@ -114,123 +109,187 @@ class alien{
             this.y += this.velocity.y * TICK;
         } else {
 
-            // if (this.state < 4){ //five state(idle, running, ducking, jumping, shooting)
-            //     if (Math.abs(this.velocity.x) < MIN_RUN){ //slower than run swicth the state to idle.
-            //         this.velocity.x =0;
-            //         this.state = 0;
-            //         if (this.game.left){
-            //             this.velocity.x -=  MIN_RUN;
-            //             this.facing = 0;
-            //             this.state = 1;
-            //         }
-            //         if (this.game.right){
-            //             this.velocity.x += MIN_RUN;
-            //             this.facing = 1;
-            //             this.state = 1;
-            //         }
-
-            //     }
-            // }
-
             if (this.state < 5){ //five state(idle, running, ducking, jumping, shooting)
                 
-                if ((this.game.right && !this.game.left && !this.game.down && !this.game.down)) {
+                if ((this.game.right && !this.game.left && !this.game.down && !this.game.down && !this.game.space)) { //running to the right
                     this.state = 1;
                     this.facing = 0;
                     this.velocity.x += ACC_RUN * TICK;
-                
-                } else if (this.game.left && !this.game.right && !this.game.down && !this.game.down) {
+                } else if (this.game.left && !this.game.right && !this.game.down && !this.game.down) { //running to the left
                     this.state = 1;
                     this.facing = 1;
                     this.velocity.x -= ACC_RUN * TICK;
-                } else if ( this.game.down && !this.game.up && !this.game.right && !this.game.left) {
+                } else if ( this.game.down && !this.game.up && !this.game.right && !this.game.left) { //duck while facing left or right
                     this.state = 2;
                     this.velocity.x = 0;
-                } else if ( this.game.space && !this.game.up && !this.game.down) {
+                } else if ( this.game.space && !this.game.up && !this.game.down) { //jump while facing left or right
+                    if (this.game.left && !this.game.right) { //jump and move to the left
+                        this.velocity.x -= ACC_RUN * TICK;
+                    } else if (this.game.right && !this.game.left) { //jump and move to the right
+                        this.velocity.x += ACC_RUN * TICK;
+                    }
                     this.state = 3;
-                    if (this.game.left && !this.game.right) {
-                        this.velocity.x = 0;
-                    }
-                    if (this.game.right && !this.game.left) {
-                        this.velocity.x = 0;
-                    }
-                    this.velocity.y = 0;
-                } else if ( this.game.up && !this.game.down && !this.game.right && !this.game.left) {
+                    // }
+                    // this.velocity.y -= 5;
+                    // this.updateBB();
+                } else if ( this.game.up && !this.game.down && !this.game.right && !this.game.left && !this.game.space) { //shoot while facing left or right
                     this.state = 4;
                     this.velocity.x = 0;
-                } else {
+                } else { //idle while facing left or right
                     this.velocity.x = 0;
-                    this.state = 0; 
+                    this.state = 0;
                 }
             }
 
             // update position
-            this.x += this.velocity.x * TICK ;
-            this.y += this.velocity.y * TICK ;
-            this.BB = new BoundingBox(this.x, this.y, 98, 210);
+            this.x += this.velocity.x * TICK;
+            this.y += this.velocity.y * TICK;
+            this.laser.update();
+            this.updateBB();
             
         }
 
         var that = this;
         this.game.entities.forEach(function (entity) {
             if (entity.BB && that.BB.collide(entity.BB)) {
+                if (entity instanceof LunarRockPieces) {
+                    entity.removeFromWorld = true;
+                    //YOU WIN!!!
+                    that.win = true;
+                    // if (entity.level === 1) {
+                    //     that.game.camera.loadLevel2(acidMeadows);
+                    // } else if (entity.level === 2) {
+                    //     that.game.camera.loadLevel2(lavaLand);
+                    // } else if (entity.level === 3) {
+                    //     that.game.camera.loadLevel2(monsterForest);
+                    // }
+                } 
                 if (entity instanceof Coin) {
                     entity.removeFromWorld = true;
-                } else if (entity instanceof Scorpion){// || entity instanceof Rock) {
+                } else if (entity instanceof Scorpion || entity instanceof Rock) {
                     that.dead = true;
+
+                } else if (entity instanceof ForegroundCactus1 || entity instanceof ForegroundCactus2) {
+                    if (!that.game.space) {
+                        if (that.lastBB.bottom >= entity.BB.top) {
+                            that.velocity.y = 0;
+                        }
+                        if ((that.lastBB.left >= entity.BB.right || that.lastBB.right >= entity.BB.left)) {
+                            that.velocity.x = 0;
+                        }
+                        // if (that.lastBB.left >= entity.BB.right) {
+                        //     that.velocity.x = 0;
+                        // }
+                        if ((that.game.left || that.game.right) 
+                            && that.lastBB.right >= entity.BB.right 
+                            && that.lastBB.bottom <= entity.BB.bottom) {
+                            that.velocity.y = 100;
+                        }
+                    } else{
+                        that.velocity.y = -100;
+                    }
+                } else if (entity instanceof MetalDesertPath) {
+                    if (that.game.space) {
+                        that.velocity.y = -100;
+                    }
+                } else if (entity instanceof MetalDesertGround) {
+                    if (!that.game.space) {
+                        that.velocity.y = 0;
+                    }
+                } else {
+                    if (!that.game.space & that.velocity.y < 0) {
+                        that.velocity.y = 100;
+                    }
                 }
             }
         });
 
-            if (this.state < 4){ //five state(idle, running, ducking, jumping, shooting)
-                if (Math.abs(this.velocity.x) < MIN_RUN){ //slower than run swicth the state to idle.
-                    this.velocity.x =0;
-                    this.state = 0;
-                    if (this.game.left){
-                        this.velocity.x -=  MIN_RUN;
-                    }
-                    if (this.game.right){
-                        this.velocity.x += MIN_RUN;
-                    }
-
-                }
+        if (this.game.up) {
+            if (this.facing === 0) {
+                this.game.addEntity(new Laser(this.game, this.x + 125, this.y + 70, this.facing));
+            } else if (this.facing === 1) {
+                this.game.addEntity(new Laser(this.game, this.x - 75, this.y + 70, this.facing));
             }
-            
         }
-
-        // update position
-        this.x += this.velocity.x * TICK ;
-        this.y += this.velocity.y * TICK ;
+        
     };
 
     draw(ctx) {
 
         // this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
         if (this.facing == 0) {
+            ctx.save();
             ctx.scale(1, 1);
-            if (this.dead){
-                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
+            if (this.dead) {
+                this.healthbar.draw(ctx, 0);
+                this.ammobar.draw(ctx, 0);
+                ctx.font = "bold 50px Verdana";
+                ctx.fillText("YOU LOSE!", 50, 500);
+                ctx.font = "20px Verdana";
+                ctx.fillText("Refresh to play again", 60, 550);
+                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
+                const context = canvas.getContext('2d');
+                context.clearRect(0, 0, canvas.width, canvas.height);
             } else if (this.state === 3) {
-                this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y - 70);
+                this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y - 20);
+                // var frame = this.animator[3][this.facing].currentFrame();
             } else {
-                this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x, this.y);
-                if (this.state === 4) {
-                    this.laser.draw(ctx, false);
-                }
+                this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
+                // if (this.state === 4) {
+                //     this.laser.draw(ctx, false);
+                // }
             }
+            ctx.restore();
         }
         if (this.facing == 1) {
+            ctx.save();
             ctx.scale(-1, 1);
             if (this.dead){
-                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x , this.y);
+                ctx.font = "bold 50px Verdana";
+                ctx.fillText("YOU LOSE!", 50, 500);
+                ctx.font = "20px Verdana";
+                ctx.fillText("Refresh to play again", 60, 550);
+                this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x + this.game.camera.x, this.y);
+                const context = canvas.getContext('2d');
+                context.clearRect(0, 0, canvas.width, canvas.height);
             } else if (this.state === 3) {
-                this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, -this.x, this.y - 70);
+                this.animator[3][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85 + this.game.camera.x, this.y - 20);
             } else {
-                this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, -this.x , this.y);
-                if (this.state === 4) {
-                    this.laser.draw(ctx, true);
-                }
+                this.animator[this.state][this.facing].drawFrame(this.game.clockTick, ctx, -this.x - 85 + this.game.camera.x, this.y);
+                // if (this.state === 4) {
+                //     this.laser.draw(ctx, true);
+                // }
             }
+            ctx.restore();
+        }
+
+        this.healthbar.draw(ctx, 14);
+        this.ammobar.draw(ctx, 14);
+                
+        if (this.win) {
+            var width = 176;
+            var height = 88;
+            ctx.font = "bold 50px Verdana";
+            ctx.fillText("You Win!", 50, 500);
+            // ctx.font = "50px Georgia";
+            // ctx.fillText("Hello World!", 10, 50); 
+            // Create gradient
+            var gradient = ctx.createLinearGradient(0, 0, 1000, 0);
+            gradient.addColorStop("0", "yellow");
+            gradient.addColorStop("0.5", "pink");
+            gradient.addColorStop("1.0", "white");
+            // Fill with gradient
+            ctx.fillStyle = gradient;
+            ctx.fillText("More levels Coming Soon!", 50, 550);
+            ctx.font = "20px Verdana";
+            ctx.fillText("Refresh to play again", 53, 570);
+            const context = canvas.getContext('2d');
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        // ctx.strokestyle = "Red";
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        if (this.dead) {
+            this.removeFromWorld = true;
         }
     };
 }
