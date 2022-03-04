@@ -186,10 +186,10 @@ class alien{
                 // else if( entity instanceof rain1){
                 //     that.dead = true;
                 // }
-                if (entity instanceof LunarRockPiece2) {
-                    //YOU WIN!!!
-                    that.win = true;
-                }
+                // if (entity instanceof LunarRockPiece2) {
+                //     //YOU WIN!!!
+                //     that.win = true;
+                // }
             }
         });
 

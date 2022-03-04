@@ -1,7 +1,7 @@
 class lavaLand{
     constructor(game){
         this.game = game;
-        this.lavaFloor = ASSET_MANAGER.getAsset("./lavaLand.png");
+        this.lavaFloor = ASSET_MANAGER.getAsset("./Level3/lavaLand.png");
 
 
     };

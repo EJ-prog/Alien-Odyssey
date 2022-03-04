@@ -13,22 +13,38 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/coin.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/health.png");
 
 //LEVEL 2 ENTITIES
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsBackground.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/ant.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/path.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds1.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/rain.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles1.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles2.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles3.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles4.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles5.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds2.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom1.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/planets.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom2.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRockPiece2.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsBackground.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/ant.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/path.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds1.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/rain.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles1.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles2.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles3.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles4.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles5.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/clouds2.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom1.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/planets.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom2.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRockPiece2.png");
 
+
+//LEVEL 3 ENTITIES
+ASSET_MANAGER.queueDownload("./Level3/lavaLandBackground.png");
+ASSET_MANAGER.queueDownload("./Level3/landSquare.png");
+ASSET_MANAGER.queueDownload("./Level3/landVertical.png");
+ASSET_MANAGER.queueDownload("./Level3/landHorizontal.png");
+ASSET_MANAGER.queueDownload("./Level3/diamond1.png");
+ASSET_MANAGER.queueDownload("./Level3/diamond2.png");
+ASSET_MANAGER.queueDownload("./Level3/diamond3.png");
+ASSET_MANAGER.queueDownload("./Level3/diamond4.png");
+ASSET_MANAGER.queueDownload("./Level3/stepShort.png");
+ASSET_MANAGER.queueDownload("./Level3/stepMedium.png");
+ASSET_MANAGER.queueDownload("./Level3/stepLarge.png");
+ASSET_MANAGER.queueDownload("./Level3/lavaDrop.png");
+ASSET_MANAGER.queueDownload("./Level3/lavaLand.png");
+ASSET_MANAGER.queueDownload("./Level3/lavafish.png");
 
 //LEVEL 4 ENTITIES
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/sun.png");
@@ -50,11 +66,9 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsBackground.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AdditionalAssets.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/character-sprites-player-alien-R.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Health_Ammo_Creatures.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandBackground.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandEnvironment.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
-
-
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandBackground.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandEnvironment.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
 
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment2.png");
@@ -96,22 +110,28 @@ ASSET_MANAGER.downloadAll(() => {
 
 
 	//LEVEL 2
-	gameEngine.addEntity(new path(gameEngine));
-	gameEngine.addEntity(new ant(gameEngine));
-	gameEngine.addEntity(new rain1(gameEngine));
-	gameEngine.addEntity(new LunarRockPiece2(gameEngine, 800, 245));
-	gameEngine.addEntity(new mushroom1(gameEngine));
-	gameEngine.addEntity(new mushroom2(gameEngine));
-	gameEngine.addEntity(new puddles1(gameEngine));
-	gameEngine.addEntity(new puddles2(gameEngine));
-	gameEngine.addEntity(new puddles3(gameEngine));
-	gameEngine.addEntity(new puddles4(gameEngine));
-	gameEngine.addEntity(new puddles5(gameEngine));
-	gameEngine.addEntity(new clouds1(gameEngine));
-	gameEngine.addEntity(new clouds2(gameEngine));
-	gameEngine.addEntity(new planets(gameEngine));
-	gameEngine.addEntity(new AcidMeadowsBackground(gameEngine));
+	// gameEngine.addEntity(new path(gameEngine));
+	// gameEngine.addEntity(new ant(gameEngine));
+	// gameEngine.addEntity(new rain1(gameEngine));
+	// gameEngine.addEntity(new LunarRockPiece2(gameEngine, 800, 245));
+	// gameEngine.addEntity(new mushroom1(gameEngine));
+	// gameEngine.addEntity(new mushroom2(gameEngine));
+	// gameEngine.addEntity(new puddles1(gameEngine));
+	// gameEngine.addEntity(new puddles2(gameEngine));
+	// gameEngine.addEntity(new puddles3(gameEngine));
+	// gameEngine.addEntity(new puddles4(gameEngine));
+	// gameEngine.addEntity(new puddles5(gameEngine));
+	// gameEngine.addEntity(new clouds1(gameEngine));
+	// gameEngine.addEntity(new clouds2(gameEngine));
+	// gameEngine.addEntity(new planets(gameEngine));
+	// gameEngine.addEntity(new AcidMeadowsBackground(gameEngine));
 
+	//LEVEL 3 entities
+	gameEngine.addEntity(new lavaLand(gameEngine));
+	gameEngine.addEntity(new lavafish(gameEngine));
+	gameEngine.addEntity(new lavaDrop(gameEngine));
+	gameEngine.addEntity(new background(gameEngine));
+	
 
 	//LEVEL 4 entities
 	// gameEngine.addEntity(new sun(gameEngine));
