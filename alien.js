@@ -179,17 +179,21 @@ class alien{
                 // } else if (/*(entity instanceof Scorpion) || */ entity instanceof Rock) {
                 //     that.dead = true;
                 // }
-                //  else if (/*(entity instanceof Scorpion) || */ entity instanceof ant) {
+                //  else if (/*(entity instanceof Scorpion) || */ entity instanceof ant || entity instanceof lavafish) {
                 //     that.dead = true;
                 //  }
                 // if (entity instanceof LunarRockPiece1) {
                 //     //YOU WIN!!!
                 //     that.win = true;
                 // }
-                if (entity instanceof LunarRockPiece2) {
-                    //YOU WIN!!!
-                    that.win = true;
-                }
+                // if (entity instanceof LunarRockPiece2) {
+                //     //YOU WIN!!!
+                //     that.win = true;
+                // }
+                // if (entity instanceof LunarRockPiece3) {
+                //     //YOU WIN!!!
+                //     that.win = true;
+                // }
             }
         });
 
