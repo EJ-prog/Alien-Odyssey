@@ -11,7 +11,7 @@ class rain1 {
     };
     updateBB(){
         this.lastBB = this.BB;
-        this.BB = new BoundingBox(this.x + 5, this.y, this.width - 20, this.height);
+        this.BB = new BoundingBox(this.x , this.y, this.width , this.height);
     };
 
     update(){

@@ -129,7 +129,8 @@ ASSET_MANAGER.downloadAll(() => {
 	//LEVEL 3 entities
 	gameEngine.addEntity(new lavaLand(gameEngine));
 	gameEngine.addEntity(new lavafish(gameEngine));
-	gameEngine.addEntity(new lavaDrop(gameEngine));
+	gameEngine.addEntity(new lavaDrop1(gameEngine));
+	gameEngine.addEntity(new lavaDrop2(gameEngine));
 	gameEngine.addEntity(new background(gameEngine));
 	
 
