@@ -10,23 +10,25 @@ var metalDesert = {
     metalDesertPlanets: [{x: 400, y: 0}],
     rock: [{x: 250, y: 410}],
     coins: [{x: 200, y: 300}, {x: 300, y: 300}],
-    ammopack: [{x: 0, y: 0}],
+    // ammopack: [{x: 0, y: 0}],
     scorpion: [{x: 370, y: 375}],
-    lunarRockPiece1: [{x: 750, y: 400, level:1}]
-    
+    lunarRockPiece1: [{x: 750, y: 400, level:1}]  
 };
 
 var acidMeadows = {
-    acidMeadowsBackground: [{x: 0, y: 0, width:960}]//,
-    // acidMeadowsPath: [{x: 0, y: 0}],
-    // acidMeadowsPlanets: [{x: 0, y: 0}],
-    // rainClouds1: [{x: 0, y: 0}],
-    // rainClouds2: [{x: 0, y: 0}],
-    // mushroom1: [{x: 0, y: 0}],
-    // mushroom2: [{x: 0, y: 0}],
-    // coins: [{x: 0, y: 0}],
+    acidMeadowsBackground: [{x: 0, y: 0, width: 2870}],
+    acidMeadowsHills: [{x: 0, y: 250, width: 2870}],
+    acidMeadowsPath: [{x: 0, y: 0, dx: 0, dy: 450, w: 960, h: 24}],
+    acidMeadowsGround: [{ x: 0, y: 24, dx: 0, dy: 474, w: 960, h: 130}],
+    acidMeadowsPlanets: [{x: 0, y: 0}],
+    rainClouds1: [{x: 0, y: 0, speed: 200}],
+    rainClouds2: [{x: 600, y: 0, speed: 200}],
+    mushroom1: [{x: 100, y: 200}],
+    mushroom2: [{x: 300, y: 200}],
+    coins: [{x: 0, y: 0}],
+    ant: [{x: 200, y:350}],
     // ammopack: [{x: 0, y: 0}],
-    // lunarRockPiece2: [{x: 0, y: 0, level:2}]
+    lunarRockPiece2: [{x: 0, y: 0, level:2}]
 };
 
 var lavaLand = {
@@ -39,7 +41,7 @@ var lavaLand = {
     diamond3: [{x: 0, y: 0}],
     diamond4: [{x: 0, y: 0}],
     stepShort: [{x: 0, y: 0}],
-    stepMedium: [{x: 0, y: 0}],
+    stepMedium: [{x: 100, y: 0, resetY: 0}],
     stepLarge: [{x: 0, y: 0}],
     coins: [{x: 0, y: 0}],
     ammopack: [{x: 0, y: 0}],

@@ -11,6 +11,7 @@ class SceneManager {
         this.gameOver = false;
         this.level = null;
         this.activeElem = true;
+        this.about = false;
 
         this.alien = new Alien(this.game, 0, 263);
 
@@ -23,7 +24,7 @@ class SceneManager {
     };
 
     loadLevel2(level) {
-        this.loadlevel(level, 0, 273, false, false);
+        this.loadlevel(level, 0, 263, false, false);
     };
 
     loadTitle() {
@@ -107,13 +108,25 @@ class SceneManager {
             if (level.acidMeadowsBackground) {
                 for (var i = 0; i < level.acidMeadowsBackground.length; i++) {
                     let acidMeadowsBackground = level.acidMeadowsBackground[i];
-                    this.game.addEntity(new AcidMeadowsBackground(this.game, acidMeadowsBackground.x, acidMeadowsBackground.y));
+                    this.game.addEntity(new AcidMeadowsBackground(this.game, acidMeadowsBackground.x, acidMeadowsBackground.y, acidMeadowsBackground.width));
+                }
+            }
+            if (level.acidMeadowsHills) {
+                for (var i = 0; i < level.acidMeadowsHills.length; i++) {
+                    let acidMeadowsHills = level.acidMeadowsHills[i];
+                    this.game.addEntity(new AcidMeadowsBackground(this.game, acidMeadowsHills.x, acidMeadowsHills.y, acidMeadowsHills.width));
                 }
             }
             if (level.acidMeadowsPath) {
                 for (var i = 0; i < level.acidMeadowsPath.length; i++) {
                     let acidMeadowsPath = level.acidMeadowsPath[i];
-                    this.game.addEntity(new AcidMeadowsPath(this.game, acidMeadowsPath.x, acidMeadowsPath.y));
+                    this.game.addEntity(new AcidMeadowsPath(this.game, acidMeadowsPath.x, acidMeadowsPath.y, acidMeadowsPath.dx, acidMeadowsPath.dy, acidMeadowsPath.w, acidMeadowsPath.h));
+                }
+            }
+            if (level.acidMeadowsGround) {
+                for (var i = 0; i < level.acidMeadowsGround.length; i++) {
+                    let acidMeadowsGround = level.acidMeadowsGround[i];
+                    this.game.addEntity(new AcidMeadowsPath(this.game, acidMeadowsGround.x, acidMeadowsGround.y, acidMeadowsGround.dx, acidMeadowsGround.dy, acidMeadowsGround.w, acidMeadowsGround.h));
                 }
             }
             if (level.acidMeadowsPlanets) {
@@ -125,13 +138,19 @@ class SceneManager {
             if (level.rainClouds1) {
                 for (var i = 0; i < level.rainClouds1.length; i++) {
                     let rainClouds1 = level.rainClouds1[i];
-                    this.game.addEntity(new RainClouds1(this.game, rainClouds1.x, rainClouds1.y));
+                    this.game.addEntity(new RainClouds1(this.game, rainClouds1.x, rainClouds1.y, rainClouds1.speed));
                 }
             }
             if (level.rainClouds2) {
                 for (var i = 0; i < level.rainClouds2.length; i++) {
                     let rainClouds2 = level.rainClouds2[i];
-                    this.game.addEntity(new RainClouds2(this.game, rainClouds2.x, rainClouds2.y));
+                    this.game.addEntity(new RainClouds2(this.game, rainClouds2.x, rainClouds2.y, rainClouds2.speed));
+                }
+            }
+            if (level.rain) {
+                for (var i = 0; i < level.rain.length; i++) {
+                    let rain = level.rain[i];
+                    this.game.addEntity(new Rain1(this.game, rain.x, rain.y))
                 }
             }
             if (level.mushroom1) {
@@ -190,7 +209,7 @@ class SceneManager {
             }
             if (level.diamond3) {
                 for (var i = 0; i < level.diamond3.length; i++) {
-                    let diamond3 = level.metalMountains[i];
+                    let diamond3 = level.diamond3[i];
                     this.game.addEntity(new Diamond3(this.game, diamond3.x, diamond3.y));
                 }
             }
@@ -209,7 +228,7 @@ class SceneManager {
             if (level.stepMedium) {
                 for (var i = 0; i < level.stepMedium.length; i++) {
                     let stepMedium = level.stepMedium[i];
-                    this.game.addEntity(new StepMedium(this.game, stepMedium.x, stepMedium.y));
+                    this.game.addEntity(new StepMedium(this.game, stepMedium.x, stepMedium.y, stepMedium.resetY));
                 }
             }
             if (level.stepLarge) {
@@ -329,6 +348,8 @@ class SceneManager {
             this.alien.x = x;
             this.alien.y = y;
             this.alien.removeFromWorld = false;
+            this.alien.velocity.x = 0;
+            this.alien.velocity.y = 0;
 
             // var that = this;
             var alien = false;
@@ -345,12 +366,17 @@ class SceneManager {
     update() {
         if (this.title && this.game.click && this.activeElem) {
             if(this.game.click.y > 146 && this.game.click.y < 280 && this.game.click.x > 338 && this.game.click.x < 623) {
-                this.loadlevel(metalDesert, 0, 273, false, false);
+                this.loadlevel(lavaLand, 0, 273, false, false);
                 // this.alien = new Alien(this.game, 0, 263);
             }
             if (this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {
-                console.log("clicked to find out about the game");
+                this.about = true;
             }
+        }
+
+        if (this.about === true && this.game.click.y > 20 && this.game.click.y < 43 
+            && this.game.click.x > 633 && this.game.click.x < 655) {
+            this.about = false;
         }
 
 
@@ -363,7 +389,13 @@ class SceneManager {
             // this.clearEntities();
 
             this.game.addEntity(new TitleScreen(this.game));
-        } 
+        }
+
+        if (this.about) {
+            this.activeElem = false;
+        } else {
+            this.activeElem = true;
+        }
 
         let midpoint = (960 / 2) - (98 / 2);
 
@@ -385,8 +417,6 @@ class SceneManager {
 
             if(this.game.click) {
                 if(this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {
-                    this.activeElem = false;
-                    // ctx.lineWidth = 90;
                     ctx.fillStyle = "#660066";
                     ctx.fillRect(297.5, 25, 367, 500);
                     ctx.strokeStyle = "gray";
@@ -402,12 +432,36 @@ class SceneManager {
                     ctx.fillStyle = "black";
                     ctx.font = "15px Arial";
                     ctx.fillText("X", 644.75, 42.5);
-                    if (this.game.click.y > 22.5 && this.game.click.y < 42.5 
-                        && this.game.click.x > 634.75 && this.game.click.x < 654.75) {
-                        this.activeElem = true;
-                    }
+                    ctx.fillStyle = "black";
+                    ctx.fillText("Based on a rumor that has been passed around,",319,50);
+                    ctx.fillText("Lunar rock is located on a nearby planet.",319,70);
+                    ctx.fillText("Lunar rock has great magic, and it helps you",319,90);
+                    ctx.fillText("make a wish come true. Alien's wife is",319,110);
+                    ctx.fillText("seriouslly ill and he wants to find Lunar",319,130);
+                    ctx.fillText("rock to help her get better. Alien has flown",319,150);
+                    ctx.fillText("to this planet to begin the search.",319,170);
+                    ctx.fillText("After traveling a thousand years of light,",319,190);
+                    ctx.fillText("he arrived on this planet.",319,210);
+                    ctx.fillText("Using the arrow keys and spacebar, navigate",319,250);
+                    ctx.fillText("the planet, shoot the enemies, gather coins",319,270);
+                    ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",319,290);
+                    ctx.fillText("Please click the X in the corner when you are done.",319, 330);
+                    ctx.fillStyle = "gray";
+                    ctx.fillText("Based on a rumor that has been passed around,",320,50);
+                    ctx.fillText("Lunar rock is located on a nearby planet.",320,70);
+                    ctx.fillText("Lunar rock has great magic, and it helps you",320,90);
+                    ctx.fillText("make a wish come true. Alien's wife is",320,110);
+                    ctx.fillText("seriouslly ill and he wants to find Lunar",320,130);
+                    ctx.fillText("rock to help her get better. Alien has flown",320,150);
+                    ctx.fillText("to this planet to begin the search.",320,170);
+                    ctx.fillText("After traveling a thousand years of light,",320,190);
+                    ctx.fillText("he arrived on this planet.",320,210);
+                    ctx.fillText("Using the arrow keys and spacebar, navigate",320,250);
+                    ctx.fillText("the planet, shoot the enemies, gather coins",320,270);
+                    ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",320,290);
+                    ctx.fillText("Please click the X in the corner when you are done.",320, 330);
                 }
-            }            
+            }
         }
     };
 

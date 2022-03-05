@@ -69,18 +69,30 @@ class GameEngine {
                 case "ArrowLeft":
                     that.left= true;
                     break;
+                case "a":
+                    that.left = true;
+                    break;
                 case "ArrowRight":
+                    that.right = true;
+                    break;
+                case "d":
                     that.right = true;
                     break;
                 case "ArrowUp":
                     that.up = true;
                     break;
+                case "w":
+                    that.up = true;
+                    break;
                 case "ArrowDown":
+                    that.down = true;
+                    break;
+                case "s":
                     that.down = true;
                     break;
                 case "Space" :
                     that.space = true;
-                    break               
+                    break;           
             }
         }, false);
 
@@ -89,18 +101,30 @@ class GameEngine {
                 case "ArrowLeft":
                     that.left= false;
                     break;
+                case "a":
+                    that.left = false;
+                    break;
                 case "ArrowRight":
+                    that.right = false;
+                    break;
+                case "d":
                     that.right = false;
                     break;
                 case "ArrowUp":
                     that.up = false;
                     break;
+                case "w":
+                    that.up = false;
+                    break;
                 case "ArrowDown":
+                    that.down = false;
+                    break;
+                case "s":
                     that.down = false;
                     break;
                 case "Space" :
                     that.space = false;
-                    break
+                    break; 
             }
         }, false);
 

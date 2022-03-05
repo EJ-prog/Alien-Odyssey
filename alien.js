@@ -44,40 +44,40 @@ class Alien{
 
         //State idle [0]
         //facing right=0
-        this.animator[0][0]= new Animator(this.spritesheet, 640, 175, 98, 210, 1, 0.35, 14, false, true);
+        this.animator[0][0]= new Animator(this.spritesheet, 640, 175, 98, 210, 1, 0.35);
         //facing left =1
-        this.animator[0][1]= new Animator(this.spritesheet, 640, 175, 98, 210, 1, 0.35, 14, true, true);
+        this.animator[0][1]= new Animator(this.spritesheet, 640, 175, 98, 210, 1, 0.35);
        
         //state running [1]
         //facing right=0
-        this.animator[1][0] = new Animator(this.spritesheet, 4, 830, 120, 230, 6, 0.08, 6, true, true);
+        this.animator[1][0] = new Animator(this.spritesheet, 4, 830, 120, 230, 6, 0.08);
         //facing left =1
-        this.animator[1][1] = new Animator(this.spritesheet, 4, 830, 120, 230, 6, 0.08, 14, false, true);
+        this.animator[1][1] = new Animator(this.spritesheet, 4, 830, 120, 230, 6, 0.08);
 
         //state ducking [2]
         //facing right=0
-        this.animator[2][0] = new Animator(this.spritesheet, 735, 175, 98, 210, 1, 0.5, 14, false, true);
+        this.animator[2][0] = new Animator(this.spritesheet, 735, 175, 98, 210, 1, 0.5);
         //facing left =1
-        this.animator[2][1] = new Animator(this.spritesheet, 735, 175, 98, 210, 1, 0.5, 14, true, true);
+        this.animator[2][1] = new Animator(this.spritesheet, 735, 175, 98, 210, 1, 0.5);
 
         //state jumping [3]
         //facing right=0
-        this.animator[3][0] = new Animator(this.spritesheet, 21, 107, 148, 215, 4, 0.2, 14, false, true);
+        this.animator[3][0] = new Animator(this.spritesheet, 21, 107, 148, 215, 4, 0.2);
         //facing left =1
-        this.animator[3][1] = new Animator(this.spritesheet, 21, 107, 148, 215, 4, 0.2, 14, true, true);
+        this.animator[3][1] = new Animator(this.spritesheet, 21, 107, 148, 215, 4, 0.2);
 
         //state standing and shooting [4]
         //facing right = 0
-        this.animator[4][0] = new Animator(this.spritesheet, 850, 835, 150, 225, 2, 0.4, 14, false, true);
+        this.animator[4][0] = new Animator(this.spritesheet, 850, 835, 150, 225, 2, 0.4);
         //facing left = 1
-        this.animator[4][1] = new Animator(this.spritesheet, 850, 835, 150, 225, 2, 0.4, 14, true, true);
+        this.animator[4][1] = new Animator(this.spritesheet, 850, 835, 150, 225, 2, 0.4);
 
         //state dead [5]
         //facing right = 0
-        this.animator[5][0] = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, false, false);
+        this.animator[5][0] = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6);
 
         //facing left = 1
-        this.animator[5][1] = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6, 0, true, false);
+        this.animator[5][1] = new Animator(this.spritesheet, 608, 0, 237, 175, 2, 0.6);
 
     }
 
@@ -115,14 +115,14 @@ class Alien{
                     this.state = 1;
                     this.facing = 0;
                     this.velocity.x += ACC_RUN * TICK;
-                } else if (this.game.left && !this.game.right && !this.game.down && !this.game.down) { //running to the left
+                } else if (this.game.left && !this.game.right && !this.game.down && !this.game.space) { //running to the left
                     this.state = 1;
                     this.facing = 1;
                     this.velocity.x -= ACC_RUN * TICK;
-                } else if ( this.game.down && !this.game.up && !this.game.right && !this.game.left) { //duck while facing left or right
+                } else if ( this.game.down && !this.game.space && !this.game.right && !this.game.left) { //duck while facing left or right
                     this.state = 2;
                     this.velocity.x = 0;
-                } else if ( this.game.space && !this.game.up && !this.game.down) { //jump while facing left or right
+                } else if ( this.game.up && !this.game.space && !this.game.down) { //jump while facing left or right
                     if (this.game.left && !this.game.right) { //jump and move to the left
                         this.velocity.x -= ACC_RUN * TICK;
                     } else if (this.game.right && !this.game.left) { //jump and move to the right
@@ -132,7 +132,7 @@ class Alien{
                     // }
                     // this.velocity.y -= 5;
                     // this.updateBB();
-                } else if ( this.game.up && !this.game.down && !this.game.right && !this.game.left && !this.game.space) { //shoot while facing left or right
+                } else if ( this.game.space && !this.game.down && !this.game.right && !this.game.left && !this.game.up) { //shoot while facing left or right
                     this.state = 4;
                     this.velocity.x = 0;
                 } else { //idle while facing left or right
@@ -155,14 +155,16 @@ class Alien{
                 if (entity instanceof LunarRockPieces) {
                     entity.removeFromWorld = true;
                     //YOU WIN!!!
-                    that.win = true;
-                    // if (entity.level === 1) {
-                    //     that.game.camera.loadLevel2(acidMeadows);
-                    // } else if (entity.level === 2) {
-                    //     that.game.camera.loadLevel2(lavaLand);
-                    // } else if (entity.level === 3) {
-                    //     that.game.camera.loadLevel2(monsterForest);
-                    // }
+                    // that.win = true;
+                    if (entity.level === 1) {
+                        that.game.camera.loadLevel2(acidMeadows);
+                    }
+                    if (entity.level === 2) {
+                        that.game.camera.loadLevel2(lavaLand);
+                    }
+                    if (entity.level === 3) {
+                        that.game.camera.loadLevel2(monsterForest);
+                    }
                 } 
                 if (entity instanceof Coin) {
                     entity.removeFromWorld = true;
@@ -170,7 +172,7 @@ class Alien{
                     that.dead = true;
 
                 } else if (entity instanceof ForegroundCactus1 || entity instanceof ForegroundCactus2) {
-                    if (!that.game.space) {
+                    if (!that.game.up) {
                         if (that.lastBB.bottom >= entity.BB.top) {
                             that.velocity.y = 0;
                         }
@@ -188,23 +190,23 @@ class Alien{
                     } else{
                         that.velocity.y = -100;
                     }
-                } else if (entity instanceof MetalDesertPath) {
-                    if (that.game.space) {
+                } else if (entity instanceof MetalDesertPath || entity instanceof AcidMeadowsPath) {
+                    if (that.game.up) {
                         that.velocity.y = -100;
                     }
-                } else if (entity instanceof MetalDesertGround) {
-                    if (!that.game.space) {
+                } else if (entity instanceof MetalDesertGround || entity instanceof AcidMeadowsGround) {
+                    if (!that.game.up) {
                         that.velocity.y = 0;
                     }
                 } else {
-                    if (!that.game.space & that.velocity.y < 0) {
+                    if (!that.game.up & that.velocity.y < 0) {
                         that.velocity.y = 100;
                     }
                 }
             }
         });
 
-        if (this.game.up) {
+        if (this.game.space) {
             if (this.facing === 0) {
                 this.game.addEntity(new Laser(this.game, this.x + 125, this.y + 70, this.facing));
             } else if (this.facing === 1) {

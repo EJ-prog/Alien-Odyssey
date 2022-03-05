@@ -37,8 +37,8 @@ class Laser {
         var that = this;
         this.game.entities.forEach(function (entity) {
             if (entity.BB && that.BB.collide(entity.BB)) {
-                if (entity instanceof Rock || entity instanceof Scorpion) {
-                    if (entity instanceof Scorpion) {
+                if (entity instanceof Rock || entity instanceof Scorpion || entity instanceof Ant) {
+                    if (!entity instanceof Rock) {
                         entity.removeFromWorld = true;
                     }
                     that.removeFromWorld = true;

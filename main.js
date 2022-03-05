@@ -14,6 +14,7 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Scorpion.png");
 
 // //LEVEL 2 ENTITIES
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsEnvironment.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsHills.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsBackground.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/ant.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/path.png");
@@ -30,31 +31,42 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom2.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/planets.png");
 
 // //LEVEL 3 ENTITIES
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandBackground.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandEnvironment.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandBackground.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandEnvironment.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/landHorizontal.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/landVertical.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/landSquare.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/diamond1.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/diamond2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/diamond3.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/diamond4.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/stepShort.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MBridgeAnimation.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/stepLarge.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
 
 // //LEVEL 4 ENTITIES
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/sun.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bush1.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bush2.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bush3.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud1.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud2.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud3.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud4.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud5.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud6.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud7.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud8.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment2.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestHills.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/sun.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bush1.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bush2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bush3.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud1.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud3.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud4.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud5.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud6.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud7.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud8.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment2.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestHills.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterJump.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterDeath.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterWalk.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterHealthBar.png");
-// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRock.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterHealthBar.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LunarRock.png");
 
 // //OTHER ENTITIES
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AdditionalAssets.png");

@@ -223,12 +223,29 @@ class AcidMeadowsBackground {
     };
 };
 
+class AcidMeadowsHills {
+    constructor(game, x, y, width){
+        Object.assign(this, {game, x, y, width});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AcidMeadowsHills.png");
+    };
+
+    update(){
+    
+    };
+
+    draw(ctx){
+        ctx.drawImage(this.spritesheet, 0, 0, this.width, 576, this.x - this.game.camera.x, this.y, this.width, 576);
+    };
+};
+
 class RainClouds1 {
     constructor(game, x, y, speed){
         Object.assign(this, {game, x, y, speed});
         this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/clouds1.png");
         this.animator = new Animator(this.spritesheet, 50, 0, 310, 150, 9, 0.2);
+        this.game.addEntity(new Rain1(this.game, this.x));
         //this.x = 100;
         //this.y = 35;
         //this.speed = 200;
@@ -245,17 +262,18 @@ class RainClouds1 {
     };
 
     draw(ctx){
-        this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
+        this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
     };
 };
 
 class RainClouds2 {
-    constructor(game, x, y){
-        Object.assign(this, {game, x, y});
+    constructor(game, x, y, speed){
+        Object.assign(this, {game, x, y, speed});
 
         this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/clouds2.png");
         this.animator = new Animator(this.spritesheet, 40, 0, 312.5, 150, 9, 0.2);
+        this.game.addEntity(new Rain1(this.game, this.x));
         // this.x = -100;
         // this.y = 35;
         // this.speed = 100;
@@ -272,7 +290,7 @@ class RainClouds2 {
     };
 
     draw(ctx){
-        this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
+        this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
     };
 };
 
@@ -282,16 +300,32 @@ class Mushroom1 {
 
         // this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/mushroom1.png");
-        this.BB = new BoundingBox(5, 9, 116, 63);
+        // this.BB = new BoundingBox(this.x + 5, this.y + 10, 116, 63);
+        this.updateBB();
     };
 
-    update(){
-    
+    updateBB(){
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x + 5 - this.game.camera.x, this.y + 10, 116, 63);
+    };
+
+    update() {
+        this.updateBB();
+
+        // var that = this;
+        // this.game.entities.forEach(function (entity) {
+        //     if (entity.BB && that.BB.collide(entity.BB)) {
+        //         if (entity instanceof Rain1) {
+        //             that.raindrops = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AcidMeadowsMushroomRaindrops.png");
+        //             that.animator = new Animator(this.raindrops, 0, 0, 400, 185, 9, 0.2);
+        //         }
+        //     }
+        // });
     };
 
     draw(ctx){
-        ctx.drawRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-        ctx.drawImage(this.spritesheet, 0, 0, this.x, this.y, 400, 165);
+        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        ctx.drawImage(this.spritesheet, 0, 0, 400, 185, this.x - this.game.camera.x, this.y, 400, 185);
     };
 };
 
@@ -300,24 +334,72 @@ class Mushroom2 {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/mushroom2.png");
-        this.BB = new BoundingBox(0, 0, 159, 102);
-    }
+        // this.BB = new BoundingBox(this.x, this.y, 159, 102);
+        this.updateBB();
+    };
+
+    updateBB(){
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x - this.game.camera.x, this.y, 159, 102);
+    };
 
     update() {
-
+        this.updateBB();
     };
 
     draw(ctx) {
-        ctx.drawRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-        ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        ctx.drawImage(this.spritesheet, 0, 0, 400, 260, this.x - this.game.camera.x, this.y, 400, 260);
+    };
+};
+
+class Rain1 {
+    constructor(game, x){
+        this.game = game;
+        this.animator = new Animator(ASSET_MANAGER.getAsset("./Sprites_and_Assets/rain.png"), 40, 0, 314.5, 170, 9, 0.1);
+        this.x = x;
+        this.y = 135;
+        this.width = 260;
+        this.height = 155;
+        this.speed = 200;
+        this.updateBB();
+    };
+    
+    updateBB(){
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x + 5 - this.game.camera.x, this.y, this.width - 20, this.height);
+    };
+
+    update(){
+        const TICK = this.game.clockTick;
+
+        this.x += this.speed * TICK;
+        this.y += this.speed * TICK;
+        var that = this;
+         if(that.x > 950) {
+             that.x = -200;
+             that.updateBB();
+            // this.y = 365;
+        }
+        if(that.y > 500) {
+            that.y = 135;
+            that.updateBB();
+        }
+        that.updateBB();
+    };
+
+    draw(ctx){
+        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
     };
 };
 
 class AcidMeadowsPath {
-    constructor(game, x, y) {
-        Object.assign(this, {game, x, y});
+    constructor(game, x, y, dx, dy, w, h) {
+        Object.assign(this, {game, x, y, dx, dy, w, h});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/path.png");
+        this.BB = new BoundingBox(this.dx, this.dy, this.w, this.h);
     }
 
     update() {
@@ -325,7 +407,25 @@ class AcidMeadowsPath {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.w, this.h);
+    };
+};
+
+class AcidMeadowsGround {
+    constructor(game, x, y, dx, dy, w, h) {
+        Object.assign(this, {game, x, y, dx, dy, w, h});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/path.png");
+        this.BB = new BoundingBox(this.dx, this.dy, this.w, this.h);
+    }
+
+    update() {
+
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.w, this.h);
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
     };
 };
 
@@ -425,28 +525,12 @@ class Puddles5 {
     };
 };
 
-class Rain1 {
-    constructor(game, x, y) {
-        Object.assign(this, {game, x, y});
-
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/rain.png");
-    }
-
-    update() {
-
-    };
-
-    draw(ctx) {
-        ctx.drawImage(this.spritesheet, 40, 0, 314.5, 170, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
-    };
-};
-
 //level 3 environment assets
 class LavaLandBackground {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/lavaLandBackground.png");
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LavaLandBackground.png");
     };
 
     update() {
@@ -587,18 +671,25 @@ class StepShort {
 }
 
 class StepMedium {
-    constructor(game, x, y) {
-        Object.assign(this, {game, x, y});
+    constructor(game, x, y, resetY) {
+        Object.assign(this, {game, x, y, resetY});
 
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/stepMedium.png");
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MBridgeAnimation.png");
+        this.animator = new Animator(this.spritesheet, 0, 0, 225, 190, 4, 0.25);
+        this.speed = 100;
     };
 
     update() {
 
+        this.y += this.speed * this.game.clockTick;
+        if (this.y > 576) {
+            this.y = this.resetY;
+        }
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        // ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
     };
 }
 
@@ -835,7 +926,7 @@ class Coin {
         // this.animator = new Animator(ASSET_MANAGER.getAsset("./Sprites_and_Assets/coin.png"), 10, 0, 50, 65, 12, 0.062);
         // this.BB = new BoundingBox(400, 160, 50, 65);
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/coin.png");
-        this.animator = new Animator(this.spritesheet, 10, 0, 50, 65, 12, 0.062, 0, false, true);
+        this.animator = new Animator(this.spritesheet, 10, 0, 50, 65, 12, 0.062);
         this.updateBB();
     };
 
@@ -886,7 +977,7 @@ class Health {
 
     draw(ctx, hitpoints) {
         if (hitpoints === 14) {
-            ctx.drawImage(this.health, 6+(134*0), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.health, 10+(134*0), 0, 110, 26, 5,0, 200, 30);
         }  else if (hitpoints === 13) {
             ctx.drawImage(this.health, 10+(134*1), 0, 110, 26, 5,0, 200, 30);
         } else if (hitpoints === 12) {
@@ -958,7 +1049,7 @@ class Ammo {
 
     draw(ctx, charge){
         if (charge === 14) {
-            ctx.drawImage(this.ammo, 6+(134*0), 26, 125, 26, 5, 27, 228, 30);
+            ctx.drawImage(this.ammo, 10+(134*0), 26, 125, 26, 5, 27, 228, 30);
         }  else if (charge === 13) {
             ctx.drawImage(this.ammo, 10+(134*1), 26, 125, 26, 5, 27, 228, 30);
         } else if (charge === 12) {
