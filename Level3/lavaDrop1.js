@@ -3,9 +3,9 @@ class lavaDrop1{
         this.game = game;
         this.animator = new Animator(ASSET_MANAGER.getAsset("./Level3/lavaDrop.png"), 0, 0, 140, 190, 3, 0.25);
         this.x =200;
-        this.y=230;
+        this.y=280;
         this.width = 80;
-        this.height = 220;
+        this.height = 170;
         this.speed = 160;
         this.updateBB();
     };

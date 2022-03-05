@@ -5,7 +5,7 @@ class lavaDrop2{
         this.x =800;
         this.y=230;
         this.width = 80;
-        this.height = 220;
+        this.height = 170;
         this.speed = 160;
         this.updateBB();
     };
