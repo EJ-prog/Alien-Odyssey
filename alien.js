@@ -179,14 +179,10 @@ class alien{
                 // } else if (/*(entity instanceof Scorpion) || */ entity instanceof Rock) {
                 //     that.dead = true;
                 // }
-                //  else if (/*(entity instanceof Scorpion) || */ entity instanceof ant) {
-                //     that.dead = true;
-                //  }
-                
-                // else if( entity instanceof rain1){
+                // else if( entity instanceof rain1 || entity instanceof ant){
                 //     that.dead = true;
                 // }
-                // else if (entity instanceof lavaDrop1 || entity instanceof lavaDrop2 ){
+                // else if (entity instanceof lavaDrop1 || entity instanceof lavaDrop2 || entity instanceof lavaLand ){
                 //         that.dead = true;
                 // }
                 // if (entity instanceof LunarRockPiece2) {
