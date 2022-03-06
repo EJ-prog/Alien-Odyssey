@@ -15,7 +15,7 @@ class Scorpion {
 
     updateBB(){
             this.lastBB = this.BB;
-            this.BB = new BoundingBox(this.x + 5, this.y, this.width - 20, this.height);
+            this.BB = new BoundingBox(this.x + 5 - this.game.camera.x, this.y, this.width - 20, this.height);
     };
 
     update() {
@@ -23,7 +23,7 @@ class Scorpion {
         
 
         if(this.x < 480) {
-            this.x += this.speed*this.game.clockTick;
+            this.x += this.speed*TICK;
         }
        
         var that = this;
@@ -56,8 +56,8 @@ class Scorpion {
             // this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
 
         if(this.reverse){
-            ctx.strokestyle = "Red";
-           // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+            // ctx.strokestyle = "Red";
+            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
             ctx.save();
             ctx.scale(-1,1)
             this.animator.drawFrame(this.game.clockTick, ctx, -this.x - (this.width) + 10 + this.game.camera.x, this.y);
@@ -65,8 +65,8 @@ class Scorpion {
         }
         
         else{
-            ctx.strokestyle = "Red";
-          //  ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+            // ctx.strokestyle = "Red";
+            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
             ctx.save();
             ctx.scale(1,1)
             this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);

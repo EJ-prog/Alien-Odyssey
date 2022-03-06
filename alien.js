@@ -17,6 +17,7 @@ class Alien{
         this.state = 0; //0= idle, 1= running, 2= jumping/falling, 3= ducking, 4=shooting.
         this.dead = false;
         this.win = false;
+        this.rainSafe = true;
         this.hitpoints = 12;
 
         //Alien's animations
@@ -83,7 +84,7 @@ class Alien{
 
     updateBB() {
         this.lastBB = this.BB;
-        this.BB = new BoundingBox(this.x, this.y, 85, 200);
+        this.BB = new BoundingBox(this.x - this.game.camera.x, this.y, 85, 200);
     };
 
     update() {
@@ -153,24 +154,35 @@ class Alien{
         this.game.entities.forEach(function (entity) {
             if (entity.BB && that.BB.collide(entity.BB)) {
                 if (entity instanceof LunarRockPieces) {
-                    entity.removeFromWorld = true;
+                    // entity.removeFromWorld = true;
                     //YOU WIN!!!
                     // that.win = true;
                     if (entity.level === 1) {
-                        that.game.camera.loadLevel2(acidMeadows);
+                        that.velocity.y = 0;
+                        that.velocity.x = 0;
+                        that.game.camera.loadLevel2(acidMeadows, 0);
                     }
-                    if (entity.level === 2) {
-                        that.game.camera.loadLevel2(lavaLand);
-                    }
-                    if (entity.level === 3) {
-                        that.game.camera.loadLevel2(monsterForest);
-                    }
-                } 
+                    // if (entity.level === 2) {
+                    //     that.win = true;
+                    // }
+                    // } else if (entity.level == 2) {
+                    //     that.game.camera.loadLevel2(lavaLand, 0);
+                    // } else if (entity.level == 3) {
+                    //     that.game.camera.loadLevel2(monsterForest, 0);
+                    // }
+                }
                 if (entity instanceof Coin) {
                     entity.removeFromWorld = true;
-                } else if (entity instanceof Scorpion || entity instanceof Rock) {
+                } else if (entity instanceof Scorpion || entity instanceof Rock || entity instanceof Ant) { //add ant and rain to here
                     that.dead = true;
-
+                } else if (entity instanceof Mushroom1 || entity instanceof Mushroom2) {
+                    if (that.lastBB.left >= entity.BB.x && that.lastBB.right <= (entity.BB.width + entity.BB.x)) {
+                        that.rainSafe = true;
+                    } else {
+                        that.rainSafe = false;
+                    }
+                } else if (entity instanceof Rain1 && !that.rainSafe) {
+                    that.dead = true;
                 } else if (entity instanceof ForegroundCactus1 || entity instanceof ForegroundCactus2) {
                     if (!that.game.up) {
                         if (that.lastBB.bottom >= entity.BB.top) {
@@ -193,6 +205,12 @@ class Alien{
                 } else if (entity instanceof MetalDesertPath || entity instanceof AcidMeadowsPath) {
                     if (that.game.up) {
                         that.velocity.y = -100;
+                    }
+                } else if (entity instanceof LavaLandHorizontal) {
+                    if (that.lastBB.y >= entity.BB.top + 150) {
+                        that.velocity.y = -100;
+                    } else {
+                        that.velocity.y = 0;
                     }
                 } else if (entity instanceof MetalDesertGround || entity instanceof AcidMeadowsGround) {
                     if (!that.game.up) {

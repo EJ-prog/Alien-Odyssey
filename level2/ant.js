@@ -47,12 +47,12 @@ class Ant {
 
     draw(ctx) {
             // ctx.strokestyle = "Red";
-             ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+            //  ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
             // this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
 
         if(this.reverse){
-            ctx.strokestyle = "Red";
-            ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+            // ctx.strokestyle = "Red";
+            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
             ctx.save();
             ctx.scale(-1,1)
             this.animator.drawFrame(this.game.clockTick, ctx, -this.x - (this.width) + 10 +this.game.camera.x, this.y);
@@ -60,8 +60,8 @@ class Ant {
         }
         
         else{
-            ctx.strokestyle = "Red";
-            ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+            // ctx.strokestyle = "Red";
+            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
             ctx.save();
             ctx.scale(1,1)
             this.animator.drawFrame(this.game.clockTick, ctx, this.x  -this.game.camera.x, this.y);

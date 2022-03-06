@@ -29,6 +29,7 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/puddles5.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom1.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/mushroom2.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/planets.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsMushroomRaindrops.png");
 
 // //LEVEL 3 ENTITIES
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandBackground.png");
@@ -42,9 +43,11 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/diamond2.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/diamond3.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/diamond4.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/stepShort.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/stepMedium.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MBridgeAnimation.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/stepLarge.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/lavafish.png");
 
 // //LEVEL 4 ENTITIES
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/sun.png");

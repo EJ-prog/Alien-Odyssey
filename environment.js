@@ -68,10 +68,16 @@ class ForegroundCactus1 {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertEnvironment.png");
-        this.BB = new BoundingBox(this.x + 8, this.y + 110, 47, 100);
+        this.updateBB();
     };
 
+    updateBB() {
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x + 8 - this.game.camera.x, this.y + 110, 47, 100);
+    }
+
     update() {
+        this.updateBB();
     };
 
 
@@ -88,11 +94,16 @@ class ForegroundCactus2 {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertEnvironment.png");
-        this.BB = new BoundingBox(this.x + 6, this.y + 120, 62, 90);
+        this.updateBB();
+    }
+
+    updateBB() {
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x + 6 - this.game.camera.x, this.y + 120, 62, 90);
     }
 
     update() {
-
+        this.updateBB();
     };
 
     draw(ctx) {
@@ -156,7 +167,7 @@ class MetalDesertPlanets {
     };
 
     draw(ctx) {
-        this.planets.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
+        this.planets.drawFrame(this.game.clockTick, ctx, this.x, this.y);
     };
 };
 
@@ -175,7 +186,7 @@ class Rock {
 
     updateBB(){
         this.lastBB = this.BB;
-        this.BB = new BoundingBox(this.x + 5, this.y + 10, this.width-5, this.height);
+        this.BB = new BoundingBox(this.x + 5 - this.game.camera.x, this.y + 10, this.width-5, this.height);
     };
 
     update() {
@@ -245,6 +256,7 @@ class RainClouds1 {
         this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/clouds1.png");
         this.animator = new Animator(this.spritesheet, 50, 0, 310, 150, 9, 0.2);
+        this.restartX = this.x;
         this.game.addEntity(new Rain1(this.game, this.x));
         //this.x = 100;
         //this.y = 35;
@@ -254,7 +266,7 @@ class RainClouds1 {
     update(){
         this.x += this.speed * this.game.clockTick;
          if(this.x > 950)
-             this.x = -200;
+             this.x = this.restartX;
             // this.y = 365;
         // }
         ///if(this.x > 400)
@@ -273,6 +285,7 @@ class RainClouds2 {
         this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/clouds2.png");
         this.animator = new Animator(this.spritesheet, 40, 0, 312.5, 150, 9, 0.2);
+        this.restartX = this.x;
         this.game.addEntity(new Rain1(this.game, this.x));
         // this.x = -100;
         // this.y = 35;
@@ -282,7 +295,7 @@ class RainClouds2 {
     update(){
         this.x += this.speed * this.game.clockTick;
          if(this.x > 950)
-             this.x = -200;
+             this.x = this.restartX;
             // this.y = 365;
         // }
         ///if(this.x > 400)
@@ -300,32 +313,37 @@ class Mushroom1 {
 
         // this.game = game;
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/mushroom1.png");
+        this.rain = false;
+        this.raindrops = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AcidMeadowsMushroomRaindrops.png");
+        this.animator = new Animator(this.raindrops, 0, 0, 169, 200, 9, 0.2);
         // this.BB = new BoundingBox(this.x + 5, this.y + 10, 116, 63);
         this.updateBB();
     };
 
     updateBB(){
         this.lastBB = this.BB;
-        this.BB = new BoundingBox(this.x + 5 - this.game.camera.x, this.y + 10, 116, 63);
+        this.BB = new BoundingBox(this.x - 5 - this.game.camera.x, this.y + 10, 147, 100);
     };
 
     update() {
         this.updateBB();
 
-        // var that = this;
-        // this.game.entities.forEach(function (entity) {
-        //     if (entity.BB && that.BB.collide(entity.BB)) {
-        //         if (entity instanceof Rain1) {
-        //             that.raindrops = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AcidMeadowsMushroomRaindrops.png");
-        //             that.animator = new Animator(this.raindrops, 0, 0, 400, 185, 9, 0.2);
-        //         }
-        //     }
-        // });
+        var that = this;
+        this.game.entities.forEach(function (entity) {
+            if (entity.BB && that.BB.collide(entity.BB)) {
+                if (entity instanceof Rain1) {
+                    that.rain = true;
+                }
+            }
+        });
     };
 
     draw(ctx){
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-        ctx.drawImage(this.spritesheet, 0, 0, 400, 185, this.x - this.game.camera.x, this.y, 400, 185);
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        ctx.drawImage(this.spritesheet, 0, 0, 400, 185, this.x - this.game.camera.x, this.y, 440, 225);
+        if (this.rain) {
+            this.animator.drawFrame2(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y, 180, 240);
+        }
     };
 };
 
@@ -334,22 +352,37 @@ class Mushroom2 {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/mushroom2.png");
-        // this.BB = new BoundingBox(this.x, this.y, 159, 102);
+        this.rain = false;
+        this.raindrops = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AcidMeadowsMushroomRaindrops.png");
+        this.animator = new Animator(this.raindrops, 0, 0, 169, 200, 9, 0.2);
+        // this.BB = new BoundingBox(this.x + 5, this.y + 10, 116, 63);
         this.updateBB();
     };
 
     updateBB(){
         this.lastBB = this.BB;
-        this.BB = new BoundingBox(this.x - this.game.camera.x, this.y, 159, 102);
+        this.BB = new BoundingBox(this.x - 10 - this.game.camera.x, this.y + 10, 210, 160);
     };
 
     update() {
         this.updateBB();
+
+        var that = this;
+        this.game.entities.forEach(function (entity) {
+            if (entity.BB && that.BB.collide(entity.BB)) {
+                if (entity instanceof Rain1) {
+                    that.rain = true;
+                }
+            }
+        });
     };
 
     draw(ctx) {
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
-        ctx.drawImage(this.spritesheet, 0, 0, 400, 260, this.x - this.game.camera.x, this.y, 400, 260);
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        ctx.drawImage(this.spritesheet, 0, 0, 400, 260, this.x - this.game.camera.x, this.y, 480, 340);
+        if (this.rain) {
+            this.animator.drawFrame2(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y - 10, 220, 305);
+        }
     };
 };
 
@@ -362,6 +395,7 @@ class Rain1 {
         this.width = 260;
         this.height = 155;
         this.speed = 200;
+        this.restartX = this.x;
         this.updateBB();
     };
     
@@ -377,7 +411,7 @@ class Rain1 {
         this.y += this.speed * TICK;
         var that = this;
          if(that.x > 950) {
-             that.x = -200;
+             that.x = this.restartX;
              that.updateBB();
             // this.y = 365;
         }
@@ -389,7 +423,7 @@ class Rain1 {
     };
 
     draw(ctx){
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
     };
 };
@@ -441,7 +475,7 @@ class AcidMeadowsPlanets {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 86, 0, 80, 40, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
+        ctx.drawImage(this.spritesheet, 0, 0, 400, 190, this.x, this.y, 400, 190);
     };
 };
 
@@ -527,8 +561,8 @@ class Puddles5 {
 
 //level 3 environment assets
 class LavaLandBackground {
-    constructor(game, x, y) {
-        Object.assign(this, {game, x, y});
+    constructor(game, x, y, width) {
+        Object.assign(this, {game, x, y, width});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LavaLandBackground.png");
     };
@@ -538,7 +572,7 @@ class LavaLandBackground {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, this.width, 580, this.x - this.game.camera.x, this.y, this.width, 580);
     };
 }
 
@@ -547,14 +581,23 @@ class LavaLandHorizontal {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/landHorizontal.png");
+        this.width = 300;
+        this.height = 100;
+        this.updateBB();
+    };
+
+    updateBB(){
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x + 5 - this.game.camera.x, this.y + 15, this.width, this.height);
     };
 
     update() {
-
+        this.updateBB();
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, this.width, this.height, this.x - this.game.camera.x, this.y, this.width, this.height);
+        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
     };
 }
 
@@ -931,15 +974,16 @@ class Coin {
     };
 
     update() {
-
+        this.updateBB();
     };
 
     updateBB() {
-        this.BB = new BoundingBox(this.x, this.y, 44, 44);
+        this.BB = new BoundingBox(this.x - this.game.camera.x, this.y + 10, 44, 44);
     };
 
     draw(ctx) {
-        this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.x);
+        this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
     };
 }
 
@@ -1088,21 +1132,34 @@ class LunarRockPieces {
 
         if (this.level === 1) {
             this.piece1 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece1.png");
-            this.BB = new BoundingBox(this.x, this.y, 30, 25);
+            this.width = 30;
+            this.height = 25;
+            this.updateBB();
         } else if (this.level === 2) {
             this.piece2 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece2.png");
-            this.BB = new BoundingBox(this.x, this.y, 33, 29);
+            this.width = 33;
+            this.height = 29;
+            this.updateBB();
         } else if (this.level === 3) {
             this.piece3 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece3.png");
-            this.BB = new BoundingBox(this.x, this.y, 17, 18);
+            this.width = 17;
+            this.height = 18;
+            this.updateBB();
         } else if (this.level === 4) {
             this.piece4 = ASSET_MANAGER.getAsset("./Sprites_and_Assets/LunarRockPiece4.png");
-            this.BB = new BoundingBox(this.x, this.y, 30, 41);
+            this.width = 30;
+            this.height = 41;
+            this.updateBB();
         }
     };
 
-    update() {
+    updateBB(){
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x - this.game.camera.x, this.y, this.width, this.height);
+    };
 
+    update() {
+        this.updateBB();
     };
 
     draw(ctx) {

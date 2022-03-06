@@ -23,13 +23,15 @@ class SceneManager {
         });
     };
 
-    loadLevel2(level) {
-        this.loadlevel(level, 0, 263, false, false);
+    loadLevel2(level, x) {
+        this.alien.velocity.x = 0;
+        this.alien.velocity.y = 0;
+        this.loadlevel(level, x, 273, false, false);
     };
 
-    loadTitle() {
-        this.loadlevel(metalDesert, 0, 0, true, true);
-    };
+    // loadTitle() {
+    //     this.loadlevel(metalDesert, 0, 0, true, true);
+    // };
 
     loadlevel(level, x, y, transition, title) {
         this.title = title;
@@ -114,7 +116,7 @@ class SceneManager {
             if (level.acidMeadowsHills) {
                 for (var i = 0; i < level.acidMeadowsHills.length; i++) {
                     let acidMeadowsHills = level.acidMeadowsHills[i];
-                    this.game.addEntity(new AcidMeadowsBackground(this.game, acidMeadowsHills.x, acidMeadowsHills.y, acidMeadowsHills.width));
+                    this.game.addEntity(new AcidMeadowsHills(this.game, acidMeadowsHills.x, acidMeadowsHills.y, acidMeadowsHills.width));
                 }
             }
             if (level.acidMeadowsPath) {
@@ -174,7 +176,7 @@ class SceneManager {
             if (level.lavaLandBackground) {
                 for (var i = 0; i < level.lavaLandBackground.length; i++) {
                     let lavaLandBackground = level.lavaLandBackground[i];
-                    this.game.addEntity(new LavaLandBackground(this.game, lavaLandBackground.x, lavaLandBackground.y));
+                    this.game.addEntity(new LavaLandBackground(this.game, lavaLandBackground.x, lavaLandBackground.y, lavaLandBackground.width));
                 }
             }
             if (level.lavaLandHorizontal) {
@@ -235,6 +237,12 @@ class SceneManager {
                 for (var i = 0; i < level.stepLarge.length; i++) {
                     let stepLarge = level.stepLarge[i];
                     this.game.addEntity(new StepLarge(this.game, stepLarge.x, stepLarge.y));
+                }
+            }
+            if (level.lavaFish) {
+                for (var i = 0; i < level.stepMedium.length; i++) {
+                    let lavaFish = level.lavaFish[i];
+                    this.game.addEntity(new lavafish(this.game, lavaFish.x, lavaFish.y, lavaFish.resetY));
                 }
             }
             if (level.bush1) {
@@ -366,7 +374,7 @@ class SceneManager {
     update() {
         if (this.title && this.game.click && this.activeElem) {
             if(this.game.click.y > 146 && this.game.click.y < 280 && this.game.click.x > 338 && this.game.click.x < 623) {
-                this.loadlevel(lavaLand, 0, 273, false, false);
+                this.loadlevel(metalDesert, 0, 273, false, false);
                 // this.alien = new Alien(this.game, 0, 263);
             }
             if (this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {
@@ -433,33 +441,35 @@ class SceneManager {
                     ctx.font = "15px Arial";
                     ctx.fillText("X", 644.75, 42.5);
                     ctx.fillStyle = "black";
-                    ctx.fillText("Based on a rumor that has been passed around,",319,50);
-                    ctx.fillText("Lunar rock is located on a nearby planet.",319,70);
-                    ctx.fillText("Lunar rock has great magic, and it helps you",319,90);
-                    ctx.fillText("make a wish come true. Alien's wife is",319,110);
-                    ctx.fillText("seriouslly ill and he wants to find Lunar",319,130);
-                    ctx.fillText("rock to help her get better. Alien has flown",319,150);
-                    ctx.fillText("to this planet to begin the search.",319,170);
-                    ctx.fillText("After traveling a thousand years of light,",319,190);
-                    ctx.fillText("he arrived on this planet.",319,210);
-                    ctx.fillText("Using the arrow keys and spacebar, navigate",319,250);
-                    ctx.fillText("the planet, shoot the enemies, gather coins",319,270);
-                    ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",319,290);
-                    ctx.fillText("Please click the X in the corner when you are done.",319, 330);
+                    ctx.fillText("Alien Odyssey: Finding Lunar Rock -", 319, 50);
+                    ctx.fillText("Based on a rumor that has been passed around,",319,70);
+                    ctx.fillText("Lunar rock is located on a nearby planet.",319,90);
+                    ctx.fillText("Lunar rock has great magic, and it helps you",319,110);
+                    ctx.fillText("make a wish come true. Alien's wife is",319,130);
+                    ctx.fillText("seriouslly ill and he wants to find Lunar",319,150);
+                    ctx.fillText("rock to help her get better. Alien has flown",319,170);
+                    ctx.fillText("to this planet to begin the search.",319,190);
+                    ctx.fillText("After traveling a thousand years of light,",319,210);
+                    ctx.fillText("he arrived on this planet.",319,230);
+                    ctx.fillText("Using the arrow keys and spacebar, navigate",319,270);
+                    ctx.fillText("the planet, shoot the enemies, gather coins",319,290);
+                    ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",319,310);
+                    ctx.fillText("Please click the X in the corner when you are done.",319, 350);
                     ctx.fillStyle = "gray";
-                    ctx.fillText("Based on a rumor that has been passed around,",320,50);
-                    ctx.fillText("Lunar rock is located on a nearby planet.",320,70);
-                    ctx.fillText("Lunar rock has great magic, and it helps you",320,90);
-                    ctx.fillText("make a wish come true. Alien's wife is",320,110);
-                    ctx.fillText("seriouslly ill and he wants to find Lunar",320,130);
-                    ctx.fillText("rock to help her get better. Alien has flown",320,150);
-                    ctx.fillText("to this planet to begin the search.",320,170);
-                    ctx.fillText("After traveling a thousand years of light,",320,190);
-                    ctx.fillText("he arrived on this planet.",320,210);
-                    ctx.fillText("Using the arrow keys and spacebar, navigate",320,250);
-                    ctx.fillText("the planet, shoot the enemies, gather coins",320,270);
-                    ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",320,290);
-                    ctx.fillText("Please click the X in the corner when you are done.",320, 330);
+                    ctx.fillText("Alien Odyssey: Finding Lunar Rock -", 320, 50);
+                    ctx.fillText("Based on a rumor that has been passed around,",320,70);
+                    ctx.fillText("Lunar rock is located on a nearby planet.",320,90);
+                    ctx.fillText("Lunar rock has great magic, and it helps you",320,110);
+                    ctx.fillText("make a wish come true. Alien's wife is",320,130);
+                    ctx.fillText("seriouslly ill and he wants to find Lunar",320,150);
+                    ctx.fillText("rock to help her get better. Alien has flown",320,170);
+                    ctx.fillText("to this planet to begin the search.",320,190);
+                    ctx.fillText("After traveling a thousand years of light,",320,210);
+                    ctx.fillText("he arrived on this planet.",320,230);
+                    ctx.fillText("Using the arrow keys and spacebar, navigate",320,270);
+                    ctx.fillText("the planet, shoot the enemies, gather coins",320,290);
+                    ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",320,310);
+                    ctx.fillText("Please click the X in the corner when you are done.",320, 350);
                 }
             }
         }

@@ -1,9 +1,7 @@
-class lavafish{
-    constructor(game){
-        this.game = game;
-        this.animator = new Animator(ASSET_MANAGER.getAsset("./lavafish.png"), 0, 0, 133, 400, 7, 0.14);
-        this.x =0;
-        this.y=0;
+class lavafish {
+    constructor(game, x, y){
+        Object.assign(this, {game, x, y});
+        this.animator = new Animator(ASSET_MANAGER.getAsset("./Sprites_and_Assets/lavafish.png"), 0, 0, 133, 400, 7, 0.14);
         this.speed = 120;
     };
 

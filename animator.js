@@ -24,6 +24,23 @@ class Animator {
 		// }
 	};
 
+	drawFrame2(tick, ctx, x, y, scaleW, scaleH) {
+
+		this.elapsedTime += tick;
+		if(this.elapsedTime > this.totalTime) this.elapsedTime -= this.totalTime;
+		// const frame = this.currentFrame();
+
+		let frame = this.currentFrame();
+		// if(this.reverse)  frame = this.frameCount - frame -1;
+		// if (this.loop) {
+			ctx.drawImage(this.spritesheet, 
+				this.xStart + this.width*frame, this.yStart,
+				this.width, this.height,
+				x, y,
+				scaleW, scaleH);
+		// }
+	};
+
 	currentFrame() {
 		return Math.floor(this.elapsedTime / this.frameDuration);
 	};

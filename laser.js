@@ -15,7 +15,7 @@ class Laser {
 
     updateBB() {
         this.lastBB = this.BB;
-        this.BB = new BoundingBox(this.x, this.y, 45, 12);
+        this.BB = new BoundingBox(this.x - this.game.camera.x, this.y, 45, 12);
     };
 
     update() {
@@ -37,10 +37,11 @@ class Laser {
         var that = this;
         this.game.entities.forEach(function (entity) {
             if (entity.BB && that.BB.collide(entity.BB)) {
-                if (entity instanceof Rock || entity instanceof Scorpion || entity instanceof Ant) {
-                    if (!entity instanceof Rock) {
-                        entity.removeFromWorld = true;
-                    }
+                if (entity instanceof Rock) {
+                    that.removeFromWorld = true;
+                } 
+                if (entity instanceof Scorpion || entity instanceof Ant) {
+                    entity.removeFromWorld = true;
                     that.removeFromWorld = true;
                 } else if (entity instanceof MetalDesertGround) {
                     that.removeFromWorld = true;
@@ -53,11 +54,12 @@ class Laser {
         if (reverse) {
             ctx.scale(-1,1);
             this.laserAnim.drawFrame(this.game.clockTick, ctx, -this.x + this.game.camera.x, this.y);
+            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
             
         } else {
             ctx.scale(1,1);
             this.laserAnim.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
-            
+            // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         }
     };
 }
