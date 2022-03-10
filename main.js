@@ -45,6 +45,7 @@ ASSET_MANAGER.queueDownload("./Level3/stepLarge.png");
 ASSET_MANAGER.queueDownload("./Level3/lavaDrop.png");
 ASSET_MANAGER.queueDownload("./Level3/lavaLand.png");
 ASSET_MANAGER.queueDownload("./Level3/lavafish.png");
+ASSET_MANAGER.queueDownload("./Level3/stepMA.png");
 
 //LEVEL 4 ENTITIES
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/sun.png");
@@ -132,6 +133,7 @@ ASSET_MANAGER.downloadAll(() => {
 	gameEngine.addEntity(new lavaDrop1(gameEngine));
 	gameEngine.addEntity(new lavaDrop2(gameEngine));
 	gameEngine.addEntity(new background(gameEngine));
+	// gameEngine.addEntity(new stepMA(gameEngine));
 	
 
 	//LEVEL 4 entities
