@@ -60,7 +60,29 @@ ASSET_MANAGER.queueDownload("./Level3/stepMA.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud6.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud7.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud8.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment2.png");
+// ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestHills.png");
+ASSET_MANAGER.queueDownload("./Level4/background/background.png");
+ASSET_MANAGER.queueDownload("./Level4/background/ground.png");
+ASSET_MANAGER.queueDownload("./Level4/background/hill.png");
+ASSET_MANAGER.queueDownload("./Level4/background/tree1.png");
+ASSET_MANAGER.queueDownload("./Level4/background/tree2.png");
 
+ASSET_MANAGER.queueDownload("./Level4/background/cloud1.png");
+ASSET_MANAGER.queueDownload("./Level4/background/cloud2.png");
+ASSET_MANAGER.queueDownload("./Level4/background/cloud3.png");
+ASSET_MANAGER.queueDownload("./Level4/background/cloud4.png");
+ASSET_MANAGER.queueDownload("./Level4/background/cloud5.png");
+ASSET_MANAGER.queueDownload("./Level4/background/cloud6.png");
+ASSET_MANAGER.queueDownload("./Level4/background/cloud7.png");
+ASSET_MANAGER.queueDownload("./Level4/background/cloud8.png");
+       
+       
+ASSET_MANAGER.queueDownload("./Level4/background/bushSmall.png");
+ASSET_MANAGER.queueDownload("./Level4/background/bushMedium.png");
+ASSET_MANAGER.queueDownload("./Level4/background/bushLarge.png");
+ASSET_MANAGER.queueDownload("./Level4/background/moon.png");
 //
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsEnvironment.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsBackground.png");
@@ -71,9 +93,7 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/Health_Ammo_Creatures.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandEnvironment.png");
 // ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
 
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestEnvironment2.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestHills.png");
+
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/title.png");
 
 
@@ -128,11 +148,11 @@ ASSET_MANAGER.downloadAll(() => {
 	// gameEngine.addEntity(new AcidMeadowsBackground(gameEngine));
 
 	//LEVEL 3 entities
-	gameEngine.addEntity(new lavaLand(gameEngine));
-	gameEngine.addEntity(new lavafish(gameEngine));
-	gameEngine.addEntity(new lavaDrop1(gameEngine));
-	gameEngine.addEntity(new lavaDrop2(gameEngine));
-	gameEngine.addEntity(new background(gameEngine));
+	// gameEngine.addEntity(new lavaLand(gameEngine));
+	// gameEngine.addEntity(new lavafish(gameEngine));
+	// gameEngine.addEntity(new lavaDrop1(gameEngine));
+	// gameEngine.addEntity(new lavaDrop2(gameEngine));
+	// gameEngine.addEntity(new background(gameEngine));
 	// gameEngine.addEntity(new stepMA(gameEngine));
 	
 
@@ -149,6 +169,7 @@ ASSET_MANAGER.downloadAll(() => {
 	// gameEngine.addEntity(new cloud6(gameEngine));
 	// gameEngine.addEntity(new cloud7(gameEngine));
 	// gameEngine.addEntity(new cloud8(gameEngine));
+	gameEngine.addEntity(new background4(gameEngine));
 
 	
 	
