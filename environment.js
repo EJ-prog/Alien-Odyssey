@@ -1006,7 +1006,7 @@ class Cloud1 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 191, 96, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 191, 96, this.x - this.game.camera.x, this.y, 191, 96);
     };
 }
 
@@ -1022,7 +1022,7 @@ class Cloud2 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 175, 91, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 175, 91, this.x - this.game.camera.x, this.y, 175, 91);
     };
 }
 
@@ -1038,7 +1038,7 @@ class Cloud3 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 175, 91, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 175, 91, this.x - this.game.camera.x, this.y, 175, 91);
     };
 }
 
@@ -1054,7 +1054,7 @@ class Cloud4 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 255, 120, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 255, 120, this.x - this.game.camera.x, this.y, 255, 120);
     };
 }
 
@@ -1070,7 +1070,7 @@ class Cloud5 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 191, 120, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 191, 120, this.x - this.game.camera.x, this.y, 191, 120);
     };
 }
 
@@ -1086,7 +1086,7 @@ class Cloud6 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 245, 110, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 245, 110, this.x - this.game.camera.x, this.y, 245, 110);
     };
 }
 
@@ -1102,7 +1102,7 @@ class Cloud7 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 189, 114, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 189, 114, this.x - this.game.camera.x, this.y, 189, 114);
     };
 }
 
@@ -1118,7 +1118,7 @@ class Cloud8 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 140, 94, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 140, 94, this.x - this.game.camera.x, this.y, 140, 94);
     };
 }
 
