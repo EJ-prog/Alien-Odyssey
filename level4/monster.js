@@ -13,11 +13,15 @@ class Monster {
         this.speed = 10;
         this.state = 0; //0 = walking, 1 = jumping
         this.dead = false;
-
+        this.monsterhealthbarImage = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MonsterHealthBar.png");
         
     }
 
     update() {
+
+        if (this) {
+
+        }
 
     }
 

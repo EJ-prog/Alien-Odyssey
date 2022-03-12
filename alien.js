@@ -158,22 +158,18 @@ class Alien{
                     //YOU WIN!!!
                     // that.win = true;
                     if (entity.level === 1) {
-                        that.velocity.y = 0;
-                        that.velocity.x = 0;
-                        that.game.camera.loadLevel2(acidMeadows, 0);
+                        that.game.camera.loadLevel2(acidMeadows, 0, 273);
+                    } else if (entity.level === 2) {
+                        that.game.camera.loadLevel2(lavaLand, -10, 210);
+                    } else if (entity.level === 3) {
+                        that.game.camera.loadLevel2(monsterForest, 0, 273);
+                    } else if (entity.level === 4) {
+
                     }
-                    // if (entity.level === 2) {
-                    //     that.win = true;
-                    // }
-                    // } else if (entity.level == 2) {
-                    //     that.game.camera.loadLevel2(lavaLand, 0);
-                    // } else if (entity.level == 3) {
-                    //     that.game.camera.loadLevel2(monsterForest, 0);
-                    // }
                 }
                 if (entity instanceof Coin) {
                     entity.removeFromWorld = true;
-                } else if (entity instanceof Scorpion || entity instanceof Rock || entity instanceof Ant) { //add ant and rain to here
+                } else if (entity instanceof Scorpion || entity instanceof Rock || entity instanceof Ant || that.y >= 575) { //add ant and rain to here
                     that.dead = true;
                 } else if (entity instanceof Mushroom1 || entity instanceof Mushroom2) {
                     if (that.lastBB.left >= entity.BB.x && that.lastBB.right <= (entity.BB.width + entity.BB.x)) {
@@ -202,17 +198,43 @@ class Alien{
                     } else{
                         that.velocity.y = -100;
                     }
-                } else if (entity instanceof MetalDesertPath || entity instanceof AcidMeadowsPath) {
+                } else if (entity instanceof MetalDesertPath ||
+                     entity instanceof AcidMeadowsPath ||
+                      entity instanceof MonsterForestPath) {
                     if (that.game.up) {
                         that.velocity.y = -100;
                     }
                 } else if (entity instanceof LavaLandHorizontal) {
-                    if (that.lastBB.y >= entity.BB.top + 150) {
+                    if (that.game.up && that.lastBB.bottom <= entity.BB.top + 40) {
                         that.velocity.y = -100;
                     } else {
                         that.velocity.y = 0;
                     }
-                } else if (entity instanceof MetalDesertGround || entity instanceof AcidMeadowsGround) {
+                } else if (entity instanceof LavaLandVertical) {
+                    if (that.game.up && that.lastBB.bottom <= entity.BB.top + 20) {
+                        that.velocity.y = -100;
+                    } else {
+                        that.velocity.y = 0;
+                    } 
+                } else if (entity instanceof LavaLandSquare) {
+                    if (that.game.up && that.lastBB.bottom <= entity.BB.top + 40) {
+                        that.velocity.y = -100;
+                    } else {
+                        that.velocity.y = 0;
+                    }
+                } else if (entity instanceof StepMedium) {
+                    if (that.game.up && !entity.crumble && that.lastBB.bottom <= entity.BB.top + 40) {
+                        that.velocity.y = -100;
+                    } else if (that.game.up && entity.crumble && that.lastBB.bottom <= entity.BB.top + 40) {
+                        that.velocity.y = -50;
+                    } else if (!that.game.up && entity.crumble) {
+                        that.velocity.y = 100;
+                    } else {
+                        that.velocity.y = 0;
+                    }
+                } else if (entity instanceof MetalDesertGround || 
+                    entity instanceof AcidMeadowsGround || 
+                    entity instanceof MonsterForestGround) {
                     if (!that.game.up) {
                         that.velocity.y = 0;
                     }

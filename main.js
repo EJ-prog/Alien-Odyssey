@@ -50,10 +50,13 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/lavafish.png");
 
 // //LEVEL 4 ENTITIES
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/MonsterForestbackground.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/sun.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bush1.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bush2.png");
-ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bush3.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bushSmall.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bushMedium.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/bushLarge.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/tree1.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/tree2.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud1.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud2.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/cloud3.png");

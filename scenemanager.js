@@ -23,10 +23,10 @@ class SceneManager {
         });
     };
 
-    loadLevel2(level, x) {
+    loadLevel2(level, x, y) {
         this.alien.velocity.x = 0;
         this.alien.velocity.y = 0;
-        this.loadlevel(level, x, 273, false, false);
+        this.loadlevel(level, x, y, false, false);
     };
 
     // loadTitle() {
@@ -41,6 +41,7 @@ class SceneManager {
         if (transition) {
             this.game.addEntity(new TitleScreen(this.game));
         } else {
+            //Level 1
             if (level.metalDesertBackground) {
                 for (var i = 0; i < level.metalDesertBackground.length; i++) {
                     let metalDesertBackground = level.metalDesertBackground[i];
@@ -107,6 +108,7 @@ class SceneManager {
                     this.game.addEntity(new Scorpion(this.game, scorpion.x, scorpion.y));
                 }
             }
+            //Level 2
             if (level.acidMeadowsBackground) {
                 for (var i = 0; i < level.acidMeadowsBackground.length; i++) {
                     let acidMeadowsBackground = level.acidMeadowsBackground[i];
@@ -128,7 +130,7 @@ class SceneManager {
             if (level.acidMeadowsGround) {
                 for (var i = 0; i < level.acidMeadowsGround.length; i++) {
                     let acidMeadowsGround = level.acidMeadowsGround[i];
-                    this.game.addEntity(new AcidMeadowsPath(this.game, acidMeadowsGround.x, acidMeadowsGround.y, acidMeadowsGround.dx, acidMeadowsGround.dy, acidMeadowsGround.w, acidMeadowsGround.h));
+                    this.game.addEntity(new AcidMeadowsGround(this.game, acidMeadowsGround.x, acidMeadowsGround.y, acidMeadowsGround.dx, acidMeadowsGround.dy, acidMeadowsGround.w, acidMeadowsGround.h));
                 }
             }
             if (level.acidMeadowsPlanets) {
@@ -173,28 +175,11 @@ class SceneManager {
                     this.game.addEntity(new Ant(this.game, ant.x, ant.y));
                 }
             }
+            //Level 3
             if (level.lavaLandBackground) {
                 for (var i = 0; i < level.lavaLandBackground.length; i++) {
                     let lavaLandBackground = level.lavaLandBackground[i];
                     this.game.addEntity(new LavaLandBackground(this.game, lavaLandBackground.x, lavaLandBackground.y, lavaLandBackground.width));
-                }
-            }
-            if (level.lavaLandHorizontal) {
-                for (var i = 0; i < level.lavaLandHorizontal.length; i++) {
-                    let lavaLandHorizontal = level.lavaLandHorizontal[i];
-                    this.game.addEntity(new LavaLandHorizontal(this.game, lavaLandHorizontal.x, lavaLandHorizontal.y));
-                }
-            }
-            if (level.lavaLandVertical) {
-                for (var i = 0; i < level.lavaLandVertical.length; i++) {
-                    let lavaLandVertical = level.lavaLandVertical[i];
-                    this.game.addEntity(new LavaLandVertical(this.game, lavaLandVertical.x, lavaLandVertical.y));
-                }
-            }
-            if (level.lavaLandSquare) {
-                for (var i = 0; i < level.lavaLandSquare.length; i++) {
-                    let lavaLandSquare = level.lavaLandSquare[i];
-                    this.game.addEntity(new LavaLandSquare(this.game, lavaLandSquare.x, lavaLandSquare.y));
                 }
             }
             if (level.diamond1) {
@@ -221,6 +206,24 @@ class SceneManager {
                     this.game.addEntity(new Diamond4(this.game, diamond4.x, diamond4.y));
                 }
             }
+            if (level.lavaLandHorizontal) {
+                for (var i = 0; i < level.lavaLandHorizontal.length; i++) {
+                    let lavaLandHorizontal = level.lavaLandHorizontal[i];
+                    this.game.addEntity(new LavaLandHorizontal(this.game, lavaLandHorizontal.x, lavaLandHorizontal.y));
+                }
+            }
+            if (level.lavaLandVertical) {
+                for (var i = 0; i < level.lavaLandVertical.length; i++) {
+                    let lavaLandVertical = level.lavaLandVertical[i];
+                    this.game.addEntity(new LavaLandVertical(this.game, lavaLandVertical.x, lavaLandVertical.y));
+                }
+            }
+            if (level.lavaLandSquare) {
+                for (var i = 0; i < level.lavaLandSquare.length; i++) {
+                    let lavaLandSquare = level.lavaLandSquare[i];
+                    this.game.addEntity(new LavaLandSquare(this.game, lavaLandSquare.x, lavaLandSquare.y));
+                }
+            }
             if (level.stepShort) {
                 for (var i = 0; i < level.stepShort.length; i++) {
                     let stepShort = level.stepShort[i];
@@ -245,16 +248,65 @@ class SceneManager {
                     this.game.addEntity(new lavafish(this.game, lavaFish.x, lavaFish.y, lavaFish.resetY));
                 }
             }
-            if (level.bush1) {
-                for (var i = 0; i < level.bush1.length; i++) {
-                    let bush1 = level.bush1[i];
-                    this.game.addEntity(new Bush1(this.game, bush1.x, bush1.y));
+            //Level 4
+            if (level.monsterForestBackground) {
+                for (var i = 0; i < level.monsterForestBackground.length; i++) {
+                    let monsterForestBackground = level.monsterForestBackground[i];
+                    this.game.addEntity(new MonsterForestBackground(this.game, monsterForestBackground.x, monsterForestBackground.y, monsterForestBackground.width));
                 }
             }
-            if (level.bush2) {
-                for (var i = 0; i < level.bush2.length; i++) {
-                    let bush2 = level.bush2[i];
-                    this.game.addEntity(new Bush2(this.game, bush2.x, bush2.y));
+            if (level.sun) {
+                for (var i = 0; i < level.sun.length; i++) {
+                    let sun = level.sun[i];
+                    this.game.addEntity(new Sun(this.game, sun.x, sun.y));
+                }
+            }
+            if (level.monsterForestHills) {
+                for (var i = 0; i < level.monsterForestHills.length; i++) {
+                    let monsterForestHills = level.monsterForestHills[i];
+                    this.game.addEntity(new MonsterForestHills(this.game, monsterForestHills.x, monsterForestHills.y, monsterForestHills.width));
+                }
+            }
+            if (level.monsterForestPath) {
+                for (var i = 0; i < level.monsterForestPath.length; i++) {
+                    let monsterForestPath = level.monsterForestPath[i];
+                    this.game.addEntity(new MonsterForestPath(this.game, monsterForestPath.x, monsterForestPath.y, monsterForestPath.dx, monsterForestPath.dy, monsterForestPath.w, monsterForestPath.h));
+                }
+            }
+            if (level.monsterForestGround) {
+                for (var i = 0; i < level.monsterForestGround.length; i++) {
+                    let monsterForestGround = level.monsterForestGround[i];
+                    this.game.addEntity(new MonsterForestGround(this.game, monsterForestGround.x, monsterForestGround.y, monsterForestGround.dx, monsterForestGround.dy, monsterForestGround.w, monsterForestGround.h));
+                }
+            }
+            if (level.bushLarge) {
+                for (var i = 0; i < level.bushLarge.length; i++) {
+                    let bush1 = level.bushLarge[i];
+                    this.game.addEntity(new BushLarge(this.game, bush1.x, bush1.y));
+                }
+            }
+            if (level.bushMedium) {
+                for (var i = 0; i < level.bushMedium.length; i++) {
+                    let bush3 = level.bushMedium[i];
+                    this.game.addEntity(new BushMedium(this.game, bush3.x, bush3.y));
+                }
+            }
+            if (level.tree1) {
+                for (var i = 0; i < level.tree1.length; i++) {
+                    let tree1 = level.tree1[i];
+                    this.game.addEntity(new Tree1(this.game, tree1.x, tree1.y));
+                }
+            }
+            if (level.tree2) {
+                for (var i = 0; i < level.tree2.length; i++) {
+                    let tree2 = level.tree2[i];
+                    this.game.addEntity(new Tree2(this.game, tree2.x, tree2.y));
+                }
+            }
+            if (level.bushSmall) {
+                for (var i = 0; i < level.bushSmall.length; i++) {
+                    let bush2 = level.bushSmall[i];
+                    this.game.addEntity(new BushSmall(this.game, bush2.x, bush2.y));
                 }
             }
             if (level.cloud1) {
@@ -305,18 +357,13 @@ class SceneManager {
                     this.game.addEntity(new Cloud1(this.game, cloud8.x, cloud8.y));
                 }
             }
-            if (level.sun) {
-                for (var i = 0; i < level.sun.length; i++) {
-                    let sun = level.sun[i];
-                    this.game.addEntity(new Sun(this.game, sun.x, sun.y));
-                }
-            }
             if (level.monster) {
                 for (var i = 0; i < level.monster.length; i++) {
                     let monster = level.monster[i];
                     this.game.addEntity(new Monster(this.game, monster.x, monster.y));
                 }
             }
+            //Assets
             if (level.coins) {
                 for (var i = 0; i < level.coins.length; i++) {
                     let coins = level.coins[i];
@@ -374,7 +421,7 @@ class SceneManager {
     update() {
         if (this.title && this.game.click && this.activeElem) {
             if(this.game.click.y > 146 && this.game.click.y < 280 && this.game.click.x > 338 && this.game.click.x < 623) {
-                this.loadlevel(metalDesert, 0, 273, false, false);
+                this.loadlevel(monsterForest, 0, 275, false, false);
                 // this.alien = new Alien(this.game, 0, 263);
             }
             if (this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {

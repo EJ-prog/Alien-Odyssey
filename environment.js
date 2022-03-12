@@ -13,7 +13,7 @@ class MetalDesertBackground {
     draw(ctx) {
         ctx.drawImage(this.spritesheet, 0, 0, this.width, 580, this.x, this.y, this.width, 580);
     };
-};
+}
 
 class MetalMountains {
     constructor(game, x, y, width) {
@@ -29,7 +29,7 @@ class MetalMountains {
     draw(ctx) {
         ctx.drawImage(this.spritesheet, 0, 0, this.width, 580, this.x - this.game.camera.x, this.y, this.width, 580);
     };
-};
+}
 
 class BackgroundCactus1 {
     constructor(game, x, y) {
@@ -45,7 +45,7 @@ class BackgroundCactus1 {
     draw(ctx) {
         ctx.drawImage(this.spritesheet, 15, 160, 150, 200, this.x - this.game.camera.x, this.y, 150, 200);
     };
-};
+}
 
 class BackgroundCactus2 {
     constructor(game, x, y) {
@@ -61,7 +61,7 @@ class BackgroundCactus2 {
     draw(ctx) {
         ctx.drawImage(this.spritesheet, 184, 160, 150, 200, this.x - this.game.camera.x, this.y, 150, 200);
     };
-};
+}
 
 class ForegroundCactus1 {
     constructor(game, x, y) {
@@ -87,7 +87,7 @@ class ForegroundCactus1 {
         ctx.drawImage(this.spritesheet, 336, 160, 100, 210, this.x - this.game.camera.x, this.y, 100, 210);
     };
 
-};
+}
 
 class ForegroundCactus2 {
     constructor(game, x, y) {
@@ -95,12 +95,12 @@ class ForegroundCactus2 {
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertEnvironment.png");
         this.updateBB();
-    }
+    };
 
     updateBB() {
         this.lastBB = this.BB;
         this.BB = new BoundingBox(this.x + 6 - this.game.camera.x, this.y + 120, 62, 90);
-    }
+    };
 
     update() {
         this.updateBB();
@@ -111,7 +111,7 @@ class ForegroundCactus2 {
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, 430, 160, 100, 210, this.x - this.game.camera.x, this.y, 100, 210);
     };
-};
+}
 
 class MetalDesertPath {
     constructor(game, x, y, dx, dy, w, h) {
@@ -119,7 +119,7 @@ class MetalDesertPath {
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertPath.png");
         this.BB = new BoundingBox(this.dx, this.dy, this.w, this.h);
-    }
+    };
 
     update() {
 
@@ -130,7 +130,7 @@ class MetalDesertPath {
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.w, this.h);
     };
-};
+}
 
 class MetalDesertGround {
     constructor(game, x, y, dx, dy, w, h) {
@@ -138,7 +138,7 @@ class MetalDesertGround {
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertPath.png");
         this.BB = new BoundingBox(this.dx, this.dy, this.w, this.h);
-    }
+    };
 
     update() {
 
@@ -149,7 +149,7 @@ class MetalDesertGround {
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.w, this.h);
     };
-};
+}
 
 class MetalDesertPlanets {
     constructor(game, x, y) {
@@ -157,7 +157,7 @@ class MetalDesertPlanets {
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MetalDesertEnvironment.png");
         this.planets = new Animator(this.spritesheet, 450, 29, 400, 160, 1, 0.2);
-    }
+    };
 
     update() {
         // if (this.x > 300) {
@@ -169,7 +169,7 @@ class MetalDesertPlanets {
     draw(ctx) {
         this.planets.drawFrame(this.game.clockTick, ctx, this.x, this.y);
     };
-};
+}
 
 class Rock {
     constructor(game, x, y) {
@@ -215,7 +215,7 @@ class Rock {
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
     };
 
-};
+}
 
 //level 2 environment assets
 class AcidMeadowsBackground {
@@ -232,7 +232,7 @@ class AcidMeadowsBackground {
     draw(ctx){
         ctx.drawImage(this.spritesheet, this.x, this.y, this.width, 576, this.x, this.y, this.width, 576);
     };
-};
+}
 
 class AcidMeadowsHills {
     constructor(game, x, y, width){
@@ -248,7 +248,7 @@ class AcidMeadowsHills {
     draw(ctx){
         ctx.drawImage(this.spritesheet, 0, 0, this.width, 576, this.x - this.game.camera.x, this.y, this.width, 576);
     };
-};
+}
 
 class RainClouds1 {
     constructor(game, x, y, speed){
@@ -276,7 +276,7 @@ class RainClouds1 {
     draw(ctx){
         this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
     };
-};
+}
 
 class RainClouds2 {
     constructor(game, x, y, speed){
@@ -305,7 +305,7 @@ class RainClouds2 {
     draw(ctx){
         this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
     };
-};
+}
 
 class Mushroom1 {
     constructor(game, x, y){
@@ -336,6 +336,9 @@ class Mushroom1 {
                 }
             }
         });
+        if (that.rain && this.game.clockTick) {
+
+        }
     };
 
     draw(ctx){
@@ -345,7 +348,7 @@ class Mushroom1 {
             this.animator.drawFrame2(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y, 180, 240);
         }
     };
-};
+}
 
 class Mushroom2 {
     constructor(game, x, y) {
@@ -384,7 +387,7 @@ class Mushroom2 {
             this.animator.drawFrame2(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y - 10, 220, 305);
         }
     };
-};
+}
 
 class Rain1 {
     constructor(game, x){
@@ -415,7 +418,7 @@ class Rain1 {
              that.updateBB();
             // this.y = 365;
         }
-        if(that.y > 500) {
+        if(that.y > 400) {
             that.y = 135;
             that.updateBB();
         }
@@ -426,49 +429,61 @@ class Rain1 {
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
         this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
     };
-};
+}
 
 class AcidMeadowsPath {
     constructor(game, x, y, dx, dy, w, h) {
         Object.assign(this, {game, x, y, dx, dy, w, h});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/path.png");
-        this.BB = new BoundingBox(this.dx, this.dy, this.w, this.h);
-    }
-
-    update() {
-
+        this.updateBB();
     };
 
-    draw(ctx) {
-        ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.w, this.h);
+    updateBB() {
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.dx - this.game.camera.x, this.dy, this.w, this.h);
     };
-};
-
-class AcidMeadowsGround {
-    constructor(game, x, y, dx, dy, w, h) {
-        Object.assign(this, {game, x, y, dx, dy, w, h});
-
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/path.png");
-        this.BB = new BoundingBox(this.dx, this.dy, this.w, this.h);
-    }
 
     update() {
-
+        this.updateBB();
     };
 
     draw(ctx) {
         ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.w, this.h);
         // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
     };
-};
+}
+
+class AcidMeadowsGround {
+    constructor(game, x, y, dx, dy, w, h) {
+        Object.assign(this, {game, x, y, dx, dy, w, h});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/path.png");
+        this.updateBB();
+    };
+
+    updateBB() {
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.dx - this.game.camera.x, this.dy, this.w, this.h);
+    };
+
+    update() {
+        this.updateBB();
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, this.x, this.y, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.w, this.h);
+        // ctx.fillStyle = "red";
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+    };
+}
 
 class AcidMeadowsPlanets {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/planets.png");
-    }
+    };
 
     update() {
 
@@ -477,14 +492,14 @@ class AcidMeadowsPlanets {
     draw(ctx) {
         ctx.drawImage(this.spritesheet, 0, 0, 400, 190, this.x, this.y, 400, 190);
     };
-};
+}
 
 class Puddles1 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/puddles1.png");
-    }
+    };
 
     update() {
 
@@ -493,14 +508,14 @@ class Puddles1 {
     draw(ctx) {
         ctx.drawImage(this.spritesheet, 0, 0, 182, 58, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
-};
+}
 
 class Puddles2 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/puddles2.png");
-    }
+    };
 
     update() {
 
@@ -509,14 +524,14 @@ class Puddles2 {
     draw(ctx) {
         ctx.drawImage(this.spritesheet, -10, 0, 230, 58, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
-};
+}
 
 class Puddles3 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/puddles3.png");
-    }
+    };
 
     update() {
 
@@ -525,14 +540,14 @@ class Puddles3 {
     draw(ctx) {
         ctx.drawImage(this.spritesheet, 0, 0, 200, 56, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
-};
+}
 
 class Puddles4 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/puddles4.png");
-    }
+    };
 
     update() {
 
@@ -541,14 +556,14 @@ class Puddles4 {
     draw(ctx) {
         ctx.drawImage(this.spritesheet, 10, 0, 170, 58, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
-};
+}
 
 class Puddles5 {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/puddles5.png");
-    }
+    };
 
     update() {
 
@@ -557,7 +572,7 @@ class Puddles5 {
     draw(ctx) {
         ctx.drawImage(this.spritesheet, -10, 0, 230, 58, this.x, this.y, PARAMS.BLOCKWIDTH * 5, PARAMS.BLOCKWIDTH * 2.5);
     };
-};
+}
 
 //level 3 environment assets
 class LavaLandBackground {
@@ -581,14 +596,14 @@ class LavaLandHorizontal {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/landHorizontal.png");
-        this.width = 300;
-        this.height = 100;
+        this.width = 360;
+        this.height = 175;
         this.updateBB();
     };
 
     updateBB(){
         this.lastBB = this.BB;
-        this.BB = new BoundingBox(this.x + 5 - this.game.camera.x, this.y + 15, this.width, this.height);
+        this.BB = new BoundingBox(this.x + 5 - this.game.camera.x, this.y + 28, this.width, this.height - 85);
     };
 
     update() {
@@ -597,7 +612,7 @@ class LavaLandHorizontal {
 
     draw(ctx) {
         ctx.drawImage(this.spritesheet, 0, 0, this.width, this.height, this.x - this.game.camera.x, this.y, this.width, this.height);
-        ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);s
     };
 }
 
@@ -606,14 +621,23 @@ class LavaLandVertical {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/landVertical.png");
+        this.width = 120;
+        this.height = 185;
+        this.updateBB();
+    };
+
+    updateBB(){
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x + 23 - this.game.camera.x, this.y + 30, this.width - 26, this.height - 35);
     };
 
     update() {
-
+        this.updateBB();
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, this.width, this.height, this.x - this.game.camera.x, this.y, this.width, this.height);
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);s
     };
 }
 
@@ -622,14 +646,23 @@ class LavaLandSquare {
         Object.assign(this, {game, x, y});
 
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/landSquare.png");
+        this.width = 250;
+        this.height = 250;
+        this.updateBB();
+    };
+
+    updateBB(){
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x + 15 - this.game.camera.x, this.y + 28, this.width - 15, this.height - 30);
     };
 
     update() {
-
+        this.updateBB();
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, this.width, this.height, this.x - this.game.camera.x, this.y, this.width, this.height);
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);s
     };
 }
 
@@ -645,7 +678,7 @@ class Diamond1 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 121, 121, this.x - this.game.camera.x, this.y, 121, 121);
     };
 }
 
@@ -661,7 +694,7 @@ class Diamond2 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 90, 104, this.x - this.game.camera.x, this.y, 90, 104);
     };
 }
 
@@ -677,7 +710,7 @@ class Diamond3 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 113, 89, this.x - this.game.camera.x, this.y, 113, 89);
     };
 }
 
@@ -693,7 +726,7 @@ class Diamond4 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 111, 83, this.x - this.game.camera.x, this.y, 111, 83);
     };
 }
 
@@ -709,7 +742,7 @@ class StepShort {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x - this.game.camera.x, this.y, 0, 0);
     };
 }
 
@@ -720,19 +753,50 @@ class StepMedium {
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MBridgeAnimation.png");
         this.animator = new Animator(this.spritesheet, 0, 0, 225, 190, 4, 0.25);
         this.speed = 100;
+        this.crumble = false;
+        this.updateBB();
     };
+
+    updateBB() {
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.x - this.game.camera.x + 10, this.y + 10, 120, 50);
+    }
 
     update() {
 
+        this.updateBB();
+        
+        if (this.crumble) {
         this.y += this.speed * this.game.clockTick;
-        if (this.y > 576) {
-            this.y = this.resetY;
+            if (this.y > 576) {
+                this.y = this.resetY;
+                this.crumble = false;
+            }
         }
+
+        var that = this;
+        this.game.entities.forEach(function (entity) {
+            if (entity.BB && that.BB.collide(entity.BB)) {
+                if (entity instanceof Alien) {
+                    if (entity.BB.bottom >= that.BB.top 
+                        && entity.BB.left >= that.BB.left 
+                        && entity.BB.right <= that.BB.right) {
+                        that.crumble = true;
+                    }
+                }
+            }
+        });
     };
 
     draw(ctx) {
         // ctx.drawImage(this.spritesheet, 0, 0, 0, 0, this.x, this.y, 0, 0);
-        this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
+        if (this.crumble) {
+            this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
+        } else {
+            this.step = ASSET_MANAGER.getAsset("./Sprites_and_Assets/stepMedium.png");
+            ctx.drawImage(this.step, 0, 0, 225, 190, this.x - this.game.camera.x, this.y, 225, 190);
+        }
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
     };
 }
 
@@ -764,48 +828,97 @@ class LavaLandLava {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 300, 0, 0, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 300, 100, 100, this.x, this.y, 100, 100);
     };
 }
 
 //level 4 environment assets
-class Bush1 {
-    constructor(game, x, y) {
-        Object.assign(this, {game, x, y});
+class MonsterForestBackground {
+    constructor(game, x, y, width){
+        Object.assign(this, {game, x, y, width});
 
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/bush1.png");
     };
 
     update() {
-
+    
     };
 
-    draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 508, 100, this.x, this.y, 0, 0);
+    draw(ctx){
+        ctx.fillStyle = "lightblue";
+        ctx.fillRect(this.x, this.y, this.width, 576, this.x, this.y, this.width, 576);
     };
 }
 
-class Bush2 {
-    constructor(game, x, y) {
-        Object.assign(this, {game, x, y});
+class MonsterForestHills {
+    constructor(game, x, y, width){
+        Object.assign(this, {game, x, y, width});
 
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/bush2.png");
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MonsterForestHills.png");
     };
 
-    update() {
-
+    update(){
+    
     };
 
-    draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 224, 90, this.x, this.y, 0, 0);
+    draw(ctx){
+        ctx.drawImage(this.spritesheet, 0, this.y, this.width, 576, this.x - this.game.camera.x, this.y, this.width, 576);
     };
 }
 
-class Bush3 {
+class MonsterForestPath {
+    constructor(game, x, y, dx, dy, w, h) {
+        Object.assign(this, {game, x, y, dx, dy, w, h});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MonsterForestEnvironment2.png");
+        this.updateBB();
+        this.s = 2250;
+    };
+
+    updateBB() {
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.dx - this.game.camera.x, this.dy, this.s, this.h);
+    };
+
+    update() {
+        this.updateBB();
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, this.x, 440, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.s, this.h);
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+    };
+}
+
+class MonsterForestGround {
+    constructor(game, x, y, dx, dy, w, h) {
+        Object.assign(this, {game, x, y, dx, dy, w, h});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/MonsterForestEnvironment2.png");
+        this.updateBB();
+        this.s = 2250;
+    };
+
+    updateBB() {
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.dx - this.game.camera.x, this.dy, this.s, this.h);
+    };
+
+    update() {
+        this.updateBB();
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, this.x, 440, this.w, this.h, this.dx - this.game.camera.x, this.dy, this.s, this.h);
+        // ctx.fillStyle = "red";
+        // ctx.strokeRect(this.BB.x, this.BB.y, this.BB.width, this.BB.height);
+    };
+}
+
+class BushLarge {
     constructor(game, x, y) {
         Object.assign(this, {game, x, y});
 
-        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/bush3.png");
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/bushLarge.png");
     };
 
     update() {
@@ -813,7 +926,71 @@ class Bush3 {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 333, 85, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 508, 100, this.x - this.game.camera.x, this.y, 508, 100);
+    };
+}
+
+class BushSmall {
+    constructor(game, x, y) {
+        Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/bushSmall.png");
+    };
+
+    update() {
+
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, 0, 0, 224, 90, this.x - this.game.camera.x, this.y, 224, 90);
+    };
+}
+
+class BushMedium {
+    constructor(game, x, y) {
+        Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/bushMedium.png");
+    };
+
+    update() {
+
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, 0, 0, 333, 85, this.x - this.game.camera.x, this.y, 333, 85);
+    };
+}
+
+class Tree1 {
+    constructor(game, x, y) {
+        Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/tree1.png");
+    };
+
+    update() {
+
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, 0, 0, 398, 368, this.x - this.game.camera.x, this.y, 398, 368);
+    };
+}
+
+class Tree2 {
+    constructor(game, x, y) {
+        Object.assign(this, {game, x, y});
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./Sprites_and_Assets/tree2.png");
+    };
+
+    update() {
+
+    };
+
+    draw(ctx) {
+        ctx.drawImage(this.spritesheet, 0, 0, 247, 314, this.x - this.game.camera.x, this.y, 247, 314);
     };
 }
 
@@ -957,7 +1134,7 @@ class Sun {
     };
 
     draw(ctx) {
-        ctx.drawImage(this.spritesheet, 0, 0, 336, 300, this.x, this.y, 0, 0);
+        ctx.drawImage(this.spritesheet, 0, 0, 336, 300, this.x - this.game.camera.x, this.y, 336, 300);
     };
 }
 
@@ -1121,7 +1298,7 @@ class Ammo {
         } else if (charge === 1) {
             ctx.drawImage(this.ammo, 6+(131*13), 26, 125, 26, 5, 27, 228, 30);
         } else if (charge === 0) {
-            ctx.drawImage(this.ammo, 10+(134*14), 0, 110, 26, 5,0, 200, 30);
+            ctx.drawImage(this.ammo, 10+(134*14), 26, 127, 26, 5,27, 228, 30);
         }
     };
 }

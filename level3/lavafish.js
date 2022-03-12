@@ -11,6 +11,6 @@ class lavafish {
     };
 
     draw(ctx){
-        this.animator.drawFrame(this.game.clockTick, ctx, this.x, 400);
+        this.animator.drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, 400);
     };
 };
