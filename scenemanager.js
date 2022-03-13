@@ -182,6 +182,12 @@ class SceneManager {
                     this.game.addEntity(new LavaLandBackground(this.game, lavaLandBackground.x, lavaLandBackground.y, lavaLandBackground.width));
                 }
             }
+            if (level.lavaDrop) {
+                for (var i = 0; i < level.lavaDrop.length; i++) {
+                    let lavadrop = level.lavaDrop[i];
+                    this.game.addEntity(new lavaDrop(this.game, lavadrop.x, lavadrop.y, lavadrop.resetY));
+                }
+            }
             if (level.diamond1) {
                 for (var i = 0; i < level.diamond1.length; i++) {
                     let diamond1 = level.diamond1[i];
@@ -246,12 +252,6 @@ class SceneManager {
                 for (var i = 0; i < level.lavaFish.length; i++) {
                     let lavaFish = level.lavaFish[i];
                     this.game.addEntity(new lavafish(this.game, lavaFish.x, lavaFish.y, lavaFish.resetY));
-                }
-            }
-            if (level.lavaDrop) {
-                for (var i = 0; i < level.lavaDrop.length; i++) {
-                    let lavadrop = level.lavaDrop[i];
-                    this.game.addEntity(new lavaDrop(this.game, lavadrop.x, lavadrop.y, lavadrop.resetY));
                 }
             }
             //Level 4
