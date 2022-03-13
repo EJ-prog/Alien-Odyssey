@@ -37,7 +37,7 @@ var lavaLand = {
     lavaLandVertical: [{x: 900, y: 370}],
     lavaLandSquare: [{x: -120, y: 380}],
     lavafish: [{x: -10, y: 0}],
-    lavadrop: [{x: 0, y: 0}, {x: 0, y: 0}],
+    lavadrop: [{x: 750, y: 50}, {x: 250, y: 0}],
     diamond1: [{x: 125, y: 210}, {x: 895, y: 275}],
     diamond2: [{x: 520, y: 315}],
     diamond3: [{x: 680, y: 305}],
