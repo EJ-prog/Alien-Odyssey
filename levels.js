@@ -37,6 +37,7 @@ var lavaLand = {
     lavaLandVertical: [{x: 900, y: 370}],
     lavaLandSquare: [{x: -120, y: 380}],
     lavafish: [{x: -10, y: 0}],
+    lavadrop: [{x: 0, y: 0}, {x: 0, y: 0}],
     diamond1: [{x: 125, y: 210}, {x: 895, y: 275}],
     diamond2: [{x: 520, y: 315}],
     diamond3: [{x: 680, y: 305}],
@@ -59,16 +60,17 @@ var monsterForest = {
     bushMedium: [{x: 650, y: 380}],
     tree1: [{x: 50, y: 90}],
     tree2: [{x: 720, y: 145}],
-    // cloud1: [{x: 0, y: 0}],
-    // cloud2: [{x: 0, y: 0}],
+    cloud1: [{x: 0, y: 0}],
+    cloud2: [{x: -330, y: 5}],
     cloud3: [{x: 370, y: 80}],
     cloud4: [{x: 750, y: 10}],
-    // cloud5: [{x: 0, y: 0}],
+    cloud5: [{x: -375, y: 30}],
     // cloud6: [{x: 0, y: 0}],
     // cloud7: [{x: 0, y: 0}],
     // cloud8: [{x: 0, y: 0}],
     sun: [{x : 450, y: 5}],
     coins: [{x: 300, y: 250}],
-    ammopack: [{x: 0, y: 0}]
+    ammopack: [{x: 0, y: 0}],
+    monster: [{x: 1750, y: 150}]
     // lunarRockPiece4: [{x: 0, y: 0, level:4}]
 };

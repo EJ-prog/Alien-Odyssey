@@ -243,9 +243,15 @@ class SceneManager {
                 }
             }
             if (level.lavaFish) {
-                for (var i = 0; i < level.stepMedium.length; i++) {
+                for (var i = 0; i < level.lavaFish.length; i++) {
                     let lavaFish = level.lavaFish[i];
                     this.game.addEntity(new lavafish(this.game, lavaFish.x, lavaFish.y, lavaFish.resetY));
+                }
+            }
+            if (level.lavaDrop) {
+                for (var i = 0; i < level.lavaDrop.length; i++) {
+                    let lavadrop = level.lavaDrop[i];
+                    this.game.addEntity(new lavaDrop(this.game, lavadrop.x, lavadrop.y, lavadrop.resetY));
                 }
             }
             //Level 4
@@ -421,7 +427,7 @@ class SceneManager {
     update() {
         if (this.title && this.game.click && this.activeElem) {
             if(this.game.click.y > 146 && this.game.click.y < 280 && this.game.click.x > 338 && this.game.click.x < 623) {
-                this.loadlevel(metalDesert, 0, 275, false, false);
+                this.loadlevel(monsterForest, 1450, 275, false, false);
                 // this.alien = new Alien(this.game, 0, 263);
             }
             if (this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {
