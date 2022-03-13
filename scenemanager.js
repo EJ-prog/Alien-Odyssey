@@ -470,12 +470,14 @@ class SceneManager {
             this.button_x = 337.5;
             this.button_y = 145.5;
             this.buttons = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AdditionalAssets_StartMenu.png");
-            this.selected = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AdditionalAssets_StartMenu_Selected.png");
+            // this.selected = ASSET_MANAGER.getAsset("./Sprites_and_Assets/AdditionalAssets_StartMenu_Selected.png");
 
             ctx.drawImage(ASSET_MANAGER.getAsset("./Sprites_and_Assets/titlescreen.png"), 0, 0);
             ctx.drawImage(this.buttons, 0, 0, 285, 135, this.button_x, this.button_y, 285, 135);
             ctx.drawImage(this.buttons, 0, 135, 285, 135, this.button_x, this.button_y + 135, 285, 135);
-
+            // if (this.game > 281 && this < 415 && this > 338 && this < 623) {
+            //     ctx.drawImage(this.selected, 0, 0, 285, 135, this.button_x, this.button_y, 285, 135);
+            // }
             if(this.game.click) {
                 if(this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {
                     ctx.fillStyle = "#660066";
@@ -507,7 +509,11 @@ class SceneManager {
                     ctx.fillText("Using the arrow keys and spacebar, navigate",319,270);
                     ctx.fillText("the planet, shoot the enemies, gather coins",319,290);
                     ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",319,310);
-                    ctx.fillText("Please click the X in the corner when you are done.",319, 350);
+                    ctx.fillText("Credits:",449,350);
+                    ctx.fillText("Danny Le, Dino Jazvin, & Elisabeth Jewett",319,370);
+                    ctx.fillText("Original characters and art.",319,390);
+
+                    ctx.fillText("Please click the X in the corner when you are done.",319, 430);
                     ctx.fillStyle = "gray";
                     ctx.fillText("Alien Odyssey: Finding Lunar Rock -", 320, 50);
                     ctx.fillText("Based on a rumor that has been passed around,",320,70);
@@ -522,7 +528,11 @@ class SceneManager {
                     ctx.fillText("Using the arrow keys and spacebar, navigate",320,270);
                     ctx.fillText("the planet, shoot the enemies, gather coins",320,290);
                     ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",320,310);
-                    ctx.fillText("Please click the X in the corner when you are done.",320, 350);
+                    ctx.fillText("Credits:",450,350);
+                    ctx.fillText("Danny Le, Dino Jazvin, & Elisabeth Jewett",320,370);
+                    ctx.fillText("Original characters and art.",320,390);
+
+                    ctx.fillText("Please click the X in the corner when you are done.",320, 430);
                 }
             }
         }

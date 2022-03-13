@@ -164,7 +164,7 @@ class Alien{
                     } else if (entity.level === 3) {
                         that.game.camera.loadLevel2(monsterForest, 0, 273);
                     } else if (entity.level === 4) {
-
+                        that.win = true;
                     }
                 }
                 if (entity instanceof Coin) {
@@ -268,7 +268,8 @@ class Alien{
                 ctx.font = "bold 50px Verdana";
                 ctx.fillText("YOU LOSE!", 50, 500);
                 ctx.font = "20px Verdana";
-                ctx.fillText("Refresh to play again", 60, 550);
+                ctx.fillText("Play again?", 60, 550);
+                ctx.fillText("Go to menu?", 210, 550);
                 this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
                 const context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
@@ -290,7 +291,8 @@ class Alien{
                 ctx.font = "bold 50px Verdana";
                 ctx.fillText("YOU LOSE!", 50, 500);
                 ctx.font = "20px Verdana";
-                ctx.fillText("Refresh to play again", 60, 550);
+                ctx.fillText("Play again?", 60, 550);
+                ctx.fillText("Go to menu?", 210, 550);
                 this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x + this.game.camera.x, this.y);
                 const context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
@@ -322,9 +324,10 @@ class Alien{
             gradient.addColorStop("1.0", "white");
             // Fill with gradient
             ctx.fillStyle = gradient;
-            ctx.fillText("More levels Coming Soon!", 50, 550);
+            ctx.fillText("Alien can make their wish!", 50, 550);
             ctx.font = "20px Verdana";
-            ctx.fillText("Refresh to play again", 53, 570);
+            ctx.fillText("Play again?", 53, 570);
+            ctx.fillText("Go to menu?", 673, 570);
             const context = canvas.getContext('2d');
             context.clearRect(0, 0, canvas.width, canvas.height);
         }

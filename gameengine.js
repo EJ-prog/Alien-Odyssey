@@ -58,6 +58,10 @@ class GameEngine {
 
             return { x: x, y: y, radius: 0 };
         }
+
+        // this.ctx.canvas.addEventListener("mousemove", function (e) {
+        //     that.mouse = getXandY(e);
+        // }, false);
         
 //         const getXandY = e => ({
 //             x: e.clientX - this.ctx.canvas.getBoundingClientRect().left,
@@ -67,27 +71,19 @@ class GameEngine {
         this.ctx.canvas.addEventListener("keydown", function(e){
             switch (e.code) {
                 case "ArrowLeft":
-                    that.left= true;
-                    break;
-                case "a":
+                case "KeyA":
                     that.left = true;
                     break;
                 case "ArrowRight":
-                    that.right = true;
-                    break;
-                case "d":
+                case "KeyD":
                     that.right = true;
                     break;
                 case "ArrowUp":
-                    that.up = true;
-                    break;
-                case "w":
+                case "KeyW":
                     that.up = true;
                     break;
                 case "ArrowDown":
-                    that.down = true;
-                    break;
-                case "s":
+                case "KeyS":
                     that.down = true;
                     break;
                 case "Space" :
@@ -99,27 +95,19 @@ class GameEngine {
         this.ctx.canvas.addEventListener("keyup", function(e){
             switch (e.code) {
                 case "ArrowLeft":
-                    that.left= false;
-                    break;
-                case "a":
+                case "KeyA":
                     that.left = false;
                     break;
                 case "ArrowRight":
-                    that.right = false;
-                    break;
-                case "d":
+                case "KeyD":
                     that.right = false;
                     break;
                 case "ArrowUp":
-                    that.up = false;
-                    break;
-                case "w":
+                case "KeyW":
                     that.up = false;
                     break;
                 case "ArrowDown":
-                    that.down = false;
-                    break;
-                case "s":
+                case "KeyS":
                     that.down = false;
                     break;
                 case "Space" :

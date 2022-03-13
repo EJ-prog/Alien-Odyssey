@@ -71,6 +71,6 @@ var monsterForest = {
     sun: [{x : 450, y: 5}],
     coins: [{x: 300, y: 250}],
     ammopack: [{x: 0, y: 0}],
-    monster: [{x: 1750, y: 150}]
-    // lunarRockPiece4: [{x: 0, y: 0, level:4}]
+    monster: [{x: 1750, y: 150}],
+    lunarRockPiece4: [{x: 0, y: 0, level:4}]
 };
