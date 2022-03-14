@@ -506,7 +506,8 @@ class SceneManager {
                     ctx.fillText("to this planet to begin the search.",319,190);
                     ctx.fillText("After traveling a thousand years of light,",319,210);
                     ctx.fillText("he arrived on this planet.",319,230);
-                    ctx.fillText("Using the arrow keys or WASD & spacebar, navigate",319,270);
+                    ctx.fillText("Using the arrow keys or ",319, 250);
+                    ctx.fillText("WASD & spacebar, navigate",319,270);
                     ctx.fillText("the planets, shoot the enemies, gather coins",319,290);
                     ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",319,310);
                     ctx.fillText("Credits:",449,350);
@@ -525,7 +526,8 @@ class SceneManager {
                     ctx.fillText("to this planet to begin the search.",320,190);
                     ctx.fillText("After traveling a thousand years of light,",320,210);
                     ctx.fillText("he arrived on this planet.",320,230);
-                    ctx.fillText("Using the arrow keys or WASD & spacebar, navigate",320,270);
+                    ctx.fillText("Using the arrow keys or ",320, 250);
+                    ctx.fillText("WASD & spacebar, navigate",320,270);
                     ctx.fillText("the planets, shoot the enemies, gather coins",320,290);
                     ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",320,310);
                     ctx.fillText("Credits:",450,350);
