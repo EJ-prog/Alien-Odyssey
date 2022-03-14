@@ -312,6 +312,7 @@ class Alien{
         if (this.win) {
             var width = 176;
             var height = 88;
+            ctx.draw();
             ctx.font = "bold 50px Verdana";
             ctx.fillText("You Win!", 50, 500);
             // ctx.font = "50px Georgia";
