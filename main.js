@@ -35,6 +35,7 @@ ASSET_MANAGER.queueDownload("./Sprites_and_Assets/AcidMeadowsMushroomRaindrops.p
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandBackground.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandEnvironment.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/LavaLandLava.png");
+ASSET_MANAGER.queueDownload("./Sprites_and_Assets/lavaDrop.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/landHorizontal.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/landVertical.png");
 ASSET_MANAGER.queueDownload("./Sprites_and_Assets/landSquare.png");
