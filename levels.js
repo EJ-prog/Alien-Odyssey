@@ -12,7 +12,7 @@ var metalDesert = {
     coins: [{x: 200, y: 300}, {x: 300, y: 300}],
     // ammopack: [{x: 0, y: 0}],
     scorpion: [{x: 370, y: 375}],
-    lunarRockPiece1: [{x: 750, y: 400, level:1}]  
+    lunarRockPiece1: [{x: 925, y: 400, level:1}]  
 };
 
 var acidMeadows = {
@@ -28,7 +28,7 @@ var acidMeadows = {
     coins: [{x: 300, y: 350}],
     ant: [{x: 200, y:378}],
     // ammopack: [{x: 0, y: 0}],
-    lunarRockPiece2: [{x: 950, y: 400, level:2}]
+    lunarRockPiece2: [{x: 800, y: 400, level:2}]
 };
 
 var lavaLand = {
@@ -71,6 +71,6 @@ var monsterForest = {
     sun: [{x : 450, y: 5}],
     coins: [{x: 300, y: 250}],
     ammopack: [{x: 0, y: 0}],
-    monster: [{x: 1750, y: 150}],
-    lunarRockPiece4: [{x: 0, y: 0, level:4}]
+    monster: [{x: 1750, y: 150}]
+    // lunarRockPiece4: [{x: 0, y: 0, level:4}]
 };

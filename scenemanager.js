@@ -427,7 +427,7 @@ class SceneManager {
     update() {
         if (this.title && this.game.click && this.activeElem) {
             if(this.game.click.y > 146 && this.game.click.y < 280 && this.game.click.x > 338 && this.game.click.x < 623) {
-                this.loadlevel(metalDesert, 0, 275, false, false);
+                this.loadlevel(monsterForest, 1400, 275, false, false);
                 // this.alien = new Alien(this.game, 0, 263);
             }
             if (this.game.click.y > 281 && this.game.click.y < 415 && this.game.click.x > 338 && this.game.click.x < 623) {

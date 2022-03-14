@@ -169,7 +169,7 @@ class Alien{
                 }
                 if (entity instanceof Coin) {
                     entity.removeFromWorld = true;
-                } else if (entity instanceof Scorpion || entity instanceof Rock || entity instanceof Ant || that.y >= 575) { //add ant and rain to here
+                } else if (entity instanceof Scorpion || entity instanceof Rock || entity instanceof Ant || entity instanceof Monster || that.y >= 575) { //add ant and rain to here
                     that.dead = true;
                 } else if (entity instanceof Mushroom1 || entity instanceof Mushroom2) {
                     if (that.lastBB.left >= entity.BB.x && that.lastBB.right <= (entity.BB.width + entity.BB.x)) {
@@ -245,7 +245,6 @@ class Alien{
                 }
             }
         });
-
         if (this.game.space) {
             if (this.facing === 0) {
                 this.game.addEntity(new Laser(this.game, this.x + 125, this.y + 70, this.facing));
@@ -268,8 +267,8 @@ class Alien{
                 ctx.font = "bold 50px Verdana";
                 ctx.fillText("YOU LOSE!", 50, 500);
                 ctx.font = "20px Verdana";
-                ctx.fillText("Play again?", 60, 550);
-                ctx.fillText("Go to menu?", 210, 550);
+                ctx.fillText("Refresh to play again.", 60, 550);
+                // ctx.fillText("Go to menu?", 210, 550);
                 this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, this.x - this.game.camera.x, this.y);
                 const context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
@@ -291,8 +290,8 @@ class Alien{
                 ctx.font = "bold 50px Verdana";
                 ctx.fillText("YOU LOSE!", 50, 500);
                 ctx.font = "20px Verdana";
-                ctx.fillText("Play again?", 60, 550);
-                ctx.fillText("Go to menu?", 210, 550);
+                ctx.fillText("Refresh to play again.", 60, 550);
+                // ctx.fillText("Go to menu?", 210, 550);
                 this.animator[5][this.facing].drawFrame(this.game.clockTick, ctx, -this.x + this.game.camera.x, this.y);
                 const context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
@@ -326,8 +325,8 @@ class Alien{
             ctx.fillStyle = gradient;
             ctx.fillText("Alien can make their wish!", 50, 550);
             ctx.font = "20px Verdana";
-            ctx.fillText("Play again?", 53, 570);
-            ctx.fillText("Go to menu?", 673, 570);
+            ctx.fillText("Refresh to play again.", 53, 570);
+            // ctx.fillText("Go to menu?", 673, 570);
             const context = canvas.getContext('2d');
             context.clearRect(0, 0, canvas.width, canvas.height);
         }
