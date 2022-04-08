@@ -511,6 +511,7 @@ class SceneManager {
                     ctx.fillText("the planets, shoot the enemies, gather coins",319,290);
                     ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",319,310);
                     ctx.fillText("Credits:",449,350);
+                    // Organized by first name, alphabetical order
                     ctx.fillText("Danny Le, Dino Jazvin, & Elisabeth Jewett",319,370);
                     ctx.fillText("Original characters and art.",319,390);
 
@@ -531,6 +532,7 @@ class SceneManager {
                     ctx.fillText("the planets, shoot the enemies, gather coins",320,290);
                     ctx.fillText("and retrieve the Lunar rock to save Alien's wife.",320,310);
                     ctx.fillText("Credits:",450,350);
+                    // Organized by first name, alphabetical order
                     ctx.fillText("Danny Le, Dino Jazvin, & Elisabeth Jewett",320,370);
                     ctx.fillText("Original characters and art.",320,390);
 
